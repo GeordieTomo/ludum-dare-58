@@ -13,9 +13,17 @@ config_version=5
 config/name="ludum-dare-58"
 run/main_scene="uid://dcjj3sbly682w"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/fullsize=false
+boot_splash/image="uid://cykq4so8rtjw4"
+config/icon="uid://bc6dyg3em5280"
 
 [autoload]
 
 Camera="*res://globals/camera.tscn"
 Events="*res://globals/events.gd"
 TweenCustom="*res://globals/tween_custom.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
