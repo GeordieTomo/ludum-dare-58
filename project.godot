@@ -1,0 +1,21 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="ludum-dare-58"
+run/main_scene="uid://dcjj3sbly682w"
+config/features=PackedStringArray("4.5", "Forward Plus")
+
+[autoload]
+
+Camera="*res://globals/camera.tscn"
+Events="*res://globals/events.gd"
+TweenCustom="*res://globals/tween_custom.gd"
