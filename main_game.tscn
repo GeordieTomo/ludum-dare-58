@@ -5,15 +5,20 @@
 [ext_resource type="Script" uid="uid://3smrpykov5f2" path="res://scripts/clear_score_button.gd" id="3_ykeeq"]
 [ext_resource type="Script" uid="uid://cqpyul0rsejya" path="res://scripts/screen_shake_controller.gd" id="4_6bm6p"]
 
-[node name="MainGame" type="Node2D"]
+[node name="MainGame" type="Node"]
 
 [node name="ScreenShakeController" type="Node" parent="."]
 script = ExtResource("4_6bm6p")
 
-[node name="UILayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
+[node name="UILayer" type="Control" parent="."]
+layout_mode = 3
+anchor_left = -0.5
+anchor_top = -0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 
 [node name="MarginContainer" type="MarginContainer" parent="UILayer"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
