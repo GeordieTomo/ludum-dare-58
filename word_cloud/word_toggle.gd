@@ -10,6 +10,8 @@ signal toggled(new_state : bool)
 
 func _ready():
 	word_toggle_button.toggled.connect(_pressed)
+	word_toggle_button.global_position = global_position
+	word_toggle_button.visible = true
 	
 func _pressed(new_val : bool):
 	toggled.emit(new_val)

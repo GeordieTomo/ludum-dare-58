@@ -8,6 +8,9 @@ var word_ui_toggles : Array[Node2D]
 
 signal selected_words_changed
 
+signal available_words_changed
+signal available_word_added(new_word: Enums.AllWords)
+
 func _ready():
 	add_words_to_selection_dictionary()
 	
@@ -25,6 +28,32 @@ func set_word_selected_state(word: Enums.AllWords, new_state: bool):
 	
 func update_words_selected():
 	selected_words_changed.emit()
+
+func add_available_word(word: Enums.AllWords):
+	if not words_that_can_be_used.has(word):
+		words_that_can_be_used.append(word)
+	available_word_added.emit(word)
+	update_words_available()
+
+func add_available_words(words: Array[Enums.AllWords]):
+	for word in words:
+		add_available_word(word)
+
+func remove_available_word(word : Enums.AllWords):
+	if words_that_can_be_used.has(word):
+		words_that_can_be_used.erase(word)
+		
+	update_words_available()
+
+func clear_all_available_words():
+	words_that_can_be_used.clear()
+	update_words_available()
+
+func update_words_available():
+	available_words_changed.emit()
+
+func word_is_available(word: Enums.AllWords) -> bool:
+	return words_that_can_be_used.has(word)
 
 func evaluate_score(target_words : Array[Enums.AllWords]) -> float:
 	var score : float = 0.

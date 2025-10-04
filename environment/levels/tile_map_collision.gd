@@ -7,4 +7,3 @@ func _ready() -> void:
 		for neighbor: Vector2i in neighboring_tiles:
 			if get_cell_source_id(neighbor) == -1:
 				set_cell(neighbor, 5, Vector2i.ZERO)
-				print(neighbor, " filling empty tile")

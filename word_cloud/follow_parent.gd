@@ -4,9 +4,7 @@ extends Control
 var target_position : Vector2
 var prev_position : Vector2
 
-func _ready():
-	# Start at the parent's current global position
-	target_position = get_parent().global_position
+var first_time = true
 
 func _process(delta):
 	var parent_pos = get_parent().global_position

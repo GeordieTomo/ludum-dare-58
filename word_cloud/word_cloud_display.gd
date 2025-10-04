@@ -9,11 +9,27 @@ var word_toggle_objects : Array[WordToggle] = []
 
 func _ready():
 	instantiate_word_ui()
+	WordCloud.available_words_changed.connect(update_word_ui)
 
 func instantiate_word_ui():
 	for word in WordCloud.words_that_can_be_used:
 		create_word_toggle_ui(word)
-		
+
+func update_word_ui():
+	var existing_words: Array[Enums.AllWords]
+	# if any items have been removed
+	for word_toggle in word_toggle_objects.duplicate():
+		if not WordCloud.word_is_available(word_toggle.word_value):
+			word_toggle_objects.erase(word_toggle)
+			word_toggle.queue_free()
+		else:
+			existing_words.append(word_toggle.word_value)
+
+	for word in WordCloud.words_that_can_be_used:
+		if not existing_words.has(word):
+			create_word_toggle_ui(word)
+
+
 func create_word_toggle_ui(word: Enums.AllWords):
 	var new_word_toggle : WordToggle = word_ui_template.instantiate()
 	new_word_toggle.toggled.connect(word_toggled.bind(new_word_toggle))

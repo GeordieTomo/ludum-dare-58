@@ -7,7 +7,7 @@ background_mode = 3
 tonemap_mode = 3
 glow_enabled = true
 glow_normalized = true
-glow_bloom = 0.52
+glow_bloom = 0.82
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
 environment = SubResource("Environment_wv683")

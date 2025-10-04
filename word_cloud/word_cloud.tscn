@@ -1,13 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8qtmupowsosw"]
+[gd_scene load_steps=8 format=3 uid="uid://c8qtmupowsosw"]
 
 [ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="1_lfg12"]
 [ext_resource type="Script" uid="uid://bwo8g75o1b1aw" path="res://word_cloud/word_cloud.gd" id="1_y24nb"]
 [ext_resource type="Script" uid="uid://uip2ypr7vub5" path="res://word_cloud/word_cloud_display.gd" id="2_hk23b"]
 [ext_resource type="PackedScene" uid="uid://cep348itqkp7x" path="res://word_cloud/word_toggle.tscn" id="3_widb8"]
+[ext_resource type="Script" uid="uid://b35v17jkqiimj" path="res://word_cloud/message_display.gd" id="5_7iwso"]
+[ext_resource type="Script" uid="uid://clx3v0d7w6snj" path="res://word_cloud/unlock_display.gd" id="5_bod8x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bod8x"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.45882353)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
 
 [node name="word_cloud" type="CanvasLayer"]
 script = ExtResource("1_y24nb")
-words_that_can_be_used = Array[int]([0, 1, 2, 3, 4, 6])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -25,7 +38,6 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_constants/separation = 10
 script = ExtResource("2_hk23b")
 word_ui_template = ExtResource("3_widb8")
 
@@ -38,4 +50,38 @@ size_flags_horizontal = 4
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 15
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("5_bod8x")
+
+[node name="MessageDisplay" type="MarginContainer" parent="MarginContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("5_7iwso")
+
+[node name="Panel" type="Panel" parent="MarginContainer/CenterContainer/MessageDisplay"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bod8x")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/MessageDisplay"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/CenterContainer/MessageDisplay/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[wave]word[/wave] unlocked"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
