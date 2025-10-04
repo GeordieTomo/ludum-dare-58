@@ -9,6 +9,7 @@ var target_position : Vector2
 func _ready():
 	# Start at the parent's current global position
 	target_position = follow_target.global_position
+	global_position = target_position
 
 func _process(delta):
 	target_position = follow_target.global_position

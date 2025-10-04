@@ -2,6 +2,9 @@ extends Area2D
 
 @export var can_push_evaluation_words : Array[Enums.AllWords] = []
 
+# if 0, doesn't ever timeout
+@export var timeout : float = 0. 
+
 var state : bool = false
 var player_in_range = false
 @onready var interaction_hint = %InteractionHint
@@ -31,7 +34,14 @@ func can_push_button() -> bool:
 	return WordCloud.evaluate_score(can_push_evaluation_words) > 0.
 
 func toggle():
+	if timeout > 0.:
+		turn_off_button_delayed(timeout)
 	set_state(not state)
+	toggled.emit(state)
+	
+func turn_off_button_delayed(delay: float):
+	await get_tree().create_timer(delay).timeout
+	set_state(false)
 	toggled.emit(state)
 
 func set_state(new_state):

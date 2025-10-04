@@ -4,6 +4,8 @@ var stage : int = 0
 
 @export var words_to_add : Array[Enums.AllWords]
 
+@export var push_stage_collision_trigger : Area2D
+
 func _ready():
 	
 	WordCloud.selected_words_changed.connect(selected_words_changed)
@@ -11,22 +13,31 @@ func _ready():
 	
 	await get_tree().create_timer(0.5).timeout
 	WordCloud.add_available_word(Enums.AllWords.Light)
+	
+	push_stage_collision_trigger.body_entered.connect(push_stage.unbind(1))
 
 func selected_words_changed():
 	
 	match(stage):
 		0:
-			if WordCloud.check_if_word_is_selected(Enums.AllWords.Light):
-				stage += 1
-				await get_tree().create_timer(1.5).timeout
-				WordCloud.add_available_word(Enums.AllWords.Move)
-		1:
-			if WordCloud.check_if_word_is_selected(Enums.AllWords.Move):
-				stage += 1
-				await get_tree().create_timer(1.5).timeout
-				WordCloud.add_available_word(Enums.AllWords.Push)
+			move_stage()
 		2:
-			if WordCloud.check_if_word_is_selected(Enums.AllWords.Push):
-				stage += 1
-				await get_tree().create_timer(1.5).timeout
-				WordCloud.add_available_words(words_to_add)
+			end_stage()
+
+func move_stage():
+	if WordCloud.check_if_word_is_selected(Enums.AllWords.Light):
+		stage += 1
+		await get_tree().create_timer(1.5).timeout
+		WordCloud.add_available_word(Enums.AllWords.Move)
+
+func push_stage():
+	if stage == 1:
+		stage += 1
+		await get_tree().create_timer(1.5).timeout
+		WordCloud.add_available_word(Enums.AllWords.Push)
+
+func end_stage():
+	if WordCloud.check_if_word_is_selected(Enums.AllWords.Push):
+		stage += 1
+		await get_tree().create_timer(1.5).timeout
+		WordCloud.add_available_words(words_to_add)
