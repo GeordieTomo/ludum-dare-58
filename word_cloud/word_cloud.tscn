@@ -64,6 +64,7 @@ layout_mode = 2
 script = ExtResource("5_7iwso")
 
 [node name="Panel" type="Panel" parent="MarginContainer/CenterContainer/MessageDisplay"]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bod8x")
 
@@ -79,6 +80,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[wave]word[/wave] unlocked"

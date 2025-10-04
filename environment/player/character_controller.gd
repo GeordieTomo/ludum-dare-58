@@ -16,7 +16,7 @@ func _process(delta):
 	if can_move:
 		var input = Input.get_vector("left", "right", "up", "down")
 		# Target velocity based on input
-		var target_velocity = input * move_speed * BASE_MOVE_SPEED
+		var target_velocity = input * move_speed * BASE_MOVE_SPEED * Vector2(1., 0.5)
 		
 		# Smoothly accelerate toward the target velocity
 		var acceleration = 20.0  # higher = snappier, lower = smoother
