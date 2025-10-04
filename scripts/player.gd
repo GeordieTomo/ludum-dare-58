@@ -29,7 +29,8 @@ func _physics_process(delta):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$CollectionArea.collected_animal.connect(receive_collected_animal)
+#	$CollectionArea.collected_animal.connect(receive_collected_animal)
+	pass
 
 func receive_collected_animal(kind: Animal.AnimalKind):
 	print("Collected a ", Animal.AnimalKind.find_key(kind))
