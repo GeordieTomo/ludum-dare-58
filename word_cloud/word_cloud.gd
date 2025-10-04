@@ -21,7 +21,6 @@ func instantiate_word_ui():
 func create_word_toggle_ui(word: Enums.AllWords):
 	pass
 	
-	
 func toggle_word_selected(word: Enums.AllWords):
 	# check if word is selected, and then toggle its state
 	update_words_selected()

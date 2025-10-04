@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c8qtmupowsosw"]
 
-[ext_resource type="Script" uid="uid://bwo8g75o1b1aw" path="res://word_cloud.gd" id="1_y24nb"]
+[ext_resource type="Script" uid="uid://bwo8g75o1b1aw" path="res://word_cloud/word_cloud.gd" id="1_y24nb"]
 
 [node name="word_cloud" type="Node"]
 script = ExtResource("1_y24nb")
