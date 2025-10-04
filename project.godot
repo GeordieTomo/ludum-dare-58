@@ -25,6 +25,8 @@ TweenCustom="*res://globals/tween_custom.gd"
 
 [display]
 
+window/size/viewport_width=2304
+window/size/viewport_height=1296
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
