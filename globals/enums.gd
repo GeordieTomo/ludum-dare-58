@@ -7,7 +7,9 @@ enum AllWords {
 	Precise,
 	Strong,
 	Steady,
-	Fast
+	Fast,
+	Pickup,
+	Throw
 }
 
 func get_string_from_enum(word : AllWords) -> String:
