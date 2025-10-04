@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://oxj8dnh0180n"]
+[gd_scene load_steps=15 format=3 uid="uid://oxj8dnh0180n"]
 
 [ext_resource type="Texture2D" uid="uid://clmxrd2ardv2s" path="res://textures/stick_figure.png" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://6574cck1lh74" path="res://scripts/player.gd" id="1_fj7yv"]
@@ -26,7 +26,10 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_4srsv"]
 curve = SubResource("Curve_gbfbk")
 
+[sub_resource type="CurveTexture" id="CurveTexture_036b0"]
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ioo17"]
+particle_flag_align_y = true
 particle_flag_disable_z = true
 emission_shape_offset = Vector3(0, -1000, 0)
 emission_shape_scale = Vector3(300, 100, 1)
@@ -38,6 +41,7 @@ gravity = Vector3(0, 0, 0)
 radial_accel_min = -10000.0
 radial_accel_max = -1000.0
 radial_accel_curve = SubResource("CurveTexture_f52ns")
+tangential_accel_curve = SubResource("CurveTexture_036b0")
 scale_min = 0.049999997
 scale_max = 0.14999999
 scale_curve = SubResource("CurveTexture_4srsv")
@@ -67,12 +71,13 @@ texture = ExtResource("4_aqk2v")
 
 [node name="Polygon2D" type="Polygon2D" parent="Player/Vacuum/Sprite2D"]
 clip_children = 1
-position = Vector2(0, -140)
+position = Vector2(7.9999866, -154)
 scale = Vector2(0.8000002, 0.4343751)
-polygon = PackedVector2Array(-170, -13.812945, 170, -18.417261, 694.99976, -1247.7695, -634.9998, -1243.1652)
+polygon = PackedVector2Array(-170, -13.812945, 170, -18.417261, 1500.8877, -1265.6781, -1790.106, -1270.0281)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Player/Vacuum/Sprite2D/Polygon2D"]
 material = SubResource("CanvasItemMaterial_dwbse")
+position = Vector2(-4.9999995, -13.812947)
 scale = Vector2(0.99999994, 1)
 emitting = false
 amount = 30
