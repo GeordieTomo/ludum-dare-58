@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
 var mouse_pos = Vector2(0, 0) # position of the mouse, relative to 0, 0
+var mouse_is_pressed = false
 
 func _input(event):
 	# Mouse in viewport coordinates.
 	if event is InputEventMouseButton:
-		print("Mouse Click/Unclick at: ", event.position)
+		$Vacuum.get_node("Sprite2D").get_node("Polygon2D").get_node("GPUParticles2D").emitting = event.pressed
 	elif event is InputEventMouseMotion:
 		var viewport_size = get_viewport().get_visible_rect().size
 		mouse_pos = event.position - viewport_size/2 # we subtract half of the view size to get coords relative to world origin

@@ -74,6 +74,7 @@ polygon = PackedVector2Array(-170, -13.812945, 170, -18.417261, 694.99976, -1247
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Player/Vacuum/Sprite2D/Polygon2D"]
 material = SubResource("CanvasItemMaterial_dwbse")
 scale = Vector2(0.99999994, 1)
+emitting = false
 amount = 30
 texture = ExtResource("3_036b0")
 speed_scale = 1.33
