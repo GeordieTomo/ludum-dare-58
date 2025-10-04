@@ -1,9 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcjj3sbly682w"]
+[gd_scene load_steps=13 format=3 uid="uid://dcjj3sbly682w"]
 
 [ext_resource type="Script" uid="uid://bm7exghrhdxxc" path="res://scripts/add_score_button.gd" id="1_1oj5k"]
 [ext_resource type="Script" uid="uid://m0qj4q3wiu4r" path="res://scripts/score_tracker.gd" id="2_yx7mw"]
 [ext_resource type="Script" uid="uid://3smrpykov5f2" path="res://scripts/clear_score_button.gd" id="3_ykeeq"]
 [ext_resource type="Script" uid="uid://cqpyul0rsejya" path="res://scripts/screen_shake_controller.gd" id="4_6bm6p"]
+[ext_resource type="Texture2D" uid="uid://cbxgliaps3jmy" path="res://textures/VAC.png" id="5_dugkq"]
+[ext_resource type="Texture2D" uid="uid://dw0w007w3okbn" path="res://textures/dust_sprite_strip_4frames_transparent.png" id="6_2pltu"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f52ns"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_2pltu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1590909, 0.20224726), 0.0, 0.0, 0, 0, Vector2(0.78030306, 0.42696637), 1.339616, 1.339616, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_f52ns"]
+curve = SubResource("Curve_2pltu")
+
+[sub_resource type="Curve" id="Curve_l5ukw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.32575756, 0.6629214), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4srsv"]
+curve = SubResource("Curve_l5ukw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l5ukw"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -1000, 0)
+emission_shape_scale = Vector3(300, 100, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -179.99998
+angle_max = 180.00002
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -10000.0
+radial_accel_max = -1000.0
+radial_accel_curve = SubResource("CurveTexture_f52ns")
+scale_min = 0.049999997
+scale_max = 0.14999999
+scale_curve = SubResource("CurveTexture_4srsv")
+color = Color(1, 1, 1, 0.39215687)
+anim_offset_max = 1.0
+turbulence_noise_scale = 0.0
+turbulence_noise_speed_random = 4.0
 
 [node name="MainGame" type="Node"]
 
@@ -71,3 +113,21 @@ script = ExtResource("1_1oj5k")
 layout_mode = 2
 text = "Clear Score"
 script = ExtResource("3_ykeeq")
+
+[node name="Vac" type="Sprite2D" parent="."]
+position = Vector2(256, 23)
+scale = Vector2(0.20000005, 0.21718755)
+texture = ExtResource("5_dugkq")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+clip_children = 1
+position = Vector2(255, 5)
+scale = Vector2(0.20000005, 0.21718755)
+polygon = PackedVector2Array(-170, -13.812945, 170, -18.417261, 694.99976, -1247.7695, -634.9998, -1243.1652)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Polygon2D"]
+material = SubResource("CanvasItemMaterial_f52ns")
+scale = Vector2(0.99999994, 1)
+amount = 30
+texture = ExtResource("6_2pltu")
+process_material = SubResource("ParticleProcessMaterial_l5ukw")
