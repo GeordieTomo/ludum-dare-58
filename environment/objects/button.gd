@@ -8,7 +8,7 @@ extends Area2D
 var state : bool = false
 var player_in_range = false
 @onready var interaction_hint = %InteractionHint
-@onready var depressed_sprite = %Depressed
+@onready var depressed_sprite : SpriteGlow = %Depressed
 @onready var pressed_sprite = %Pressed
 
 signal toggled(new_state: bool)
@@ -74,6 +74,8 @@ func update_text_hint():
 
 func show_text_hint():
 	interaction_hint.visible = true
+	depressed_sprite.enable_glow(true)
 	
 func hide_text_hint():
 	interaction_hint.visible = false
+	depressed_sprite.enable_glow(false)

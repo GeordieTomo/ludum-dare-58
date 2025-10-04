@@ -77,14 +77,14 @@ theme_override_constants/margin_bottom = 15
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/CenterContainer/MessageDisplay/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[wave]word[/wave] unlocked"
+text = "[wave]word[/wave] added to collection"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1

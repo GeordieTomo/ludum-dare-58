@@ -18,6 +18,8 @@ var target_throw_position : Vector2 = Vector2.ZERO
 var player = null
 
 @onready var interaction_hint = %InteractionHint
+@onready var sprite_glow : SpriteGlow = %Sprite2D
+
 
 func _ready():
 	player_exited()
@@ -36,15 +38,17 @@ func get_throw_distance() -> float:
 
 func _input(event):
 	if player_in_range:
-		if can_pickup_or_put_down():
-			if event.is_action_pressed("interact"):
-				try_pickup_or_putdown()
-		elif can_throw():
+		if can_throw():
 			if event.is_action_pressed("interact"):
 				try_throw()
-
+		elif can_pickup_or_put_down():
+			if event.is_action_pressed("interact"):
+				try_pickup_or_putdown()
+		
 func try_pickup_or_putdown():
 	if can_pickup_or_put_down():
+		rotation = 0
+		throwing = false
 		player_holding = not player_holding
 		player_holding_lerp = 0.
 		throwing_lerp = 0.
@@ -58,7 +62,7 @@ func try_throw():
 	if can_throw():
 		throwing_lerp = 0.
 		player_holding = not player_holding
-		target_throw_position = get_throw_distance() * global_position.direction_to(get_global_mouse_position())
+		target_throw_position = global_position + get_throw_distance() * global_position.direction_to(get_global_mouse_position())
 		throwing = true
 
 func _process(delta):
@@ -74,8 +78,10 @@ func follow_player(delta):
 	position = position.lerp(target, player_holding_lerp)
 
 func follow_arc(delta):
-	throwing_lerp = clamp(throwing_lerp + delta, 0.0, 1.0)
-	position = position.lerp(target_throw_position, throwing_lerp)
+	throwing_lerp = clamp(throwing_lerp + delta, 0.0, 2.0)
+	global_position = global_position.lerp(target_throw_position, throwing_lerp)
+	rotation = lerpf(rotation, 0, throwing_lerp)
+
 
 func _body_entered(body: Node2D):
 	if body.is_in_group("player"):
@@ -102,6 +108,8 @@ func update_text_hint():
 
 func show_text_hint():
 	interaction_hint.visible = true
+	sprite_glow.enable_glow(true)
 	
 func hide_text_hint():
 	interaction_hint.visible = false
+	sprite_glow.enable_glow(false)

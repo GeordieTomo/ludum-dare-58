@@ -42,10 +42,13 @@ func word_toggled(toggled_on: bool, word_toggle : WordToggle):
 	WordCloud.set_word_selected_state(word_toggle.word_value, toggled_on)
 	
 	if WordCloud.too_many_words_selected():
-		var oldest_word_toggle: WordToggle = selected_word_container.get_child(0)
-		oldest_word_toggle.toggle()
+		# Don't allow the player to select a new word
+		word_toggle.toggle()
+		# Deselect the oldest word
+		#var oldest_word_toggle: WordToggle = selected_word_container.get_child(0)
+		#oldest_word_toggle.toggle()
 	
-	if toggled_on:
+	elif toggled_on:
 		word_toggle.get_parent().remove_child(word_toggle)
 		selected_word_container.add_child(word_toggle)
 	else:
