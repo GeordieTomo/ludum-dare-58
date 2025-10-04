@@ -8,6 +8,7 @@ func _input(event):
 	if event is InputEventMouseButton:
 		$Vacuum.get_node("Sprite2D").get_node("Polygon2D").get_node("GPUParticles2D").emitting = event.pressed
 		mouse_is_pressed = event.pressed
+		$CollectionArea.set_collection_enabled(mouse_is_pressed)
 	elif event is InputEventMouseMotion:
 		var viewport_size = get_viewport().get_visible_rect().size
 		mouse_pos = event.position - viewport_size/2 # we subtract half of the view size to get coords relative to world origin
