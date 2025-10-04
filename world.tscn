@@ -1,10 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://oxj8dnh0180n"]
+[gd_scene load_steps=19 format=3 uid="uid://oxj8dnh0180n"]
 
 [ext_resource type="Texture2D" uid="uid://clmxrd2ardv2s" path="res://textures/stick_figure.png" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://6574cck1lh74" path="res://scripts/player.gd" id="1_fj7yv"]
 [ext_resource type="Texture2D" uid="uid://dw0w007w3okbn" path="res://textures/dust_sprite_strip_4frames_transparent.png" id="3_036b0"]
 [ext_resource type="Texture2D" uid="uid://cbxgliaps3jmy" path="res://textures/VAC.png" id="4_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://caheyla24vuf7" path="res://textures/animals/Cat.PNG" id="5_036b0"]
+[ext_resource type="Script" uid="uid://cgueqm1dtu30l" path="res://scripts/animal_collection_area.gd" id="5_pkg7o"]
+[ext_resource type="Script" uid="uid://babvd3d5sqhh1" path="res://scripts/animal.gd" id="6_gbfbk"]
+[ext_resource type="Texture2D" uid="uid://bk3u7dt6bf3k2" path="res://textures/animals/Lbug.png" id="8_ioo17"]
+[ext_resource type="Texture2D" uid="uid://c62r4kwf718vg" path="res://textures/animals/MOnki.PNG" id="9_wse8f"]
+[ext_resource type="Texture2D" uid="uid://c8vlc4exi0krb" path="res://textures/ark.png" id="10_wse8f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dwbse"]
 particles_animation = true
@@ -50,28 +55,26 @@ turbulence_noise_speed_random = 4.0
 size = Vector2(8.599999, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
-size = Vector2(132, 104)
+size = Vector2(76, 89)
 
-[node name="Node2D" type="Node2D"]
-
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_fj7yv")
 
-[node name="Vacuum" type="CharacterBody2D" parent="Player"]
+[node name="Vacuum" type="CharacterBody2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Player/Vacuum"]
+[node name="Sprite2D" type="Sprite2D" parent="Vacuum"]
 position = Vector2(126, -1)
 rotation = 1.5707964
 scale = Vector2(0.25, 0.5)
 texture = ExtResource("4_aqk2v")
 
-[node name="Polygon2D" type="Polygon2D" parent="Player/Vacuum/Sprite2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Vacuum/Sprite2D"]
 clip_children = 1
 position = Vector2(7.9999866, -154)
 scale = Vector2(0.8000002, 0.4343751)
 polygon = PackedVector2Array(-170, -13.812945, 170, -18.417261, 1814.2886, -1265.6781, -1790.106, -1270.0281)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Player/Vacuum/Sprite2D/Polygon2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Vacuum/Sprite2D/Polygon2D"]
 material = SubResource("CanvasItemMaterial_dwbse")
 position = Vector2(-4.9999995, -13.812947)
 scale = Vector2(0.99999994, 1)
@@ -81,21 +84,74 @@ texture = ExtResource("3_036b0")
 speed_scale = 1.33
 process_material = SubResource("ParticleProcessMaterial_ioo17")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="RayCast2D" type="RayCast2D" parent="Vacuum/Sprite2D"]
+position = Vector2(4.000022, 252)
+rotation = -1.5707964
+scale = Vector2(2, 4)
+target_position = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_f3sb7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.1920929e-06, -4.7683716e-06)
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_fj7yv")
+disabled = true
+
+[node name="CollectionArea" type="Area2D" parent="."]
+script = ExtResource("5_pkg7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
 position = Vector2(-1.1920929e-06, -4.7683716e-06)
 scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_fj7yv")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(400, 0)
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(0.1, 0.1)
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Animal" type="CharacterBody2D" parent="Node2D"]
+position = Vector2(400, 0)
+script = ExtResource("6_gbfbk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Animal"]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_036b0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Animal"]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_aqk2v")
+
+[node name="Animal2" type="CharacterBody2D" parent="Node2D"]
+position = Vector2(800, -300)
+script = ExtResource("6_gbfbk")
+kind = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Animal2"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_ioo17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Animal2"]
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_aqk2v")
+
+[node name="Animal3" type="CharacterBody2D" parent="Node2D"]
+position = Vector2(-399, -327)
+script = ExtResource("6_gbfbk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Animal3"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_wse8f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Animal3"]
+position = Vector2(10, -0.5)
+shape = SubResource("RectangleShape2D_aqk2v")
+
+[node name="Node2D" type="Node2D" parent="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Node2D"]
+position = Vector2(0, -1261)
+texture = ExtResource("10_wse8f")
