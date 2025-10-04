@@ -31,6 +31,7 @@ shape = SubResource("CircleShape2D_ann7d")
 
 [node name="InteractionHint" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
+z_index = 10
 offset_left = -45.0
 offset_top = -64.0
 offset_right = 49.0

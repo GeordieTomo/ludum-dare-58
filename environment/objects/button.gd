@@ -10,6 +10,7 @@ var player_in_range = false
 @onready var interaction_hint = %InteractionHint
 @onready var depressed_sprite : SpriteGlow = %Depressed
 @onready var pressed_sprite = %Pressed
+@onready var progress_bar = %ProgressBar
 
 signal toggled(new_state: bool)
 
@@ -41,9 +42,24 @@ func toggle():
 	hide_text_hint()
 	
 func turn_off_button_delayed(delay: float):
+	run_progress_bar(delay)
 	await get_tree().create_timer(delay).timeout
 	set_state(false)
 	toggled.emit(state)
+	
+func run_progress_bar(duration: float) -> void:
+	# Make sure the ProgressBar starts visible and full
+	progress_bar.visible = true
+	progress_bar.value = 1.0
+
+	var elapsed := 0.0
+	while elapsed < duration:
+		await get_tree().process_frame
+		elapsed += get_process_delta_time()
+		progress_bar.value = 100.0 - 100.0 * (elapsed / duration)
+	
+	progress_bar.value = 0.0
+	progress_bar.visible = false
 
 func set_state(new_state):
 	state = new_state
