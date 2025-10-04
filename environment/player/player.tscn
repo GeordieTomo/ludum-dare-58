@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://dcref1vu664m4" path="res://environment/player/character_controller.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://bc6dyg3em5280" path="res://textures/small-icon.png" id="2_onrkg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(60, 60)
+[sub_resource type="CircleShape2D" id="CircleShape2D_56k0q"]
 
 [node name="player" type="CharacterBody2D"]
 motion_mode = 1
@@ -17,4 +16,5 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_onrkg")
+position = Vector2(0, 21)
+shape = SubResource("CircleShape2D_56k0q")

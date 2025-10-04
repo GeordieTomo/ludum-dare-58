@@ -22,7 +22,7 @@ config/icon="uid://bc6dyg3em5280"
 Camera="*res://globals/camera.tscn"
 Events="*res://globals/events.gd"
 TweenCustom="*res://globals/tween_custom.gd"
-WordCloud="*res://word_cloud/word_cloud_scene.tscn"
+WordCloud="*res://word_cloud/word_cloud.tscn"
 Enums="*res://globals/enums.gd"
 
 [display]
