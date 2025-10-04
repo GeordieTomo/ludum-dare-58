@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="9.999999mm"
+   height="10.678903mm"
+   viewBox="0 0 9.999999 10.678903"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-33.288873,-77.751547)">
+    <rect
+       style="fill:#2a2a2a;fill-opacity:1;stroke-width:0.140593;stroke-linecap:round;stroke-linejoin:round"
+       id="rect1-3"
+       width="10"
+       height="2.7424567"
+       x="33.288872"
+       y="85.687988"
+       inkscape:export-filename="button_not_pressed.svg"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <rect
+       style="fill:#9a9a9a;fill-opacity:1;stroke-width:0.490105;stroke-linecap:round;stroke-linejoin:round"
+       id="rect2-0"
+       width="10"
+       height="7.1395946"
+       x="33.288872"
+       y="78.548393" />
+    <rect
+       style="fill:#6b0c0c;fill-opacity:1;stroke-width:0.272179;stroke-linecap:round;stroke-linejoin:round"
+       id="rect2-6-2"
+       width="4.6537743"
+       height="4.7314906"
+       x="35.961987"
+       y="79.752441" />
+    <rect
+       style="fill:#ec1b1b;fill-opacity:1;stroke-width:0.272179;stroke-linecap:round;stroke-linejoin:round"
+       id="rect2-6-2-2"
+       width="4.6537743"
+       height="4.7314906"
+       x="35.961987"
+       y="77.751541" />
+  </g>
+</svg>

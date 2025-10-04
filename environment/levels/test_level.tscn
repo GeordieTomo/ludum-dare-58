@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1njpdc420slk"]
+[gd_scene load_steps=4 format=3 uid="uid://d1njpdc420slk"]
 
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="1_wv683"]
 [ext_resource type="PackedScene" uid="uid://3l07hsqs21m1" path="res://environment/rock.tscn" id="2_eanm7"]
+[ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/button.tscn" id="3_wv683"]
 
 [node name="TestLevel" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource("1_wv683")]
+[node name="player" parent="." groups=["player"] instance=ExtResource("1_wv683")]
 collision_layer = 2
 collision_mask = 3
 
 [node name="Rock" parent="." instance=ExtResource("2_eanm7")]
 position = Vector2(120, 6)
+
+[node name="Button" parent="." instance=ExtResource("3_wv683")]
+position = Vector2(119, -185)

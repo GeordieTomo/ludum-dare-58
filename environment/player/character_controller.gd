@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # 100 pixels per second
-const BASE_MOVE_SPEED = 300.
+const BASE_MOVE_SPEED = 500.
 # move speed multiplier
 var move_speed : float = 1.
 var can_move : bool = false

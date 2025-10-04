@@ -9,4 +9,4 @@ func update_push_score():
 	if WordCloud.evaluate_score(can_move_evaluation_words) > 0.:
 		collision_layer = int(1) << 2
 	else:
-		collision_layer = int(1) << 1
+		collision_layer = int(1) << 0
