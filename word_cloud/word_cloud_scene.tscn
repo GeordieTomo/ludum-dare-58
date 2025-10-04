@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8qtmupowsosw"]
+[gd_scene load_steps=5 format=3 uid="uid://c8qtmupowsosw"]
 
+[ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="1_lfg12"]
 [ext_resource type="Script" uid="uid://bwo8g75o1b1aw" path="res://word_cloud/word_cloud.gd" id="1_y24nb"]
 [ext_resource type="Script" uid="uid://uip2ypr7vub5" path="res://word_cloud/word_cloud_display.gd" id="2_hk23b"]
 [ext_resource type="PackedScene" uid="uid://cep348itqkp7x" path="res://word_cloud/word_toggle.tscn" id="3_widb8"]
@@ -12,6 +13,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_lfg12")
 script = ExtResource("1_y24nb")
 words_that_can_be_used = Array[int]([0, 1, 2, 3, 4, 6])
 
@@ -27,8 +29,19 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="WordDisplay" type="GridContainer" parent="MarginContainer"]
+[node name="WordDisplay" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-columns = 8
+size_flags_horizontal = 4
+size_flags_vertical = 0
 script = ExtResource("2_hk23b")
 word_ui_template = ExtResource("3_widb8")
+
+[node name="AvailableWordContainer" type="HBoxContainer" parent="MarginContainer/WordDisplay"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SelectedWordContainer" type="HBoxContainer" parent="MarginContainer/WordDisplay"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4

@@ -1,13 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://cep348itqkp7x"]
+[gd_scene load_steps=3 format=3 uid="uid://cep348itqkp7x"]
 
 [ext_resource type="Script" uid="uid://bq08i0m887r88" path="res://word_cloud/word_toggle.gd" id="1_e55ru"]
+[ext_resource type="Script" uid="uid://bma8tmfgbr2dg" path="res://word_cloud/follow_parent.gd" id="2_ve3n2"]
 
-[node name="WordToggle" type="Button"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="WordToggle" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 87.0
+offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
-toggle_mode = true
-text = "word"
 script = ExtResource("1_e55ru")
+
+[node name="WordToggleButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Test Word"
+script = ExtResource("2_ve3n2")

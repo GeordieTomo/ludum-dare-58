@@ -2,6 +2,7 @@ extends Node
 
 @export var words_that_can_be_used : Array[Enums.AllWords] = []
 @export var words_that_are_selected : Dictionary = {}
+@export var max_words_can_select : int = 3
 
 var word_ui_toggles : Array[Node2D]
 
@@ -15,6 +16,7 @@ func add_words_to_selection_dictionary():
 		if not words_that_are_selected.has(word):
 			words_that_are_selected[word] = false
 
+# called from word_cloud_display.gd -> when a word toggle button is pressed
 func set_word_selected_state(word: Enums.AllWords, new_state: bool):
 	# check if word is selected, and then toggle its state
 	words_that_are_selected[word] = new_state
@@ -34,3 +36,6 @@ func evaluate_score(target_words : Array[Enums.AllWords]) -> float:
 	
 func check_if_word_is_selected(word: Enums.AllWords) -> bool:
 	return words_that_are_selected[word]
+
+func too_many_words_selected() -> bool:
+	return words_that_are_selected.values().count(true) > max_words_can_select
