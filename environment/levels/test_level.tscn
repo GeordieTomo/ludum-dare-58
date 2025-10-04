@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://d1njpdc420slk"]
+[gd_scene load_steps=16 format=4 uid="uid://d1njpdc420slk"]
 
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="1_lh7i5"]
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="1_wv683"]
@@ -8,6 +8,38 @@
 [ext_resource type="PackedScene" uid="uid://dsh4idvm6281c" path="res://environment/world_environment.tscn" id="5_lh7i5"]
 [ext_resource type="Script" uid="uid://begp3o20cmaw6" path="res://environment/levels/tile_map_collision.gd" id="6_38rgo"]
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="8_r3nbb"]
+
+[sub_resource type="Curve" id="Curve_lh7i5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_r3nbb"]
+curve = SubResource("Curve_lh7i5")
+
+[sub_resource type="Curve" id="Curve_al770"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.502809, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ann7d"]
+curve = SubResource("Curve_al770")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2qvjt"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(600, 350, 1)
+angle_min = 1.0728835e-05
+angle_max = 720.0
+initial_velocity_max = 58.379997
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 27.909998
+tangential_accel_min = -5.0800023
+tangential_accel_max = 25.879997
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_ann7d")
+alpha_curve = SubResource("CurveTexture_r3nbb")
+turbulence_enabled = true
+turbulence_noise_scale = 4.629
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_duop6"]
 texture = ExtResource("5_38rgo")
@@ -41,6 +73,13 @@ z_index = 3
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 3
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="player"]
+z_index = -4
+amount = 100
+lifetime = 10.0
+preprocess = 10.0
+process_material = SubResource("ParticleProcessMaterial_2qvjt")
 
 [node name="Rock" parent="." instance=ExtResource("2_eanm7")]
 z_index = 2
