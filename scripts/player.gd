@@ -9,9 +9,6 @@ func _input(event):
 		$Vacuum.get_node("Sprite2D").get_node("Polygon2D").get_node("GPUParticles2D").emitting = event.pressed
 		mouse_is_pressed = event.pressed
 		$CollectionArea.set_collection_enabled(mouse_is_pressed)
-	elif event is InputEventMouseMotion:
-		var viewport_size = get_viewport().get_visible_rect().size
-		mouse_pos = event.position - viewport_size/2 # we subtract half of the view size to get coords relative to world origin
 
 func _physics_process(delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -37,4 +34,5 @@ func receive_collected_animal(kind: Animal.AnimalKind):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	var viewport_size = get_viewport().get_visible_rect().size
+	mouse_pos = global_position + get_viewport().get_mouse_position() - viewport_size/2 # we subtract half of the view size to get coords relative to world origin
