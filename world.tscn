@@ -99,3 +99,27 @@ texture = ExtResource("5_036b0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_aqk2v")
+
+[node name="Animal2" type="CharacterBody2D" parent="."]
+position = Vector2(800, -300)
+script = ExtResource("5_dwbse")
+
+[node name="Sprite2D" type="Sprite2D" parent="Animal2"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_tlwt5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Animal2"]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_aqk2v")
+
+[node name="Animal3" type="CharacterBody2D" parent="."]
+position = Vector2(-399, -327)
+script = ExtResource("5_dwbse")
+
+[node name="Sprite2D" type="Sprite2D" parent="Animal3"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_tlwt5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Animal3"]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_aqk2v")
