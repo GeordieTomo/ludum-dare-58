@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # 100 pixels per second
-const BASE_MOVE_SPEED = 500.
+const BASE_MOVE_SPEED = 100.
 # move speed multiplier
 var move_speed : float = 1.
 var can_move : bool = false
@@ -15,8 +15,15 @@ func _process(delta):
 	
 	if can_move:
 		var input = Input.get_vector("left", "right", "up", "down")
-		velocity = input * delta * move_speed * 100.
-		move_and_collide(velocity)
+		# Target velocity based on input
+		var target_velocity = input * move_speed * BASE_MOVE_SPEED
+		
+		# Smoothly accelerate toward the target velocity
+		var acceleration = 20.0  # higher = snappier, lower = smoother
+		velocity = velocity.lerp(target_velocity, 1.0 - exp(-acceleration * delta))
+		
+		move_and_slide()
+
 		
 				
 func update_scores():

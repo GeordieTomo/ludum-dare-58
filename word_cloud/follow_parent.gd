@@ -17,5 +17,5 @@ func _process(delta):
 		global_position = prev_position
 
 	# Smoothly move child towards the parent's position
-	global_position = global_position.lerp(target_position, lerp_speed * delta)
+	global_position = global_position.lerp(target_position, 1.0 - exp(-lerp_speed * delta))
 	prev_position = global_position
