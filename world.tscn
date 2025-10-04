@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://oxj8dnh0180n"]
+[gd_scene load_steps=23 format=3 uid="uid://oxj8dnh0180n"]
 
 [ext_resource type="Texture2D" uid="uid://clmxrd2ardv2s" path="res://textures/stick_figure.png" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://6574cck1lh74" path="res://scripts/player.gd" id="1_fj7yv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://caheyla24vuf7" path="res://textures/animals/Cat.PNG" id="5_036b0"]
 [ext_resource type="Script" uid="uid://cgueqm1dtu30l" path="res://scripts/animal_collection_area.gd" id="5_pkg7o"]
 [ext_resource type="Script" uid="uid://bl36d02vnc1ld" path="res://scripts/camera_2d.gd" id="6_2o6r5"]
+[ext_resource type="AudioStream" uid="uid://3xo8nxicfocy" path="res://textures/sounds/absorb.wav" id="6_70uel"]
 [ext_resource type="Script" uid="uid://babvd3d5sqhh1" path="res://scripts/animal.gd" id="6_gbfbk"]
 [ext_resource type="Texture2D" uid="uid://bk3u7dt6bf3k2" path="res://textures/animals/Lbug.png" id="8_ioo17"]
 [ext_resource type="Texture2D" uid="uid://c62r4kwf718vg" path="res://textures/animals/MOnki.PNG" id="9_wse8f"]
@@ -112,6 +113,10 @@ script = ExtResource("5_pkg7o")
 position = Vector2(-1.1920929e-06, -4.7683716e-06)
 scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_fj7yv")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player/CollectionArea"]
+stream = ExtResource("6_70uel")
+volume_db = -10.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 script = ExtResource("6_2o6r5")
