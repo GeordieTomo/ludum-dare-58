@@ -1,30 +1,25 @@
 extends Node
 
-@export var word_ui_template : PackedScene
-
 @export var words_that_can_be_used : Array[Enums.AllWords] = []
-@export var words_that_are_selected : Array[Enums.AllWords] = []
-@onready var update_word_list = %update_word_list
+@export var words_that_are_selected : Dictionary = {}
 
 var word_ui_toggles : Array[Node2D]
 
 signal selected_words_changed
 
 func _ready():
-	instantiate_word_ui()
-	update_word_list.pressed.connect(update_words_selected)
+	add_words_to_selection_dictionary()
 	
-func instantiate_word_ui():
-	for word in words_that_can_be_used:
-		create_word_toggle_ui(word)
-		
-func create_word_toggle_ui(word: Enums.AllWords):
-	pass
-	
-func toggle_word_selected(word: Enums.AllWords):
+func add_words_to_selection_dictionary():
+	for word in Enums.AllWords.values():
+		if not words_that_are_selected.has(word):
+			words_that_are_selected[word] = false
+
+func set_word_selected_state(word: Enums.AllWords, new_state: bool):
 	# check if word is selected, and then toggle its state
+	words_that_are_selected[word] = new_state
+	print_debug(Enums.get_string_from_enum(word), ": ", new_state)
 	update_words_selected()
-	pass
 	
 func update_words_selected():
 	selected_words_changed.emit()
@@ -38,4 +33,4 @@ func evaluate_score(target_words : Array[Enums.AllWords]) -> float:
 	return score
 	
 func check_if_word_is_selected(word: Enums.AllWords) -> bool:
-	return words_that_are_selected.has(word)
+	return words_that_are_selected[word]
