@@ -1,19 +1,13 @@
 [gd_scene load_steps=11 format=4 uid="uid://d1njpdc420slk"]
 
-[ext_resource type="Script" uid="uid://bsv8vxvyi0vp0" path="res://environment/camera_follow.gd" id="1_duop6"]
+[ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="1_lh7i5"]
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="1_wv683"]
-[ext_resource type="PackedScene" uid="uid://3l07hsqs21m1" path="res://environment/rock.tscn" id="2_eanm7"]
-[ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/button.tscn" id="3_wv683"]
-[ext_resource type="Script" uid="uid://d3jimi2obopk0" path="res://environment/light.gd" id="4_26t1u"]
+[ext_resource type="PackedScene" uid="uid://3l07hsqs21m1" path="res://environment/objects/rock.tscn" id="2_eanm7"]
+[ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="3_wv683"]
 [ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="5_38rgo"]
+[ext_resource type="PackedScene" uid="uid://dsh4idvm6281c" path="res://environment/world_environment.tscn" id="5_lh7i5"]
 [ext_resource type="Script" uid="uid://begp3o20cmaw6" path="res://environment/levels/tile_map_collision.gd" id="6_38rgo"]
-
-[sub_resource type="Environment" id="Environment_wv683"]
-background_mode = 3
-tonemap_mode = 3
-glow_enabled = true
-glow_normalized = true
-glow_bloom = 0.52
+[ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="8_r3nbb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_duop6"]
 texture = ExtResource("5_38rgo")
@@ -39,9 +33,7 @@ sources/5 = SubResource("TileSetAtlasSource_duop6")
 
 [node name="TestLevel" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("follow_target")]
-script = ExtResource("1_duop6")
-lerp_speed = 1.0
+[node name="Camera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("1_lh7i5")]
 follow_target = NodePath("../player")
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("1_wv683")]
@@ -58,10 +50,7 @@ position = Vector2(197, -121)
 z_index = 2
 position = Vector2(159, -241)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_wv683")
-script = ExtResource("4_26t1u")
-light_evaluation_words = Array[int]([2])
+[node name="WorldEnvironment" parent="." instance=ExtResource("5_lh7i5")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 modulate = Color(0.5931336, 0.59313357, 0.59313357, 1)
@@ -70,15 +59,4 @@ tile_map_data = PackedByteArray("AAAAAAEABQABAAAAAAD//wIABQABAAAAAAD//wEABQABAAA
 tile_set = SubResource("TileSet_duop6")
 script = ExtResource("6_38rgo")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -100
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0.2509804, 0.13725491, 0.38431373, 1)
+[node name="GradientBackground" parent="." instance=ExtResource("8_r3nbb")]
