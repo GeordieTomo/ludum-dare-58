@@ -17,7 +17,6 @@ func _ready():
 	push_stage_collision_trigger.body_entered.connect(push_stage.unbind(1))
 
 func selected_words_changed():
-	
 	match(stage):
 		0:
 			move_stage()

@@ -38,6 +38,7 @@ func toggle():
 		turn_off_button_delayed(timeout)
 	set_state(not state)
 	toggled.emit(state)
+	hide_text_hint()
 	
 func turn_off_button_delayed(delay: float):
 	await get_tree().create_timer(delay).timeout
