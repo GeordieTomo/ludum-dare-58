@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1njpdc420slk"]
+[gd_scene load_steps=6 format=3 uid="uid://d1njpdc420slk"]
 
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="1_wv683"]
 [ext_resource type="PackedScene" uid="uid://3l07hsqs21m1" path="res://environment/rock.tscn" id="2_eanm7"]
 [ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/button.tscn" id="3_wv683"]
+[ext_resource type="Script" uid="uid://d3jimi2obopk0" path="res://environment/light.gd" id="4_26t1u"]
+
+[sub_resource type="Environment" id="Environment_wv683"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.8
 
 [node name="TestLevel" type="Node2D"]
 
@@ -15,3 +23,8 @@ position = Vector2(120, 6)
 
 [node name="Button" parent="." instance=ExtResource("3_wv683")]
 position = Vector2(119, -185)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wv683")
+script = ExtResource("4_26t1u")
+light_evaluation_words = Array[int]([2])
