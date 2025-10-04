@@ -1,0 +1,99 @@
+[gd_scene load_steps=14 format=3 uid="uid://oxj8dnh0180n"]
+
+[ext_resource type="Texture2D" uid="uid://clmxrd2ardv2s" path="res://textures/stick_figure.png" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://6574cck1lh74" path="res://scripts/player.gd" id="1_fj7yv"]
+[ext_resource type="Texture2D" uid="uid://dw0w007w3okbn" path="res://textures/dust_sprite_strip_4frames_transparent.png" id="3_036b0"]
+[ext_resource type="Texture2D" uid="uid://bmg4fxvkrcra6" path="res://textures/cat.png" id="3_tlwt5"]
+[ext_resource type="Texture2D" uid="uid://cbxgliaps3jmy" path="res://textures/VAC.png" id="4_aqk2v"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dwbse"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_pkg7o"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1590909, 0.20224726), 0.0, 0.0, 0, 0, Vector2(0.78030306, 0.42696637), 1.339616, 1.339616, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_f52ns"]
+curve = SubResource("Curve_pkg7o")
+
+[sub_resource type="Curve" id="Curve_gbfbk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.32575756, 0.6629214), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4srsv"]
+curve = SubResource("Curve_gbfbk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ioo17"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -1000, 0)
+emission_shape_scale = Vector3(300, 100, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -179.99998
+angle_max = 180.00002
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -10000.0
+radial_accel_max = -1000.0
+radial_accel_curve = SubResource("CurveTexture_f52ns")
+scale_min = 0.049999997
+scale_max = 0.14999999
+scale_curve = SubResource("CurveTexture_4srsv")
+color = Color(1, 1, 1, 0.39215687)
+anim_offset_max = 1.0
+turbulence_noise_scale = 0.0
+turbulence_noise_speed_random = 4.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
+size = Vector2(8.599999, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
+size = Vector2(132, 104)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_fj7yv")
+
+[node name="Vacuum" type="CharacterBody2D" parent="Player"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Vacuum"]
+position = Vector2(126, -1)
+rotation = 1.5707964
+scale = Vector2(0.25, 0.5)
+texture = ExtResource("4_aqk2v")
+
+[node name="Polygon2D" type="Polygon2D" parent="Player/Vacuum/Sprite2D"]
+clip_children = 1
+position = Vector2(0, -140)
+scale = Vector2(0.8000002, 0.4343751)
+polygon = PackedVector2Array(-170, -13.812945, 170, -18.417261, 694.99976, -1247.7695, -634.9998, -1243.1652)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Player/Vacuum/Sprite2D/Polygon2D"]
+material = SubResource("CanvasItemMaterial_dwbse")
+scale = Vector2(0.99999994, 1)
+amount = 30
+texture = ExtResource("3_036b0")
+speed_scale = 1.33
+process_material = SubResource("ParticleProcessMaterial_ioo17")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_f3sb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-1.1920929e-06, -4.7683716e-06)
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_fj7yv")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(400, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_tlwt5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_aqk2v")
