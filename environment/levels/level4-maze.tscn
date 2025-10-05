@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://crkx1stn5vavc"]
+[gd_scene load_steps=17 format=4 uid="uid://crkx1stn5vavc"]
 
 [ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_tp48l"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_0ig38"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="9_fetmr"]
 [ext_resource type="PackedScene" uid="uid://bjnb4yh033w51" path="res://environment/objects/portal.tscn" id="10_m0sgv"]
 [ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="11_0ig38"]
+[ext_resource type="PackedScene" uid="uid://bnpwree7r2j2x" path="res://environment/levels/level5-wake-up.tscn" id="12_4g22u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7m88"]
 texture = ExtResource("5_xk8qk")
@@ -63,7 +64,6 @@ z_index = 3
 position = Vector2(-1402, 626)
 collision_layer = 2
 collision_mask = 3
-light_evaluation_words = null
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("4_4g22u")]
 
@@ -88,6 +88,7 @@ dialogue_post_word = ""
 
 [node name="Portal" parent="." instance=ExtResource("10_m0sgv")]
 position = Vector2(1700, -1163)
+target_level = ExtResource("12_4g22u")
 
 [node name="Button" parent="." instance=ExtResource("11_0ig38")]
 position = Vector2(444, -418)

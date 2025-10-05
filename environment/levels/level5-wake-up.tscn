@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bnpwree7r2j2x"]
+[gd_scene load_steps=17 format=4 uid="uid://bnpwree7r2j2x"]
 
 [ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_6suk6"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_vcibj"]
@@ -10,8 +10,9 @@
 [ext_resource type="Script" path="res://environment/levels/tile_map_collision.gd" id="8_byinq"]
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="9_snd7g"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="10_glnp2"]
-[ext_resource type="PackedScene" uid="uid://bjnb4yh033w51" path="res://environment/objects/portal.tscn" id="11_surlo"]
+[ext_resource type="Script" uid="uid://f2yuo01m7yte" path="res://environment/levels/wake_up.gd" id="12_6suk6"]
 [ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="12_g2hbv"]
+[ext_resource type="PackedScene" uid="uid://peqonrwd6amd" path="res://environment/levels/end-of-game.tscn" id="13_vcibj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7m88"]
 texture = ExtResource("6_d18yx")
@@ -93,9 +94,11 @@ dialogue_pre_word = "Just gotta keep pushing on. It's only"
 word_to_pickup = 11
 dialogue_post_word = "from here."
 
-[node name="Portal" parent="." instance=ExtResource("11_surlo")]
-position = Vector2(1700, -1163)
-
 [node name="Button" parent="." instance=ExtResource("12_g2hbv")]
 position = Vector2(444, -418)
 timeout = 7.0
+
+[node name="WakeUp" type="Node" parent="."]
+script = ExtResource("12_6suk6")
+wake_up_evaluation_words = Array[int]([10, 11])
+end_game_scene = ExtResource("13_vcibj")

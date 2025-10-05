@@ -20,7 +20,7 @@ func _process(delta):
 
 		
 func words_updated():
-	set_light(WordCloud.evaluate_score(light_evaluation_words))
+	set_light(WordCloud.evaluate_score(light_evaluation_words) + WordCloud.is_end_game())
 
 func set_light(pct : float):
 	# map between 0.05 -> 1.0

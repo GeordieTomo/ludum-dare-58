@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4vun81r65hwg"]
+[gd_scene load_steps=15 format=3 uid="uid://c4vun81r65hwg"]
 
 [ext_resource type="Script" uid="uid://dcref1vu664m4" path="res://environment/player/character_controller.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://c3txes07pbl77" path="res://textures/BrainSprite.png" id="2_56k0q"]
@@ -12,6 +12,38 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2tcf"]
 radius = 1.0
+
+[sub_resource type="Curve" id="Curve_a7c7e"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_r3nbb"]
+curve = SubResource("Curve_a7c7e")
+
+[sub_resource type="Curve" id="Curve_1vemg"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.502809, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ann7d"]
+curve = SubResource("Curve_1vemg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lj8ye"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(600, 350, 1)
+angle_min = 1.0728835e-05
+angle_max = 720.0
+initial_velocity_max = 58.379997
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 27.909998
+tangential_accel_min = -5.0800023
+tangential_accel_max = 25.879997
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_ann7d")
+alpha_curve = SubResource("CurveTexture_r3nbb")
+turbulence_enabled = true
+turbulence_noise_scale = 4.629
 
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -74,3 +106,11 @@ max_polyphony = 10
 unique_name_in_owner = true
 texture = ExtResource("7_a7c7e")
 texture_scale = 2.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 10
+position = Vector2(581, 327)
+amount = 100
+lifetime = 10.0
+preprocess = 10.0
+process_material = SubResource("ParticleProcessMaterial_lj8ye")
