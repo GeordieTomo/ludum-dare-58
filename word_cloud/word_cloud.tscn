@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8qtmupowsosw"]
+[gd_scene load_steps=12 format=3 uid="uid://c8qtmupowsosw"]
 
 [ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="1_lfg12"]
 [ext_resource type="Script" uid="uid://bwo8g75o1b1aw" path="res://word_cloud/word_cloud.gd" id="1_y24nb"]
 [ext_resource type="Script" uid="uid://uip2ypr7vub5" path="res://word_cloud/word_cloud_display.gd" id="2_hk23b"]
+[ext_resource type="Texture2D" uid="uid://bvxxponudm2ui" path="res://textures/CloudTexture.png" id="3_otsdv"]
 [ext_resource type="PackedScene" uid="uid://cep348itqkp7x" path="res://word_cloud/word_toggle.tscn" id="3_widb8"]
+[ext_resource type="Texture2D" uid="uid://beokioh8n8wxe" path="res://textures/Cloud1.png" id="4_5cgqs"]
 [ext_resource type="Script" uid="uid://b35v17jkqiimj" path="res://word_cloud/message_display.gd" id="5_7iwso"]
 [ext_resource type="Script" uid="uid://clx3v0d7w6snj" path="res://word_cloud/unlock_display.gd" id="5_bod8x"]
+[ext_resource type="Texture2D" uid="uid://vp1uveiujsld" path="res://textures/Cloud2.png" id="5_e8b8q"]
+[ext_resource type="Texture2D" uid="uid://brlkc7aea6jt7" path="res://textures/Cloud3.png" id="6_uofxs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bod8x"]
 content_margin_left = 4.0
@@ -35,6 +39,78 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
+
+[node name="ThoughtCloud" type="Control" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/ThoughtCloud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -556.0
+offset_top = -337.0
+offset_right = 556.0
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_otsdv")
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/ThoughtCloud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 21.999994
+offset_top = 167.0
+offset_right = 1134.0
+offset_bottom = 775.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_5cgqs")
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/ThoughtCloud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 29.0
+offset_top = 224.0
+offset_right = 1141.0
+offset_bottom = 832.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_e8b8q")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/ThoughtCloud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 21.999996
+offset_top = 256.0
+offset_right = 1134.0
+offset_bottom = 864.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("6_uofxs")
+stretch_mode = 5
 
 [node name="WordDisplay" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
