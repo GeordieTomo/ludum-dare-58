@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="1_lfg12"]
 [ext_resource type="Script" uid="uid://bwo8g75o1b1aw" path="res://word_cloud/word_cloud.gd" id="1_y24nb"]
 [ext_resource type="Script" uid="uid://uip2ypr7vub5" path="res://word_cloud/word_cloud_display.gd" id="2_hk23b"]
-[ext_resource type="Script" uid="uid://ddhk8lxgty02c" path="res://word_cloud/fade_element.gd" id="3_e8b8q"]
+[ext_resource type="Script" path="res://word_cloud/fade_element.gd" id="3_e8b8q"]
 [ext_resource type="Texture2D" uid="uid://bvxxponudm2ui" path="res://textures/CloudTexture.png" id="3_otsdv"]
 [ext_resource type="PackedScene" uid="uid://cep348itqkp7x" path="res://word_cloud/word_toggle.tscn" id="3_widb8"]
 [ext_resource type="Texture2D" uid="uid://beokioh8n8wxe" path="res://textures/Cloud1.png" id="4_5cgqs"]
@@ -56,6 +56,7 @@ size_flags_vertical = 0
 script = ExtResource("3_e8b8q")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/ThoughtCloud"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -72,6 +73,7 @@ texture = ExtResource("3_otsdv")
 stretch_mode = 5
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer/ThoughtCloud"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -89,6 +91,7 @@ texture = ExtResource("4_5cgqs")
 stretch_mode = 5
 
 [node name="TextureRect3" type="TextureRect" parent="MarginContainer/ThoughtCloud"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -106,6 +109,7 @@ texture = ExtResource("5_e8b8q")
 stretch_mode = 5
 
 [node name="TextureRect4" type="TextureRect" parent="MarginContainer/ThoughtCloud"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -123,6 +127,7 @@ texture = ExtResource("6_uofxs")
 stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ThoughtCloud"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 150)
 layout_mode = 0
 offset_right = 280.0
