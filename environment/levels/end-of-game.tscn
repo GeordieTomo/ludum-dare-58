@@ -1,10 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://peqonrwd6amd"]
+[gd_scene load_steps=28 format=3 uid="uid://peqonrwd6amd"]
 
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_admos"]
 [ext_resource type="Texture2D" uid="uid://yu1ntwtg7661" path="res://textures/shadow.png" id="2_jowm2"]
 [ext_resource type="Script" uid="uid://cpha1mqldl436" path="res://environment/levels/floating-player.gd" id="2_s3fri"]
 [ext_resource type="Texture2D" uid="uid://c3txes07pbl77" path="res://textures/BrainSprite.png" id="3_admos"]
-[ext_resource type="PackedScene" uid="uid://dsh4idvm6281c" path="res://environment/world_environment.tscn" id="4_4qirt"]
 [ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="4_s3fri"]
 [ext_resource type="Script" uid="uid://bn6p8vlrptyqq" path="res://environment/player/circle_children.gd" id="5_4qirt"]
 [ext_resource type="AudioStream" uid="uid://cr2nyoeepdnd2" path="res://environment/audio/BrainMove.mp3" id="6_8yfrj"]
@@ -160,8 +159,6 @@ amount = 100
 lifetime = 10.0
 preprocess = 10.0
 process_material = SubResource("ParticleProcessMaterial_4qirt")
-
-[node name="WorldEnvironment" parent="." instance=ExtResource("4_4qirt")]
 
 [node name="GradientBackground" type="CanvasLayer" parent="."]
 layer = -100
