@@ -4,7 +4,6 @@ extends CharacterBody2D
 const BASE_MOVE_SPEED = 200.
 # move speed multiplier
 var move_speed : float = 1.
-var can_move : bool = false
 @export var move_evaluation_words : Array[Enums.AllWords] = []
 @export var fast_evaluation_words : Array[Enums.AllWords] = []
 @export var jump_evaluation_words : Array[Enums.AllWords] = []
@@ -12,22 +11,34 @@ var can_move : bool = false
 @export var jump_speed_evaluation_words : Array[Enums.AllWords] = []
 
 var jumping : bool = false
+var falling : bool = false
+var fall_time : float = 0.
 var touching_ground : bool = true
 var jump_lerp_pct : float = 0.
 
+var y_velocity : float = 0.
+var y_offset : float = 0.
+
 var player_sprite_origin : Vector2
+var player_default_collision
 var floating_y_offset : float = 0.
 var time : float = 0.
 
+var last_grounded_pos : Array[Vector2]
+
 @onready var player_sprite: Sprite2D = %Player
+
+@onready var ground_detector: Area2D = %GroundDetector
+
 
 func _ready():
 	WordCloud.selected_words_changed.connect(update_scores)
 	player_sprite_origin = player_sprite.position
+	player_default_collision = collision_mask
 
 func _process(delta):
 	
-	if can_move:
+	if can_move():
 		var input = Input.get_vector("left", "right", "up", "down")
 		# Target velocity based on input
 		var target_velocity = input * move_speed * BASE_MOVE_SPEED * Vector2(1., 0.5)
@@ -42,38 +53,68 @@ func _process(delta):
 		if Input.is_action_just_pressed("jump"):
 			try_jump()
 			
-	process_jump(delta)
+	process_y_level(delta)
 	
-	#check_on_ground()
-	#
-#func check_on_ground():
-	#for body in get_overlapping_bodies():
-		#if body.collision_layer & (1 << TARGET_LAYER):
-			#print("Overlapping body on target layer")
+	check_on_ground()
+	
+func check_on_ground():
+	touching_ground = ground_detector.get_overlapping_bodies().size() > 0.
+	
+	if not touching_ground and not jumping:
+		fall()
+	if touching_ground:
+		last_grounded_pos.append(position)
+		if last_grounded_pos.size() > 15:
+			last_grounded_pos.pop_front()
+	return touching_ground
+	
+func fall():
+	falling = true
 
-	
 func can_jump() -> bool:
-	return not jumping and WordCloud.evaluate_score(jump_evaluation_words) > 0.0
+	return touching_ground and not jumping and WordCloud.evaluate_score(jump_evaluation_words) > 0.0
 				
 func try_jump():
 	if can_jump():
+		print("jump")
 		jumping = true
+		y_velocity = - get_jump_height()
 
-func process_jump(delta):
+func process_y_level(delta):
 	
 	time += delta
-	floating_y_offset = 5. * sin(time)
+	floating_y_offset = 2. * sin(time)
+	
+	z_index = 3
+	collision_mask = player_default_collision
+	collision_layer = player_default_collision
+
+	if falling or jumping:
+		# apply gravity
+		y_velocity += delta / get_jump_duration() * 200.
+		# move offset
+		y_offset += y_velocity * delta
+
 	
 	if jumping:
-		jump_lerp_pct += delta / get_jump_duration()
-		jump_lerp_pct = clamp(jump_lerp_pct, 0.0, 1.0)
+		collision_mask = int(1) << 4
+		collision_layer = int(1) << 4
 
-		var y_offset = -sin(jump_lerp_pct * PI) * get_jump_height()
 		player_sprite.position = player_sprite_origin + Vector2(0, floating_y_offset+ y_offset)
-		if jump_lerp_pct >= 1.0:
+		if y_offset >= 0.0 and y_velocity > 0.:
 			jumping = false
 			player_sprite.position = player_sprite_origin + Vector2(0, floating_y_offset)
-			jump_lerp_pct = 0.0
+
+	elif falling:
+		z_index = -5
+
+		player_sprite.position = player_sprite_origin + Vector2(0, floating_y_offset+ y_offset)
+		if y_offset >= 100.0:
+			falling = false
+			player_sprite.position = player_sprite_origin + Vector2(0, floating_y_offset)
+			position = last_grounded_pos[0]
+			y_offset = 0.
+			
 	else:
 		player_sprite.position = player_sprite_origin + Vector2(0, floating_y_offset)
 
@@ -83,12 +124,11 @@ func get_jump_duration() -> float:
 
 func get_jump_height() -> float:
 	# map from 0.75 to 1.
-	return 50. * (WordCloud.evaluate_score(jump_height_evaluation_words) * 0.5 + 0.5)
+	return 150. * (WordCloud.evaluate_score(jump_height_evaluation_words) * 0.5 + 0.5)
 
 func update_scores():
-	update_move_score()
+	pass
 
-func update_move_score():
-	can_move = WordCloud.evaluate_score(move_evaluation_words)
-	# move speed is between 1. -> 2.
+func can_move() -> bool:
 	move_speed = 1. + WordCloud.evaluate_score(fast_evaluation_words)
+	return not falling and WordCloud.evaluate_score(move_evaluation_words)
