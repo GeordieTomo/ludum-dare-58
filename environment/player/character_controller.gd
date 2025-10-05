@@ -9,6 +9,7 @@ var move_speed : float = 1.
 @export var jump_evaluation_words : Array[Enums.AllWords] = []
 @export var jump_height_evaluation_words : Array[Enums.AllWords] = []
 @export var jump_speed_evaluation_words : Array[Enums.AllWords] = []
+@export var light_evaluation_words : Array[Enums.AllWords] = []
 @onready var brainmoveAudio = %AUD_brainmove
 
 var jumping : bool = false
@@ -34,6 +35,8 @@ var last_grounded_pos : Array[Vector2]
 @onready var ground_detector: Area2D = %GroundDetector
 @onready var word_container: Control = %WordContainer
 
+var light_target = 0.5
+@onready var point_light_2d = %PointLight2D
 
 func _ready():
 	WordCloud.selected_words_changed.connect(update_scores)
@@ -70,6 +73,17 @@ func _process(delta):
 	if position != start_position:
 		check_on_ground()
 	
+	update_light(delta)
+
+func update_light(delta):
+	if point_light_2d.texture_scale < light_target:
+		point_light_2d.texture_scale += delta * 0.1
+	elif point_light_2d.texture_scale > light_target:
+		point_light_2d.texture_scale -= delta * 0.1
+	
+	if abs(point_light_2d.texture_scale - light_target) < 0.05:
+		point_light_2d.texture_scale = light_target
+
 func check_on_ground():
 	touching_ground = ground_detector.get_overlapping_bodies().size() > 0.
 	
@@ -138,7 +152,13 @@ func get_jump_height() -> float:
 	return 150. * (WordCloud.evaluate_score(jump_height_evaluation_words) * 0.5 + 0.5)
 
 func update_scores():
-	pass
+	evaluate_light()
+	
+func evaluate_light():
+	if WordCloud.evaluate_score(light_evaluation_words) > 0.:
+		light_target = 5.
+	else:
+		light_target = 1.5
 
 func can_move() -> bool:
 	move_speed = 1. + 0.75 * WordCloud.evaluate_score(fast_evaluation_words)
