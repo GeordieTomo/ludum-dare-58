@@ -8,8 +8,9 @@ signal entered_portal
 func _ready():
 	$Area2D.body_entered.connect(teleport)
 
-func teleport(_body):
-	entered_portal.emit(target_level)
+func teleport(body):
+	if body.is_in_group("player"):
+		entered_portal.emit(target_level)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

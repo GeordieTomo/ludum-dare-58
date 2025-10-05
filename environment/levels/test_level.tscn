@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://d1njpdc420slk"]
+[gd_scene load_steps=30 format=4 uid="uid://d1njpdc420slk"]
 
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="1_lh7i5"]
 [ext_resource type="Script" uid="uid://bgljn3axtdjfw" path="res://environment/levels/test_level_sequence.gd" id="1_r3nbb"]
@@ -15,10 +15,11 @@
 [ext_resource type="Script" uid="uid://dsk23icnv8e5u" path="res://environment/objects/portal.gd" id="13_dk1ml"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="13_h7m88"]
 [ext_resource type="Texture2D" uid="uid://c8vsbcnedbs2e" path="res://textures/portal2.png" id="14_syyj4"]
-[ext_resource type="PackedScene" path="res://environment/levels/level0.tscn" id="14_wpejt"]
+[ext_resource type="PackedScene" uid="uid://chub30rsm2ukr" path="res://environment/levels/level0.tscn" id="14_wpejt"]
 [ext_resource type="Script" uid="uid://eyck6gjkyrwn" path="res://environment/objects/npc.gd" id="15_syyj4"]
 [ext_resource type="Texture2D" uid="uid://d4bq5bf7gu5ff" path="res://textures/ouij3d.png" id="16_wpejt"]
 [ext_resource type="Script" uid="uid://evwj4x3hy7do" path="res://environment/objects/glow.gd" id="17_0x17t"]
+[ext_resource type="AudioStream" uid="uid://b3k8iiwovxvwa" path="res://environment/audio/VoiceAudio/VoiceLow4.mp3" id="17_go2f2"]
 [ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="18_go2f2"]
 [ext_resource type="Script" uid="uid://dhmebb50aw66b" path="res://environment/objects/speech_bubble.gd" id="19_efall"]
 
@@ -81,7 +82,7 @@ y_sort_enabled = true
 
 [node name="test_level_sequence_manager" type="Node" parent="." node_paths=PackedStringArray("push_stage_collision_trigger")]
 script = ExtResource("1_r3nbb")
-words_to_add = Array[int]([0, 2, 1, 3])
+words_to_add = Array[int]([0, 2, 1, 9])
 push_stage_collision_trigger = NodePath("UnlockPush")
 
 [node name="UnlockPush" type="Area2D" parent="test_level_sequence_manager"]
@@ -155,7 +156,7 @@ position = Vector2(1404, -881)
 [node name="Portal" type="Node2D" parent="."]
 z_index = 2
 y_sort_enabled = true
-position = Vector2(-68, -57)
+position = Vector2(1112, -776)
 script = ExtResource("13_dk1ml")
 target_level = ExtResource("14_wpejt")
 
@@ -185,6 +186,10 @@ can_talk_evaluation_words = Array[int]([9])
 dialogue_pre_word = "I was trying to"
 word_to_pickup = 7
 dialogue_post_word = "a rock at the target over there, but I couldn't get it far enough"
+
+[node name="AUD_gibberish" type="AudioStreamPlayer2D" parent="NPC2"]
+unique_name_in_owner = true
+stream = ExtResource("17_go2f2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC2"]
 position = Vector2(0, 98)

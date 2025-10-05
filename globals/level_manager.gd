@@ -11,7 +11,7 @@ func handle_portal_entry(target_level: PackedScene):
 	current_level.queue_free()
 	current_level = target_level.instantiate()
 	add_child(current_level)
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.2).timeout
 	$level_transition_canvas/level_transition_curtain.fade_out()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
