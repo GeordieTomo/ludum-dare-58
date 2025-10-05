@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4vun81r65hwg"]
+[gd_scene load_steps=13 format=3 uid="uid://c4vun81r65hwg"]
 
 [ext_resource type="Script" uid="uid://dcref1vu664m4" path="res://environment/player/character_controller.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://c3txes07pbl77" path="res://textures/BrainSprite.png" id="2_56k0q"]
 [ext_resource type="Texture2D" uid="uid://yu1ntwtg7661" path="res://textures/shadow.png" id="3_p2tcf"]
+[ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="4_p0ml2"]
+[ext_resource type="Script" uid="uid://bn6p8vlrptyqq" path="res://environment/player/circle_children.gd" id="5_pkprd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56k0q"]
 
@@ -82,3 +84,16 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundDetector"]
 shape = SubResource("CircleShape2D_p2tcf")
+
+[node name="WordContainer" type="Control" parent="."]
+unique_name_in_owner = true
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_top = -36.0
+offset_bottom = -36.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_p0ml2")
+script = ExtResource("5_pkprd")
+radius = 60.0

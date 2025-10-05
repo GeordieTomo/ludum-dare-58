@@ -29,12 +29,14 @@ var last_grounded_pos : Array[Vector2]
 @onready var player_sprite: Sprite2D = %Player
 
 @onready var ground_detector: Area2D = %GroundDetector
+@onready var word_container: Control = %WordContainer
 
 
 func _ready():
 	WordCloud.selected_words_changed.connect(update_scores)
 	player_sprite_origin = player_sprite.position
 	player_default_collision = collision_mask
+	WordCloud.player_container = word_container
 
 func _process(delta):
 	
