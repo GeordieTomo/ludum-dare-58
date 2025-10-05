@@ -1,7 +1,7 @@
 extends Interactable
 class_name NPC
 
-@export var colour : Color
+@export var colour : Color = Color.WHITE
 
 @export var can_talk_evaluation_words : Array[Enums.AllWords] = []
 
@@ -14,8 +14,6 @@ class_name NPC
 @onready var sprite_2d: SpriteGlow = %Sprite2D
 
 var word_discovered : bool = false
-
-
 
 func _ready() -> void:
 	super._ready()

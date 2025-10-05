@@ -12,6 +12,7 @@ var can_move : bool = false
 @export var jump_speed_evaluation_words : Array[Enums.AllWords] = []
 
 var jumping : bool = false
+var touching_ground : bool = true
 var jump_lerp_pct : float = 0.
 
 var player_sprite_origin : Vector2
@@ -42,6 +43,14 @@ func _process(delta):
 			try_jump()
 			
 	process_jump(delta)
+	
+	#check_on_ground()
+	#
+#func check_on_ground():
+	#for body in get_overlapping_bodies():
+		#if body.collision_layer & (1 << TARGET_LAYER):
+			#print("Overlapping body on target layer")
+
 	
 func can_jump() -> bool:
 	return not jumping and WordCloud.evaluate_score(jump_evaluation_words) > 0.0
