@@ -8,6 +8,9 @@ extends Control
 
 var word_toggle_objects : Array[WordToggle] = []
 
+@export var selectwordAudio : AudioStreamPlayer2D
+@export var deselectAudio : AudioStreamPlayer2D
+
 
 func _ready():
 	instantiate_word_ui()
@@ -55,6 +58,9 @@ func word_toggled(toggled_on: bool, word_toggle : WordToggle):
 	if toggled_on:
 		word_toggle.get_parent().remove_child(word_toggle)
 		WordCloud.player_container.add_child(word_toggle)
+		selectwordAudio.play()
+		
 	else:
 		word_toggle.get_parent().remove_child(word_toggle)
 		available_word_container.add_child(word_toggle)
+		deselectAudio.play()
