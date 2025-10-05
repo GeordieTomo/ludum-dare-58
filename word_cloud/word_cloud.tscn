@@ -47,13 +47,11 @@ size_flags_vertical = 0
 bbcode_enabled = true
 text = "[wave]T to change thoughts"
 fit_content = true
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ThoughtCloud" type="Control" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 0
 script = ExtResource("3_e8b8q")
 
@@ -64,10 +62,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -556.0
-offset_top = -337.0
-offset_right = 556.0
-offset_bottom = 271.0
+offset_left = -1049.0
+offset_top = -307.0
+offset_right = 63.0
+offset_bottom = 301.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_otsdv")
@@ -80,10 +78,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 21.999994
-offset_top = 167.0
-offset_right = 1134.0
-offset_bottom = 775.0
+offset_left = -280.0
+offset_top = 163.0
+offset_right = 832.0
+offset_bottom = 771.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.1, 0.1)
@@ -97,10 +95,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 29.0
-offset_top = 224.0
-offset_right = 1141.0
-offset_bottom = 832.0
+offset_left = -198.0
+offset_top = 208.0
+offset_right = 914.0
+offset_bottom = 816.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.05, 0.05)
@@ -114,25 +112,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 21.999996
-offset_top = 256.0
-offset_right = 1134.0
-offset_bottom = 864.0
+offset_left = -138.0
+offset_top = 235.0
+offset_right = 974.0
+offset_bottom = 843.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.025, 0.025)
 texture = ExtResource("6_uofxs")
 stretch_mode = 5
 
-[node name="AvailableWordContainer" type="HBoxContainer" parent="MarginContainer/ThoughtCloud"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ThoughtCloud"]
+custom_minimum_size = Vector2(280, 150)
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 150.0
+
+[node name="AvailableWordContainer" type="HBoxContainer" parent="MarginContainer/ThoughtCloud/MarginContainer"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
+layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_vertical = 4
 
 [node name="WordDisplay" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

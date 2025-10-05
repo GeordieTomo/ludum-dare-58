@@ -4,6 +4,8 @@ extends Node
 @export var words_that_are_selected : Dictionary = {}
 @export var max_words_can_select : int = 3
 
+@export var words_that_dont_deselect : Array[Enums.AllWords] =[]
+
 var word_ui_toggles : Array[Node2D]
 
 signal selected_words_changed
