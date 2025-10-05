@@ -9,7 +9,7 @@ var move_speed : float = 1.
 @export var jump_evaluation_words : Array[Enums.AllWords] = []
 @export var jump_height_evaluation_words : Array[Enums.AllWords] = []
 @export var jump_speed_evaluation_words : Array[Enums.AllWords] = []
-@export var brainmoveAudio : AudioStreamPlayer2D
+var brainmoveAudio : AudioStreamPlayer2D
 
 var jumping : bool = false
 var falling : bool = false
@@ -38,6 +38,7 @@ func _ready():
 	player_sprite_origin = player_sprite.position
 	player_default_collision = collision_mask
 	WordCloud.player_container = word_container
+	brainmoveAudio = AudioStreamPlayer2D.new()
 
 func _process(delta):
 	
@@ -100,7 +101,7 @@ func process_y_level(delta):
 
 	if falling or jumping:
 		# apply gravity
-		y_velocity += delta / get_jump_duration() * 200.
+		y_velocity += delta * 200.
 		# move offset
 		y_offset += y_velocity * delta
 
@@ -138,5 +139,5 @@ func update_scores():
 	pass
 
 func can_move() -> bool:
-	move_speed = 1. + WordCloud.evaluate_score(fast_evaluation_words)
+	move_speed = 1. + 0.5 * WordCloud.evaluate_score(fast_evaluation_words)
 	return not falling and WordCloud.evaluate_score(move_evaluation_words)
