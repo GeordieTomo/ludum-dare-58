@@ -9,7 +9,7 @@ var move_speed : float = 1.
 @export var jump_evaluation_words : Array[Enums.AllWords] = []
 @export var jump_height_evaluation_words : Array[Enums.AllWords] = []
 @export var jump_speed_evaluation_words : Array[Enums.AllWords] = []
-@export var brainmoveAudio : AudioStreamPlayer2D
+var brainmoveAudio : AudioStreamPlayer2D
 
 var jumping : bool = false
 var falling : bool = false
@@ -38,6 +38,7 @@ func _ready():
 	player_sprite_origin = player_sprite.position
 	player_default_collision = collision_mask
 	WordCloud.player_container = word_container
+	brainmoveAudio = AudioStreamPlayer2D.new()
 
 func _process(delta):
 	
