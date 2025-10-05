@@ -6,14 +6,17 @@ var stage : int = 2
 
 @export var push_stage_collision_trigger : Area2D
 
+
+
+
 func _ready():
-	
 	WordCloud.selected_words_changed.connect(selected_words_changed)
 	WordCloud.clear_all_available_words()
 	
 	await get_tree().create_timer(0.5).timeout
 	WordCloud.add_available_word(Enums.AllWords.See)
 	WordCloud.add_available_word(Enums.AllWords.Move)
+	WordCloud.add_available_word(Enums.AllWords.Push)
 	push_stage_collision_trigger.body_entered.connect(push_stage.unbind(1))
 
 func selected_words_changed():

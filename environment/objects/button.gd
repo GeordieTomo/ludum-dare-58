@@ -5,6 +5,8 @@ extends Interactable
 # if 0, doesn't ever timeout
 @export var timeout : float = 0. 
 
+@export var buttonAudio : AudioStreamPlayer2D
+
 var state : bool = false
 @onready var depressed_sprite : SpriteGlow = %Depressed
 @onready var pressed_sprite = %Pressed
@@ -35,6 +37,7 @@ func toggle():
 	set_state(not state)
 	toggled.emit(state)
 	hide_text_hint()
+	buttonAudio.play()
 	
 func turn_off_button_delayed(delay: float):
 	run_progress_bar(delay)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://chub30rsm2ukr"]
+[gd_scene load_steps=21 format=4 uid="uid://chub30rsm2ukr"]
 
 [ext_resource type="Script" uid="uid://cbriremn0tcyr" path="res://environment/levels/level0_sequence.gd" id="1_1ewtd"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_oslid"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://b74b42x7vmwh5" path="res://environment/objects/gate.tscn" id="11_ktjyf"]
 [ext_resource type="PackedScene" uid="uid://d3ddbgh08ksup" path="res://environment/objects/pickable_object.tscn" id="12_085yw"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="13_qb854"]
+[ext_resource type="AudioStream" uid="uid://dq74wskx5iktv" path="res://environment/audio/IntroMusic.mp3" id="14_oslid"]
+[ext_resource type="AudioStream" uid="uid://bbdrc44arulag" path="res://environment/audio/ButtonPress.mp3" id="15_srk7y"]
+[ext_resource type="AudioStream" uid="uid://cr2nyoeepdnd2" path="res://environment/audio/BrainMove.mp3" id="16_wedmw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_al770"]
 radius = 80.78
@@ -66,26 +69,32 @@ collision_mask = 3
 position = Vector2(98, -3)
 shape = SubResource("CircleShape2D_al770")
 
+[node name="AUD_bgmusic" type="AudioStreamPlayer2D" parent="test_level_sequence_manager"]
+stream = ExtResource("14_oslid")
+autoplay = true
+
 [node name="Camera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_oslid")]
 follow_target = NodePath("../player")
 
-[node name="player" parent="." groups=["player"] instance=ExtResource("3_srk7y")]
+[node name="player" parent="." node_paths=PackedStringArray("brainmoveAudio") groups=["player"] instance=ExtResource("3_srk7y")]
 z_index = 3
 position = Vector2(-555, 256)
 collision_layer = 2
 collision_mask = 3
+brainmoveAudio = NodePath("../AUD_brainmove")
 
 [node name="Rock" parent="." instance=ExtResource("4_wedmw")]
 z_index = 3
 position = Vector2(300, -532)
 
-[node name="Button" parent="." instance=ExtResource("5_xp83r")]
+[node name="Button" parent="." node_paths=PackedStringArray("buttonAudio") instance=ExtResource("5_xp83r")]
 z_index = 2
-position = Vector2(714, -87)
+position = Vector2(140, -5)
+buttonAudio = NodePath("../AUD_button")
 
 [node name="Button2" parent="." instance=ExtResource("5_xp83r")]
 z_index = 2
-position = Vector2(828, -455)
+position = Vector2(809, -426)
 timeout = 1.5
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("6_dynt3")]
@@ -120,3 +129,17 @@ position = Vector2(-71, -3)
 dialogue_pre_word = "You should"
 word_to_pickup = 9
 dialogue_post_word = "to someone, maybe you'll learn something new."
+
+[node name="AUD_button" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(721, -90)
+stream = ExtResource("15_srk7y")
+attenuation = 1e-05
+max_polyphony = 10
+
+[node name="AUD_brainmove" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(721, -90)
+stream = ExtResource("16_wedmw")
+volume_db = -80.0
+autoplay = true
+attenuation = 1e-05
+max_polyphony = 10
