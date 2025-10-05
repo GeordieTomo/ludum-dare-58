@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://2rkgsm8xl3mp"]
 
-[ext_resource type="Script" uid="uid://dxjsvlewyt886" path="res://environment/levels/level_2_sequence_manager.gd" id="1_ypqdj"]
+[ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_5f5yu"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_lff6n"]
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="3_odv2w"]
 [ext_resource type="PackedScene" uid="uid://dsh4idvm6281c" path="res://environment/world_environment.tscn" id="6_tuhu6"]
@@ -49,8 +49,8 @@ sources/0 = SubResource("TileSetAtlasSource_h7m88")
 y_sort_enabled = true
 
 [node name="level2Sequence_manager" type="Node" parent="."]
-script = ExtResource("1_ypqdj")
-unlocked_words = Array[int]([0, 2, 9])
+script = ExtResource("1_5f5yu")
+start_unlocked_words = Array[int]([0, 9, 2])
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_lff6n")]
 follow_target = NodePath("../player")

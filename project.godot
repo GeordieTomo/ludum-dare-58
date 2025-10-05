@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ludum-dare-58"
-run/main_scene="uid://d1njpdc420slk"
+run/main_scene="uid://itbv58flc0wq"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/fullsize=false
 boot_splash/image="uid://cykq4so8rtjw4"

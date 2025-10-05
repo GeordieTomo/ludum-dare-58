@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cbriremn0tcyr" path="res://environment/levels/level0_sequence.gd" id="1_1ewtd"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_oslid"]
+[ext_resource type="AudioStream" uid="uid://dr8hab4e60rfh" path="res://environment/audio/thoughts song v2.wav" id="2_srk7y"]
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="3_srk7y"]
 [ext_resource type="PackedScene" uid="uid://3l07hsqs21m1" path="res://environment/objects/rock.tscn" id="4_wedmw"]
 [ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="5_xp83r"]
@@ -13,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://b74b42x7vmwh5" path="res://environment/objects/gate.tscn" id="11_ktjyf"]
 [ext_resource type="PackedScene" uid="uid://d3ddbgh08ksup" path="res://environment/objects/pickable_object.tscn" id="12_085yw"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="13_qb854"]
-[ext_resource type="AudioStream" uid="uid://dq74wskx5iktv" path="res://environment/audio/IntroMusic.mp3" id="14_oslid"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_al770"]
 radius = 80.78
@@ -68,7 +68,7 @@ position = Vector2(98, -3)
 shape = SubResource("CircleShape2D_al770")
 
 [node name="AUD_bgmusic" type="AudioStreamPlayer2D" parent="test_level_sequence_manager"]
-stream = ExtResource("14_oslid")
+stream = ExtResource("2_srk7y")
 autoplay = true
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_oslid")]

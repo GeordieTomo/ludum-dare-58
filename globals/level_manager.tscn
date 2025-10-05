@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgngmgwkwck7i"]
+[gd_scene load_steps=8 format=3 uid="uid://itbv58flc0wq"]
 
 [ext_resource type="Script" uid="uid://cggc0p4jty8g4" path="res://globals/level_manager.gd" id="1_2mqgi"]
 [ext_resource type="PackedScene" uid="uid://d1njpdc420slk" path="res://environment/levels/test_level.tscn" id="2_2mqgi"]
