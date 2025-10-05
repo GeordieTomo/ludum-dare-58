@@ -35,6 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_lfg12")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -44,6 +45,7 @@ theme_override_constants/margin_bottom = 20
 [node name="Label" type="RichTextLabel" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 bbcode_enabled = true
 text = "[wave]T to change thoughts"
 fit_content = true
@@ -53,6 +55,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 script = ExtResource("3_e8b8q")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/ThoughtCloud"]
@@ -68,6 +71,7 @@ offset_right = 63.0
 offset_bottom = 301.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_otsdv")
 stretch_mode = 5
 
@@ -85,6 +89,7 @@ offset_bottom = 771.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.1, 0.1)
+mouse_filter = 2
 texture = ExtResource("4_5cgqs")
 stretch_mode = 5
 
@@ -102,6 +107,7 @@ offset_bottom = 816.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.05, 0.05)
+mouse_filter = 2
 texture = ExtResource("5_e8b8q")
 stretch_mode = 5
 
@@ -119,6 +125,7 @@ offset_bottom = 843.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.025, 0.025)
+mouse_filter = 2
 texture = ExtResource("6_uofxs")
 stretch_mode = 5
 
@@ -127,6 +134,7 @@ custom_minimum_size = Vector2(280, 150)
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 150.0
+mouse_filter = 2
 
 [node name="AvailableWordContainer" type="HBoxContainer" parent="MarginContainer/ThoughtCloud/MarginContainer"]
 unique_name_in_owner = true
@@ -138,6 +146,7 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+mouse_filter = 2
 script = ExtResource("2_hk23b")
 word_ui_template = ExtResource("3_widb8")
 
@@ -145,7 +154,8 @@ word_ui_template = ExtResource("3_widb8")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -157,15 +167,18 @@ script = ExtResource("5_bod8x")
 [node name="MessageDisplay" type="MarginContainer" parent="MarginContainer/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("5_7iwso")
 
 [node name="Panel" type="Panel" parent="MarginContainer/CenterContainer/MessageDisplay"]
 visible = false
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bod8x")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/MessageDisplay"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 5

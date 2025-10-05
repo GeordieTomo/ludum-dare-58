@@ -14,6 +14,8 @@ signal available_words_changed
 signal available_word_added(new_word: Enums.AllWords)
 @onready var thought_cloud: Control = %ThoughtCloud
 
+var player_container : Control
+
 func _ready():
 	add_words_to_selection_dictionary()
 
