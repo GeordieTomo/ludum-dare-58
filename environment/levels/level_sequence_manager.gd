@@ -6,8 +6,13 @@ extends Node
 
 @export var collision_trigger_words_unlocked : Array[Enums.AllWords]
 
+@export var start_cloud_hidden : bool = false 
+
 func _ready():
 	WordCloud.add_available_words(start_unlocked_words)
+	
+	if start_cloud_hidden:
+		WordCloud.hide_cloud()
 
 	for i in range(collision_trigger_words_unlocked.size()):
 		if collision_triggers.size() > i:
