@@ -2,10 +2,12 @@ extends Control
 
 @export var word_ui_template : PackedScene
 
+
 @onready var available_word_container = %AvailableWordContainer
 @onready var selected_word_container = %SelectedWordContainer
 
 var word_toggle_objects : Array[WordToggle] = []
+
 
 func _ready():
 	instantiate_word_ui()
@@ -43,12 +45,14 @@ func word_toggled(toggled_on: bool, word_toggle : WordToggle):
 	
 	if WordCloud.too_many_words_selected():
 		# Don't allow the player to select a new word
-		word_toggle.toggle()
+		#word_toggle.toggle()
 		# Deselect the oldest word
-		#var oldest_word_toggle: WordToggle = selected_word_container.get_child(0)
-		#oldest_word_toggle.toggle()
+		var oldest_word_toggle: WordToggle = selected_word_container.get_child(0)
+		if oldest_word_toggle.word_value == Enums.AllWords.See:
+			oldest_word_toggle = selected_word_container.get_child(1)
+		oldest_word_toggle.toggle()
 	
-	elif toggled_on:
+	if toggled_on:
 		word_toggle.get_parent().remove_child(word_toggle)
 		selected_word_container.add_child(word_toggle)
 	else:
