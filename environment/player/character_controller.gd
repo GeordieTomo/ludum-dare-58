@@ -77,7 +77,7 @@ func check_on_ground():
 		fall()
 	if touching_ground:
 		last_grounded_pos.append(position)
-		if last_grounded_pos.size() > 15:
+		if last_grounded_pos.size() > 40:
 			last_grounded_pos.pop_front()
 	return touching_ground
 	

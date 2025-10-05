@@ -6,6 +6,7 @@ class_name NPC
 @export var can_talk_evaluation_words : Array[Enums.AllWords] = []
 
 @export_multiline var dialogue_pre_word : String
+@export var trigger_word_pickup : bool = true
 @export var word_to_pickup : Enums.AllWords
 @export_multiline var dialogue_post_word : String
 
@@ -46,11 +47,15 @@ func run_speech_bubble():
 		speech_bubble.hide()
 	else:
 		gibberishAudio.play()
-		speech_bubble.show_text(str(dialogue_pre_word, " [b]", Enums.get_string_from_enum(word_to_pickup), "[/b] ", dialogue_post_word))
+		if trigger_word_pickup:
+			speech_bubble.show_text(str(dialogue_pre_word, " [b]", Enums.get_string_from_enum(word_to_pickup), "[/b] ", dialogue_post_word))
+		else:
+			speech_bubble.show_text(str(dialogue_pre_word, " ", dialogue_post_word))
+
 
 func talking_complete():
 	gibberishAudio.stop()
-	if not word_discovered:
+	if not word_discovered and trigger_word_pickup:
 		word_discovered = true
 		WordCloud.add_available_word(word_to_pickup)
 

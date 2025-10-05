@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://b74b42x7vmwh5" path="res://environment/objects/gate.tscn" id="11_ktjyf"]
 [ext_resource type="PackedScene" uid="uid://d3ddbgh08ksup" path="res://environment/objects/pickable_object.tscn" id="12_085yw"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="13_qb854"]
+[ext_resource type="PackedScene" uid="uid://b2155armpwl11" path="res://environment/levels/level1-gates-n-buttons.tscn" id="15_wedmw"]
 [ext_resource type="PackedScene" uid="uid://bjnb4yh033w51" path="res://environment/objects/portal.tscn" id="15_xp83r"]
-[ext_resource type="PackedScene" uid="uid://d1njpdc420slk" path="res://environment/levels/test_level.tscn" id="16_dynt3"]
 [ext_resource type="PackedScene" uid="uid://2rkgsm8xl3mp" path="res://environment/levels/level2-platforming.tscn" id="17_k2mic"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7m88"]
@@ -115,7 +115,7 @@ dialogue_post_word = "to someone, maybe you'll learn something new."
 
 [node name="Portal" parent="." instance=ExtResource("15_xp83r")]
 position = Vector2(121, -435)
-target_level = ExtResource("16_dynt3")
+target_level = ExtResource("15_wedmw")
 
 [node name="Portal2" parent="." instance=ExtResource("15_xp83r")]
 position = Vector2(391, -291)
@@ -123,4 +123,4 @@ target_level = ExtResource("17_k2mic")
 
 [node name="Portal3" parent="." instance=ExtResource("15_xp83r")]
 position = Vector2(656, -141)
-target_level = ExtResource("16_dynt3")
+target_level = ExtResource("17_k2mic")
