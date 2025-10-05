@@ -55,10 +55,8 @@ sources/0 = SubResource("TileSetAtlasSource_h7m88")
 [node name="TestLevel" type="Node2D"]
 y_sort_enabled = true
 
-[node name="test_level_sequence_manager" type="Node" parent="." node_paths=PackedStringArray("push_stage_collision_trigger")]
+[node name="test_level_sequence_manager" type="Node" parent="."]
 script = ExtResource("1_r3nbb")
-words_to_add = Array[int]([0, 1, 2, 4, 6, 8, 5, 9])
-push_stage_collision_trigger = NodePath("UnlockPush")
 
 [node name="UnlockPush" type="Area2D" parent="test_level_sequence_manager"]
 position = Vector2(93, -105)
