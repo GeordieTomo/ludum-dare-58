@@ -1,6 +1,6 @@
 extends Node
 
-var stage : int = 0
+var stage : int = 2
 
 @export var words_to_add : Array[Enums.AllWords]
 
@@ -12,7 +12,8 @@ func _ready():
 	WordCloud.clear_all_available_words()
 	
 	await get_tree().create_timer(0.5).timeout
-	WordCloud.add_available_word(Enums.AllWords.Light)
+	WordCloud.add_available_word(Enums.AllWords.See)
+	WordCloud.add_available_word(Enums.AllWords.Push)
 	
 	push_stage_collision_trigger.body_entered.connect(push_stage.unbind(1))
 
@@ -24,7 +25,7 @@ func selected_words_changed():
 			end_stage()
 
 func move_stage():
-	if WordCloud.check_if_word_is_selected(Enums.AllWords.Light):
+	if WordCloud.check_if_word_is_selected(Enums.AllWords.See):
 		stage += 1
 		await get_tree().create_timer(1.5).timeout
 		WordCloud.add_available_word(Enums.AllWords.Move)

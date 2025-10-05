@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5vdch45dms44"]
+
+[ext_resource type="Script" uid="uid://eyck6gjkyrwn" path="res://environment/objects/npc.gd" id="1_c4wup"]
+[ext_resource type="Texture2D" uid="uid://d3wda61wrfygr" path="res://textures/rock.svg" id="2_yymy3"]
+[ext_resource type="Script" uid="uid://evwj4x3hy7do" path="res://environment/objects/glow.gd" id="3_u42vb"]
+[ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="4_mq8f1"]
+[ext_resource type="Script" uid="uid://dhmebb50aw66b" path="res://environment/objects/speech_bubble.gd" id="5_owfvd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wkhfg"]
+radius = 100.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkhfg"]
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 0.8352941)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+
+[node name="NPC" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_c4wup")
+can_talk_evaluation_words = Array[int]([9])
+dialogue_pre_word = "I was trying to"
+word_to_pickup = 7
+dialogue_post_word = "a rock at the target over there, but I couldn't get it far enough"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wkhfg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_yymy3")
+script = ExtResource("3_u42vb")
+fade_speed = 5.0
+intensity_max = 5.0
+
+[node name="InteractionHint" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+z_index = 10
+offset_left = -45.0
+offset_top = -64.0
+offset_right = 49.0
+offset_bottom = -41.0
+bbcode_enabled = true
+text = "[wave]E to interact"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeechBubble" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+z_index = 20
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -94.0
+offset_right = 238.0
+offset_bottom = -25.0
+grow_vertical = 0
+theme = ExtResource("4_mq8f1")
+script = ExtResource("5_owfvd")
+
+[node name="Panel" type="Panel" parent="SpeechBubble"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wkhfg")
+
+[node name="MarginContainer" type="MarginContainer" parent="SpeechBubble"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="RichTextLabel" parent="SpeechBubble/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Bold[/b] test"
+fit_content = true
+autowrap_mode = 2

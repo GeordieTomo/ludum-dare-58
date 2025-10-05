@@ -1,4 +1,4 @@
-extends Area2D
+extends Interactable
 
 @export var can_push_evaluation_words : Array[Enums.AllWords] = []
 
@@ -6,8 +6,6 @@ extends Area2D
 @export var timeout : float = 0. 
 
 var state : bool = false
-var player_in_range = false
-@onready var interaction_hint = %InteractionHint
 @onready var depressed_sprite : SpriteGlow = %Depressed
 @onready var pressed_sprite = %Pressed
 @onready var progress_bar = %ProgressBar
@@ -15,11 +13,8 @@ var player_in_range = false
 signal toggled(new_state: bool)
 
 func _ready():
+	super._ready()
 	set_state(false)
-	player_exited()
-	body_entered.connect(_body_entered)
-	body_exited.connect(_body_exited)
-	WordCloud.selected_words_changed.connect(update_text_hint)
 
 func _input(event):
 	if player_in_range:
@@ -66,22 +61,7 @@ func set_state(new_state):
 	pressed_sprite.visible = state
 	depressed_sprite.visible = not state
 
-func _body_entered(body: Node2D):
-	if body.is_in_group("player"):
-		player_entered()
-		
-func _body_exited(body: Node2D):
-	if body.is_in_group("player"):
-		player_exited()
-
-func player_entered():
-	player_in_range = true
-	update_text_hint()
-
-func player_exited():
-	player_in_range = false
-	update_text_hint()
-
+# overrides
 func update_text_hint():
 	if player_in_range and can_push_button():
 		show_text_hint()

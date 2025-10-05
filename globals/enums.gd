@@ -3,13 +3,14 @@ extends Node
 enum AllWords {
 	Move,
 	Push,
-	Light,
-	Precise,
-	Strong,
+	See,
 	Steady,
+	Strong,
 	Fast,
-	Pickup,
-	Throw
+	Grab,
+	Throw,
+	Jump,
+	Talk
 }
 
 func get_string_from_enum(word : AllWords) -> String:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://d1njpdc420slk"]
+[gd_scene load_steps=21 format=4 uid="uid://d1njpdc420slk"]
 
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="1_lh7i5"]
 [ext_resource type="Script" uid="uid://bgljn3axtdjfw" path="res://environment/levels/test_level_sequence.gd" id="1_r3nbb"]
@@ -12,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="8_r3nbb"]
 [ext_resource type="PackedScene" uid="uid://b74b42x7vmwh5" path="res://environment/objects/gate.tscn" id="10_al770"]
 [ext_resource type="PackedScene" uid="uid://d3ddbgh08ksup" path="res://environment/objects/pickable_object.tscn" id="11_ann7d"]
-[ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="13_h7m88"]
+[ext_resource type="Script" uid="uid://eyck6gjkyrwn" path="res://environment/objects/npc.gd" id="13_h7m88"]
+[ext_resource type="Texture2D" uid="uid://d3wda61wrfygr" path="res://textures/rock.svg" id="14_dk1ml"]
+[ext_resource type="Script" uid="uid://evwj4x3hy7do" path="res://environment/objects/glow.gd" id="15_hp2b2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_al770"]
 radius = 80.78
@@ -46,12 +48,15 @@ physics_layer_0/collision_mask = 7
 sources/5 = SubResource("TileSetAtlasSource_duop6")
 sources/0 = SubResource("TileSetAtlasSource_h7m88")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wkhfg"]
+radius = 100.0
+
 [node name="TestLevel" type="Node2D"]
 y_sort_enabled = true
 
 [node name="test_level_sequence_manager" type="Node" parent="." node_paths=PackedStringArray("push_stage_collision_trigger")]
 script = ExtResource("1_r3nbb")
-words_to_add = Array[int]([0, 1, 2, 4, 6, 8, 5, 9])
+words_to_add = Array[int]([0, 1, 2, 4, 7, 6, 8])
 push_stage_collision_trigger = NodePath("UnlockPush")
 
 [node name="UnlockPush" type="Area2D" parent="test_level_sequence_manager"]
@@ -79,6 +84,7 @@ position = Vector2(-325, -363)
 [node name="Button" parent="." instance=ExtResource("3_wv683")]
 z_index = 2
 position = Vector2(159, -245)
+timeout = null
 
 [node name="Button2" parent="." instance=ExtResource("3_wv683")]
 z_index = 2
@@ -123,5 +129,35 @@ connected_button = NodePath("../Button2")
 [node name="PickableObject" parent="." instance=ExtResource("11_ann7d")]
 position = Vector2(1404, -881)
 
-[node name="NPC" parent="." instance=ExtResource("13_h7m88")]
-position = Vector2(-75, -75)
+[node name="NPC" type="Area2D" parent="."]
+position = Vector2(1085, -700)
+script = ExtResource("13_h7m88")
+can_talk_evaluation_words = Array[int]([9])
+dialogue_pre_word = "I was trying to"
+word_to_pickup = 7
+dialogue_post_word = "a rock at the target over there, but I couldn't get it far enough"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC"]
+shape = SubResource("CircleShape2D_wkhfg")
+
+[node name="Sprite2D" type="Sprite2D" parent="NPC"]
+unique_name_in_owner = true
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_dk1ml")
+script = ExtResource("15_hp2b2")
+fade_speed = 5.0
+intensity_max = 5.0
+
+[node name="InteractionHint" type="RichTextLabel" parent="NPC"]
+unique_name_in_owner = true
+z_index = 10
+offset_left = -45.0
+offset_top = -64.0
+offset_right = 49.0
+offset_bottom = -41.0
+bbcode_enabled = true
+text = "[wave]E to interact"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
