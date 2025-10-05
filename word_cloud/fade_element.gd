@@ -16,11 +16,8 @@ func _process(delta):
 		texture_rect_2.modulate.a = clamp(texture_rect_2.modulate.a + (fade_speed+0.5) * delta, 0.0, 1.0)
 		texture_rect_3.modulate.a = clamp(texture_rect_3.modulate.a + (fade_speed+1.0) * delta, 0.0, 1.0)
 		texture_rect_4.modulate.a = clamp(texture_rect_4.modulate.a + (fade_speed+1.5) * delta, 0.0, 1.0)
-		#print(fading)
-		#print(texture_rect.modulate.a)
 		if texture_rect.modulate.a == 1.0 or texture_rect_4.modulate.a == 0.0:
 			fading = false
-			print(fading)
 
 func toggle_cloud():
 	if texture_rect_4.modulate.a > 0.8:

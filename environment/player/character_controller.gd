@@ -9,6 +9,7 @@ var move_speed : float = 1.
 @export var jump_evaluation_words : Array[Enums.AllWords] = []
 @export var jump_height_evaluation_words : Array[Enums.AllWords] = []
 @export var jump_speed_evaluation_words : Array[Enums.AllWords] = []
+@export var brainmoveAudio : AudioStreamPlayer2D
 
 var jumping : bool = false
 var falling : bool = false
@@ -49,8 +50,11 @@ func _process(delta):
 		var acceleration = 20.0  # higher = snappier, lower = smoother
 		velocity = velocity.lerp(target_velocity, 1.0 - exp(-acceleration * delta))
 		
-		if velocity.length() > 100.:
+		if velocity.length() > 60.:
 			WordCloud.hide_cloud()
+			brainmoveAudio.volume_linear = velocity.length() / 20
+		else:
+			brainmoveAudio.volume_linear = 0
 		
 		move_and_slide()
 	
