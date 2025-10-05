@@ -22,7 +22,7 @@ func _input(event):
 			try_press_button()
 
 func try_press_button():
-	if (can_push_button()):
+	if (can_push_button() and not progress_bar.visible):
 		toggle()
 		print_debug("button pressed: ", state)
 
