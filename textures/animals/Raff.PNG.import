@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://i67xuog1hofq"
-path="res://.godot/imported/Raff.png-3bf273fbc44ac9e0d0a42f188197acbf.ctex"
+path="res://.godot/imported/Raff.PNG-7f3f59c781ad811f9e5d0c88e4f56333.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/animals/Raff.png"
-dest_files=["res://.godot/imported/Raff.png-3bf273fbc44ac9e0d0a42f188197acbf.ctex"]
+source_file="res://textures/animals/Raff.PNG"
+dest_files=["res://.godot/imported/Raff.PNG-7f3f59c781ad811f9e5d0c88e4f56333.ctex"]
 
 [params]
 
