@@ -47,6 +47,9 @@ func _process(delta):
 		var acceleration = 20.0  # higher = snappier, lower = smoother
 		velocity = velocity.lerp(target_velocity, 1.0 - exp(-acceleration * delta))
 		
+		if velocity.length() > 100.:
+			WordCloud.hide_cloud()
+		
 		move_and_slide()
 	
 	if can_jump():
@@ -95,7 +98,6 @@ func process_y_level(delta):
 		# move offset
 		y_offset += y_velocity * delta
 
-	
 	if jumping:
 		collision_mask = int(1) << 4
 		collision_layer = int(1) << 4

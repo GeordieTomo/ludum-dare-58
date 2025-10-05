@@ -24,6 +24,7 @@ func _input(event):
 	if player_in_range and can_talk():
 		if event.is_action_pressed("interact"):
 			try_talk()
+			WordCloud.hide_cloud()
 
 func try_talk():
 	if can_talk():

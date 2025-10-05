@@ -10,10 +10,15 @@ signal selected_words_changed
 
 signal available_words_changed
 signal available_word_added(new_word: Enums.AllWords)
+@onready var thought_cloud: Control = %ThoughtCloud
 
 func _ready():
 	add_words_to_selection_dictionary()
-	
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("cloud"):
+		toggle_cloud()
+
 func add_words_to_selection_dictionary():
 	for word in Enums.AllWords.values():
 		if not words_that_are_selected.has(word):
@@ -34,6 +39,7 @@ func add_available_word(word: Enums.AllWords):
 		words_that_can_be_used.append(word)
 	available_word_added.emit(word)
 	update_words_available()
+	show_cloud()
 
 func add_available_words(words: Array[Enums.AllWords]):
 	for word in words:
@@ -68,3 +74,12 @@ func check_if_word_is_selected(word: Enums.AllWords) -> bool:
 
 func too_many_words_selected() -> bool:
 	return words_that_are_selected.values().count(true) > max_words_can_select
+
+func toggle_cloud():
+	thought_cloud.toggle_cloud()
+
+func hide_cloud():
+	thought_cloud.hide_cloud()
+	
+func show_cloud():
+	thought_cloud.show_cloud()
