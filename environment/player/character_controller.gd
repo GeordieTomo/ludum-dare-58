@@ -139,5 +139,5 @@ func update_scores():
 	pass
 
 func can_move() -> bool:
-	move_speed = 1. + 0.5 * WordCloud.evaluate_score(fast_evaluation_words)
+	move_speed = 1. + 0.75 * WordCloud.evaluate_score(fast_evaluation_words)
 	return not falling and WordCloud.evaluate_score(move_evaluation_words)
