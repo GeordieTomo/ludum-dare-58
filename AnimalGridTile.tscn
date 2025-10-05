@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvauvsdodv0tr"]
+
+[sub_resource type="GDScript" id="GDScript_vtlob"]
+script/source = "extends MarginContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="MarginContainer" type="MarginContainer"]
+script = SubResource("GDScript_vtlob")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5

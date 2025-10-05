@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bosephcui5g7k"
-path="res://.godot/imported/Ant.PNG-587c2dc60b21e2bce538f030c61b4463.ctex"
+uid="uid://ocqenby77ccs"
+path="res://.godot/imported/Ant.png-2fe697ddb46b3ad495ce62a200a05e9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/animals/Ant.PNG"
-dest_files=["res://.godot/imported/Ant.PNG-587c2dc60b21e2bce538f030c61b4463.ctex"]
+source_file="res://textures/animals/Ant.png"
+dest_files=["res://.godot/imported/Ant.png-2fe697ddb46b3ad495ce62a200a05e9e.ctex"]
 
 [params]
 

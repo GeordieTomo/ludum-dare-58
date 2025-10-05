@@ -1,19 +1,25 @@
-[gd_scene load_steps=23 format=3 uid="uid://oxj8dnh0180n"]
+[gd_scene load_steps=35 format=3 uid="uid://oxj8dnh0180n"]
 
 [ext_resource type="Texture2D" uid="uid://clmxrd2ardv2s" path="res://textures/stick_figure.png" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://6574cck1lh74" path="res://scripts/player.gd" id="1_fj7yv"]
+[ext_resource type="Script" uid="uid://c4t3fvihjyyh1" path="res://scripts/vacuum.gd" id="2_ikiii"]
 [ext_resource type="Texture2D" uid="uid://dw0w007w3okbn" path="res://textures/dust_sprite_strip_4frames_transparent.png" id="3_036b0"]
 [ext_resource type="Texture2D" uid="uid://cbxgliaps3jmy" path="res://textures/VAC.png" id="4_aqk2v"]
-[ext_resource type="Texture2D" uid="uid://caheyla24vuf7" path="res://textures/animals/Cat.PNG" id="5_036b0"]
+[ext_resource type="Texture2D" uid="uid://cyxhjpocdxdbj" path="res://textures/animals/Cat.PNG" id="5_036b0"]
 [ext_resource type="Script" uid="uid://cgueqm1dtu30l" path="res://scripts/animal_collection_area.gd" id="5_pkg7o"]
 [ext_resource type="Script" uid="uid://bl36d02vnc1ld" path="res://scripts/camera_2d.gd" id="6_2o6r5"]
 [ext_resource type="AudioStream" uid="uid://3xo8nxicfocy" path="res://textures/sounds/absorb.wav" id="6_70uel"]
 [ext_resource type="Script" uid="uid://babvd3d5sqhh1" path="res://scripts/animal.gd" id="6_gbfbk"]
 [ext_resource type="Texture2D" uid="uid://bk3u7dt6bf3k2" path="res://textures/animals/Lbug.png" id="8_ioo17"]
-[ext_resource type="Texture2D" uid="uid://c62r4kwf718vg" path="res://textures/animals/MOnki.PNG" id="9_wse8f"]
+[ext_resource type="Texture2D" uid="uid://cyt5a80xtqsm6" path="res://textures/animals/MOnki.PNG" id="9_wse8f"]
+[ext_resource type="Script" uid="uid://dotu6je7xb1vi" path="res://scripts/vacuum_ui.gd" id="10_26xuy"]
 [ext_resource type="Texture2D" uid="uid://c8vlc4exi0krb" path="res://textures/ark.png" id="10_wse8f"]
 [ext_resource type="Texture2D" uid="uid://ci83tttrc41hb" path="res://textures/grassland.png" id="11_ic0uy"]
-[ext_resource type="Texture2D" uid="uid://c2q720wcvsvdy" path="res://textures/desert.png" id="11_k3n1d"]
+[ext_resource type="Texture2D" uid="uid://dx8try1bp7e5f" path="res://textures/desert.png" id="11_k3n1d"]
+[ext_resource type="Texture2D" uid="uid://i67xuog1hofq" path="res://textures/animals/Raff.PNG" id="12_udxuc"]
+[ext_resource type="Script" uid="uid://35gl2jmdmjm5" path="res://scripts/bag_grid_container.gd" id="12_wukud"]
+[ext_resource type="Texture2D" uid="uid://dow3ijdpvtoda" path="res://textures/animals/Mouse.png" id="13_ikiii"]
+[ext_resource type="Texture2D" uid="uid://6q6s5mtglhvc" path="res://textures/animals/Elephant.png" id="14_cbp6q"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dwbse"]
 particles_animation = true
@@ -40,7 +46,7 @@ particle_flag_disable_z = true
 emission_shape_offset = Vector3(0, -1000, 0)
 emission_shape_scale = Vector3(300, 100, 1)
 emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
+emission_box_extents = Vector3(4, 4, 1)
 angle_min = -179.99998
 angle_max = 180.00002
 gravity = Vector3(0, 0, 0)
@@ -55,29 +61,60 @@ anim_offset_max = 1.0
 turbulence_noise_scale = 0.0
 turbulence_noise_speed_random = 4.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
-size = Vector2(8.599999, 16)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_70uel"]
+points = PackedVector2Array(-1.6999989, -2.0499997, 1.3000011, -7.0499997, 1.2000008, 6.95, -1.6999989, 2.55, -2, 1.5500001, -2.1000004, -0.8499998)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
-size = Vector2(76, 89)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
+size = Vector2(8.599999, 15.899999)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26xuy"]
+size = Vector2(46.499996, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bc84e"]
+size = Vector2(77, 48.999996)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wukud"]
+size = Vector2(71, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_il2jm"]
+size = Vector2(54.33332, 81.66667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjb0r"]
+size = Vector2(40.999992, 25.999989)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc2jv"]
+size = Vector2(82, 73.666664)
 
 [node name="Root" type="Node2D"]
+
+[node name="Desert" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(9.000305, -5.4999695)
+scale = Vector2(1.7060882, 1.5)
+texture = ExtResource("11_k3n1d")
+
+[node name="Grassland" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(42, 714)
+scale = Vector2(3.4223778, 2.4490871)
+texture = ExtResource("11_ic0uy")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_fj7yv")
 
 [node name="Vacuum" type="CharacterBody2D" parent="Player"]
+script = ExtResource("2_ikiii")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/Vacuum"]
 position = Vector2(126, -1)
 rotation = 1.5707964
-scale = Vector2(0.25, 0.5)
+scale = Vector2(0.1, 0.2)
 texture = ExtResource("4_aqk2v")
 
 [node name="Polygon2D" type="Polygon2D" parent="Player/Vacuum/Sprite2D"]
 clip_children = 1
-position = Vector2(7.9999866, -154)
-scale = Vector2(0.8000002, 0.4343751)
+position = Vector2(25.112444, -515.5171)
+scale = Vector2(0.50252336, 1.1695646)
 polygon = PackedVector2Array(-170, -13.812945, 170, -18.417261, 1814.2886, -1265.6781, -1790.106, -1270.0281)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Player/Vacuum/Sprite2D/Polygon2D"]
@@ -88,41 +125,99 @@ emitting = false
 amount = 30
 texture = ExtResource("3_036b0")
 speed_scale = 1.33
+visibility_rect = Rect2(-100, -100, 800, 800)
 process_material = SubResource("ParticleProcessMaterial_ioo17")
 
 [node name="RayCast2D" type="RayCast2D" parent="Player/Vacuum/Sprite2D"]
-position = Vector2(4.000022, 252)
+position = Vector2(10, -600)
 rotation = -1.5707964
 scale = Vector2(2, 4)
-target_position = Vector2(500, 0)
+target_position = Vector2(600, 0)
+
+[node name="CollectionArea" type="Area2D" parent="Player/Vacuum"]
+script = ExtResource("5_pkg7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Vacuum/CollectionArea"]
+position = Vector2(245, -1.5000019)
+scale = Vector2(10, 10)
+shape = SubResource("ConvexPolygonShape2D_70uel")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player/Vacuum/CollectionArea"]
+stream = ExtResource("6_70uel")
+volume_db = -10.0
+
+[node name="VacuumBag" type="Area2D" parent="Player/Vacuum"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_f3sb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-1.1920929e-06, -4.7683716e-06)
+position = Vector2(0, 0.5)
 scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_fj7yv")
 disabled = true
 
-[node name="CollectionArea" type="Area2D" parent="Player"]
-script = ExtResource("5_pkg7o")
+[node name="VacuumUi" type="Control" parent="Player"]
+layout_mode = 3
+anchor_left = -0.5
+anchor_top = -0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1519.0
+offset_top = 860.0
+offset_right = 1519.0
+offset_bottom = 860.0
+script = ExtResource("10_26xuy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/CollectionArea"]
-position = Vector2(-1.1920929e-06, -4.7683716e-06)
-scale = Vector2(10, 10)
-shape = SubResource("RectangleShape2D_fj7yv")
+[node name="MarginContainer" type="MarginContainer" parent="Player/VacuumUi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -401.0
+offset_top = -393.0
+offset_right = 121.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player/CollectionArea"]
-stream = ExtResource("6_70uel")
-volume_db = -10.0
+[node name="Panel" type="Panel" parent="Player/VacuumUi/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/VacuumUi/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="TextLabel" type="Label" parent="Player/VacuumUi/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Vacuum Bag"
+
+[node name="MarginContainer" type="MarginContainer" parent="Player/VacuumUi/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Player/VacuumUi/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Player/VacuumUi/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 4
+script = ExtResource("12_wukud")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/VacuumUi"]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 script = ExtResource("6_2o6r5")
 
 [node name="Animal" type="CharacterBody2D" parent="."]
 position = Vector2(400, 0)
+scale = Vector2(1.2, 1.2)
 script = ExtResource("6_gbfbk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Animal"]
@@ -130,49 +225,82 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_036b0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Animal"]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_aqk2v")
+position = Vector2(1.75, -2.000001)
+shape = SubResource("RectangleShape2D_26xuy")
 
 [node name="Animal2" type="CharacterBody2D" parent="."]
 position = Vector2(800, -300)
 script = ExtResource("6_gbfbk")
-kind = 1
+kind = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Animal2"]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("8_ioo17")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Animal2"]
-position = Vector2(1, -2.5)
-shape = SubResource("RectangleShape2D_aqk2v")
+position = Vector2(0.5, -5.5)
+shape = SubResource("RectangleShape2D_bc84e")
 
 [node name="Animal3" type="CharacterBody2D" parent="."]
 position = Vector2(-399, -327)
+scale = Vector2(1.2, 1.2)
 script = ExtResource("6_gbfbk")
-kind = 6
+kind = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="Animal3"]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_wse8f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Animal3"]
-position = Vector2(10, -0.5)
-shape = SubResource("RectangleShape2D_aqk2v")
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_wukud")
+
+[node name="Animal4" type="CharacterBody2D" parent="."]
+position = Vector2(-798, -654)
+scale = Vector2(1.7, 1.7)
+script = ExtResource("6_gbfbk")
+kind = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Animal4"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("12_udxuc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Animal4"]
+position = Vector2(3.5, -2.5)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_il2jm")
+
+[node name="Animal5" type="CharacterBody2D" parent="."]
+position = Vector2(218, -396)
+scale = Vector2(1.2, 1.2)
+script = ExtResource("6_gbfbk")
+kind = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Animal5"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("13_ikiii")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Animal5"]
+position = Vector2(-7.5, 3)
+shape = SubResource("RectangleShape2D_wjb0r")
+
+[node name="Animal6" type="CharacterBody2D" parent="."]
+position = Vector2(-406, 334)
+scale = Vector2(1.7, 1.7)
+script = ExtResource("6_gbfbk")
+kind = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="Animal6"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_cbp6q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Animal6"]
+position = Vector2(25, -4.5)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_mc2jv")
 
 [node name="Ark" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Ark"]
 position = Vector2(5, -1765)
 texture = ExtResource("10_wse8f")
-
-[node name="Desert" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(9.000061, 431)
-scale = Vector2(1.7060882, 1.5)
-texture = ExtResource("11_k3n1d")
-
-[node name="Grassland" type="Sprite2D" parent="."]
-z_index = -4
-position = Vector2(8.000061, 1106.25)
-scale = Vector2(3.4223778, 2.4490871)
-texture = ExtResource("11_ic0uy")

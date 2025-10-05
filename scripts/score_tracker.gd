@@ -16,4 +16,4 @@ func clear_points():
 	update_text()
 	
 func update_text():
-	text = "Score: " + str(score)
+	text = "Animals: " + str(score)

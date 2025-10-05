@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c62r4kwf718vg"
-path="res://.godot/imported/MOnki.PNG-20ae7fb84fa97529c173a817a16456c7.ctex"
+uid="uid://cyt5a80xtqsm6"
+path="res://.godot/imported/MOnki.png-a3f5193d8648af590bd06fe48b0d6de8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/animals/MOnki.PNG"
-dest_files=["res://.godot/imported/MOnki.PNG-20ae7fb84fa97529c173a817a16456c7.ctex"]
+source_file="res://textures/animals/MOnki.png"
+dest_files=["res://.godot/imported/MOnki.png-a3f5193d8648af590bd06fe48b0d6de8.ctex"]
 
 [params]
 

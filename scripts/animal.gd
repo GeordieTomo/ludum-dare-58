@@ -1,6 +1,7 @@
 class_name Animal extends CharacterBody2D 
 
 enum AnimalKind {
+	EMPTY,
 	ANT,
 	LADYBUG,
 	MOUSE,
@@ -28,8 +29,7 @@ func _ready():
 func _process(delta):
 	if destination == null:
 		# pick a random point to walk to
-		destination = create_random_vec2_in_range(-500, 500)
-		# start walking there
+		destination = create_random_vec2_in_range(-1000, 1000)
 	else:
 		if (destination - position).length() > 5:
 			position += (destination - position).normalized() * 4

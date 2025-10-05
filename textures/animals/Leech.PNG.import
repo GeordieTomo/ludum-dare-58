@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctxotxsmid585"
-path="res://.godot/imported/Leech.PNG-fc28f7f28d7ad170653dcc65fce96a07.ctex"
+uid="uid://t516jbxwl272"
+path="res://.godot/imported/Leech.png-c11819d95213fcbb3b8bc003f75c49f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/animals/Leech.PNG"
-dest_files=["res://.godot/imported/Leech.PNG-fc28f7f28d7ad170653dcc65fce96a07.ctex"]
+source_file="res://textures/animals/Leech.png"
+dest_files=["res://.godot/imported/Leech.png-c11819d95213fcbb3b8bc003f75c49f7.ctex"]
 
 [params]
 
