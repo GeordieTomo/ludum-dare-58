@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5vdch45dms44"]
+[gd_scene load_steps=11 format=3 uid="uid://c5vdch45dms44"]
 
 [ext_resource type="Script" uid="uid://eyck6gjkyrwn" path="res://environment/objects/npc.gd" id="1_c4wup"]
+[ext_resource type="AudioStream" uid="uid://b3k8iiwovxvwa" path="res://environment/audio/VoiceAudio/VoiceLow4.mp3" id="2_mq8f1"]
 [ext_resource type="Script" uid="uid://dogbgon6rqc1w" path="res://environment/objects/bob_node.gd" id="2_yymy3"]
 [ext_resource type="Texture2D" uid="uid://c3txes07pbl77" path="res://textures/BrainSprite.png" id="3_mq8f1"]
 [ext_resource type="Script" uid="uid://evwj4x3hy7do" path="res://environment/objects/glow.gd" id="3_u42vb"]
@@ -32,6 +33,10 @@ can_talk_evaluation_words = Array[int]([9])
 dialogue_pre_word = "I was trying to"
 word_to_pickup = 7
 dialogue_post_word = "a rock at the target over there, but I couldn't get it far enough"
+
+[node name="AUD_gibberish" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_mq8f1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -32)

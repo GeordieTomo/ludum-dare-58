@@ -5,7 +5,7 @@ extends Interactable
 # if 0, doesn't ever timeout
 @export var timeout : float = 0. 
 
-@export var buttonAudio : AudioStreamPlayer2D
+@onready var buttonAudio = %AUD_button
 
 var state : bool = false
 @onready var depressed_sprite : SpriteGlow = %Depressed

@@ -13,6 +13,8 @@ class_name NPC
 
 @onready var sprite_2d: SpriteGlow = %Sprite2D
 
+@onready var gibberishAudio = %AUD_gibberish
+
 var word_discovered : bool = false
 
 func _ready() -> void:
@@ -29,6 +31,7 @@ func _input(event):
 func try_talk():
 	if can_talk():
 		run_speech_bubble()
+		gibberishAudio.play()
 		hide_text_hint()
 
 func run_speech_bubble():

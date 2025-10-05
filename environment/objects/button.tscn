@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://073jjdq44xb5"]
+[gd_scene load_steps=8 format=3 uid="uid://073jjdq44xb5"]
 
 [ext_resource type="Script" uid="uid://cqfp8jkxhnoex" path="res://environment/objects/button.gd" id="1_860eu"]
 [ext_resource type="Texture2D" uid="uid://dcjnkcb133s8s" path="res://textures/button_not_pressed.svg" id="2_t176f"]
 [ext_resource type="Script" uid="uid://evwj4x3hy7do" path="res://environment/objects/glow.gd" id="3_lxp4i"]
 [ext_resource type="Texture2D" uid="uid://w2fp20csqkcm" path="res://textures/button_pressed.svg" id="3_xtkmh"]
 [ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="5_2or1j"]
+[ext_resource type="AudioStream" uid="uid://bbdrc44arulag" path="res://environment/audio/ButtonPress.mp3" id="6_et7hk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p5x08"]
 radius = 100.0
@@ -66,3 +67,10 @@ size_flags_vertical = 4
 theme = ExtResource("5_2or1j")
 value = 38.94
 show_percentage = false
+
+[node name="AUD_button" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(721, -90)
+stream = ExtResource("6_et7hk")
+attenuation = 1e-05
+max_polyphony = 10
