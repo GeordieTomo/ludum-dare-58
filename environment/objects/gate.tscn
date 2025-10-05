@@ -7,6 +7,8 @@
 points = PackedVector2Array(0, 20, -40, 40, 0, 60, 40, 40)
 
 [node name="Gate" type="Node2D"]
+z_index = 3
+y_sort_enabled = true
 script = ExtResource("1_xwol7")
 
 [node name="gate_visual" type="Sprite2D" parent="."]
