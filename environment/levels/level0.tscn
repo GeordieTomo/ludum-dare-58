@@ -1,0 +1,125 @@
+[gd_scene load_steps=20 format=4 uid="uid://chub30rsm2ukr"]
+
+[ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_wedmw"]
+[ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_oslid"]
+[ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="3_srk7y"]
+[ext_resource type="PackedScene" uid="uid://3l07hsqs21m1" path="res://environment/objects/rock.tscn" id="4_wedmw"]
+[ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="5_xp83r"]
+[ext_resource type="PackedScene" uid="uid://dsh4idvm6281c" path="res://environment/world_environment.tscn" id="6_dynt3"]
+[ext_resource type="Texture2D" uid="uid://b245a2h4sf4wj" path="res://textures/isometric_tilemap.png" id="7_k2mic"]
+[ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="8_x05rj"]
+[ext_resource type="Script" uid="uid://begp3o20cmaw6" path="res://environment/levels/tile_map_collision.gd" id="9_0p6e0"]
+[ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="10_w8xb8"]
+[ext_resource type="PackedScene" uid="uid://b74b42x7vmwh5" path="res://environment/objects/gate.tscn" id="11_ktjyf"]
+[ext_resource type="PackedScene" uid="uid://d3ddbgh08ksup" path="res://environment/objects/pickable_object.tscn" id="12_085yw"]
+[ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="13_qb854"]
+[ext_resource type="PackedScene" uid="uid://bjnb4yh033w51" path="res://environment/objects/portal.tscn" id="15_xp83r"]
+[ext_resource type="PackedScene" uid="uid://d1njpdc420slk" path="res://environment/levels/test_level.tscn" id="16_dynt3"]
+[ext_resource type="PackedScene" uid="uid://2rkgsm8xl3mp" path="res://environment/levels/level2-platforming.tscn" id="17_k2mic"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7m88"]
+texture = ExtResource("7_k2mic")
+texture_region_size = Vector2i(80, 80)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -20)
+1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, -20, -40, 0, 0, 20, 40, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_duop6"]
+texture = ExtResource("8_x05rj")
+texture_region_size = Vector2i(80, 80)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -20)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -20, -40, 0, 0, 20, 40, 0)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -20)
+2:0/0/z_index = 1
+2:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(40, 0, 0, -20, -40, 40, 0, 60)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -20)
+3:0/0/z_index = 1
+3:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, -20, -40, 0, 0, 60, 40, 40)
+
+[sub_resource type="TileSet" id="TileSet_duop6"]
+tile_shape = 1
+tile_size = Vector2i(80, 40)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 7
+physics_layer_1/collision_layer = 8
+physics_layer_1/collision_mask = 8
+sources/5 = SubResource("TileSetAtlasSource_duop6")
+sources/0 = SubResource("TileSetAtlasSource_h7m88")
+
+[node name="Level0" type="Node2D"]
+y_sort_enabled = true
+
+[node name="hub_level_sequence_manager" type="Node" parent="."]
+script = ExtResource("1_wedmw")
+start_unlocked_words = Array[int]([2, 0])
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_oslid")]
+follow_target = NodePath("../player")
+
+[node name="player" parent="." groups=["player"] instance=ExtResource("3_srk7y")]
+z_index = 3
+position = Vector2(-555, 256)
+collision_layer = 2
+collision_mask = 3
+
+[node name="Rock" parent="." instance=ExtResource("4_wedmw")]
+z_index = 3
+position = Vector2(300, -532)
+
+[node name="Button" parent="." instance=ExtResource("5_xp83r")]
+z_index = 2
+position = Vector2(140, -5)
+
+[node name="Button2" parent="." instance=ExtResource("5_xp83r")]
+z_index = 2
+position = Vector2(-219, -214)
+timeout = 1.5
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("6_dynt3")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+modulate = Color(0.5931336, 0.59313357, 0.59313357, 1)
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD4/wsAAAABAAAAAAD4/wwAAAABAAAAAAD4/w0AAAABAAAAAAD5/wkAAAABAAAAAAD5/woAAAABAAAAAAD5/wsAAAABAAAAAAD5/wwAAAABAAAAAAD6/wcAAAABAAAAAAD6/wgAAAABAAAAAAD6/wkAAAABAAAAAAD6/woAAAABAAAAAAD7/wYAAAABAAAAAAD7/wcAAAABAAAAAAD7/wgAAAABAAAAAAD8/wYAAAABAAAAAAD7/wUAAAABAAAAAAD8/wMAAAABAAAAAAD8/wQAAAABAAAAAAD8/wUAAAABAAAAAAD9/wAAAAABAAAAAAD9/wEAAAABAAAAAAD9/wMAAAABAAAAAAD9/wQAAAABAAAAAAD+/wIAAAABAAAAAAD+/wMAAAABAAAAAAD9//7/AAABAAAAAAD9////AAABAAAAAAD+/wAAAAABAAAAAAD+/wEAAAABAAAAAAD//wIAAAABAAAAAAD//wMAAAABAAAAAAAAAAMAAAABAAAAAAAAAAIAAAABAAAAAAD//wEAAAABAAAAAAD//wAAAAABAAAAAAD+////AAABAAAAAAD+//7/AAABAAAAAAD9//3/AAABAAAAAAD9//z/AAABAAAAAAD9/wIAAAABAAAAAAD9//r/AAABAAAAAAD9//v/AAABAAAAAAD+//z/AAABAAAAAAD+//3/AAABAAAAAAD///7/AAABAAAAAAD/////AAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAABAAIAAAABAAAAAAABAAMAAAABAAAAAAD7//X/AAABAAAAAAD8//b/AAABAAAAAAD8//f/AAABAAAAAAD9//j/AAABAAAAAAD9//n/AAABAAAAAAD+//r/AAABAAAAAAD+//v/AAABAAAAAAD///z/AAABAAAAAAD///3/AAABAAAAAAAAAP7/AAABAAAAAAAAAP//AAABAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAAAAAACAAIAAAABAAAAAAACAAMAAAABAAAAAAADAAQAAAABAAAAAAADAAUAAAABAAAAAAAEAAYAAAABAAAAAAAEAAUAAAABAAAAAAAFAAQAAAABAAAAAAAFAAMAAAABAAAAAAAFAAIAAAABAAAAAAAEAAEAAAABAAAAAAAEAAAAAAABAAAAAAADAP//AAABAAAAAAADAP7/AAABAAAAAAACAP3/AAABAAAAAAACAPz/AAABAAAAAAABAPv/AAABAAAAAAABAPr/AAABAAAAAAAAAPn/AAABAAAAAAAAAPj/AAABAAAAAAD///f/AAABAAAAAAD///b/AAABAAAAAAD+//X/AAABAAAAAAD+//T/AAABAAAAAAD9//P/AAABAAAAAAD9//L/AAABAAAAAAD8//P/AAABAAAAAAD8//T/AAABAAAAAAD9//T/AAABAAAAAAD9//X/AAABAAAAAAD+//b/AAABAAAAAAD+//f/AAABAAAAAAD///j/AAABAAAAAAD///n/AAABAAAAAAAAAPr/AAABAAAAAAAAAPv/AAABAAAAAAABAPz/AAABAAAAAAABAP3/AAABAAAAAAABAP7/AAABAAAAAAABAP//AAABAAAAAAACAP7/AAABAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAADAAIAAAABAAAAAAADAAEAAAABAAAAAAADAAAAAAABAAAAAAACAP//AAABAAAAAAAEAAIAAAABAAAAAAAEAAMAAAABAAAAAAAEAAQAAAABAAAAAAADAAMAAAABAAAAAAAAAP3/AAABAAAAAAAAAPz/AAABAAAAAAD///v/AAABAAAAAAD///r/AAABAAAAAAD+//n/AAABAAAAAAD+//j/AAABAAAAAAD9//f/AAABAAAAAAD9//b/AAABAAAAAAD8//X/AAABAAAAAAD9/+//AAABAAAAAAD+//H/AAABAAAAAAD+//L/AAABAAAAAAD///D/AAABAAAAAAD+/+7/AAABAAAAAAD+/+3/AAABAAAAAAD//+z/AAABAAAAAAD+//P/AAABAAAAAAD///L/AAABAAAAAAD///H/AAABAAAAAAAAAPD/AAABAAAAAAABAPn/AAABAAAAAAADAPb/AAABAAAAAAACAPf/AAABAAAAAAACAPj/AAABAAAAAAACAPr/AAABAAAAAAACAPn/AAABAAAAAAADAPj/AAABAAAAAAADAPf/AAABAAAAAAABAPb/AAABAAAAAAABAPX/AAABAAAAAAACAPT/AAABAAAAAAACAPP/AAABAAAAAAAEAP3/AAABAAAAAAAFAPz/AAABAAAAAAAFAPv/AAABAAAAAAAGAPr/AAABAAAAAAAFAAAAAAABAAAAAAAFAP//AAABAAAAAAAGAP7/AAABAAAAAAAGAP3/AAABAAAAAAAHAP7/AAABAAAAAAAGAP//AAABAAAAAAAGAAAAAAABAAAAAAAFAAEAAAABAAAAAAD//+//AAABAAAAAAAAAO7/AAABAAAAAAAAAO//AAABAAAAAAABAO7/AAABAAAAAAAAAO3/AAABAAAAAAADAPX/AAABAAAAAAAEAPb/AAABAAAAAAAEAPX/AAABAAAAAAAEAPT/AAABAAAAAAAHAPz/AAABAAAAAAAHAP3/AAABAAAAAAAIAPz/AAABAAAAAAAIAPv/AAABAAAAAAAIAPr/AAABAAAAAAAHAPv/AAABAAAAAAAFAPT/AAABAAAAAAAEAPP/AAABAAAAAAABAOz/AAABAAAAAAABAO3/AAABAAAAAAABAPD/AAABAAAAAAABAO//AAABAAAAAAACAO7/AAABAAAAAAD//+3/AAABAAAAAAAAAOz/AAABAAAAAAAAAOv/AAABAAAAAAACAPD/AAABAAAAAAACAO//AAABAAAAAAADAO7/AAABAAAAAAACAO3/AAABAAAAAAACAOz/AAABAAAAAAABAOv/AAABAAAAAAABAOr/AAABAAAAAAD//+v/AAABAAAAAAAAAOr/AAABAAAAAAAAAOn/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_duop6")
+script = ExtResource("9_0p6e0")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+modulate = Color(0.5931336, 0.59313357, 0.59313357, 1)
+z_index = 2
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD9/+3/AAABAAAAAAD+/+z/AAABAAAAAAD+/+v/AAABAAAAAAD//+r/AAABAAAAAAABAPT/AAABAAAAAAABAPP/AAABAAAAAAACAPL/AAABAAAAAAACAPH/AAABAAAAAAAEAPv/AAABAAAAAAAFAPr/AAABAAAAAAAFAPn/AAABAAAAAAAGAPj/AAABAAAAAAD//+n/AAABAAAAAAAAAOj/AAABAAAAAAAAAOf/AAABAAAAAAADAPD/AAABAAAAAAADAO//AAABAAAAAAAGAPf/AAABAAAAAAAHAPb/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_duop6")
+
+[node name="GradientBackground" parent="." instance=ExtResource("10_w8xb8")]
+
+[node name="Gate" parent="." node_paths=PackedStringArray("connected_button") instance=ExtResource("11_ktjyf")]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(685, -469)
+connected_button = NodePath("../Button")
+
+[node name="PickableObject" parent="." instance=ExtResource("12_085yw")]
+position = Vector2(359, 73)
+
+[node name="NPC" parent="." instance=ExtResource("13_qb854")]
+position = Vector2(-71, -3)
+auto_trigger = true
+dialogue_pre_word = "You should"
+word_to_pickup = 9
+dialogue_post_word = "to someone, maybe you'll learn something new."
+
+[node name="Portal" parent="." instance=ExtResource("15_xp83r")]
+position = Vector2(121, -435)
+target_level = ExtResource("16_dynt3")
+
+[node name="Portal2" parent="." instance=ExtResource("15_xp83r")]
+position = Vector2(391, -291)
+target_level = ExtResource("17_k2mic")
+
+[node name="Portal3" parent="." instance=ExtResource("15_xp83r")]
+position = Vector2(656, -141)
+target_level = ExtResource("16_dynt3")

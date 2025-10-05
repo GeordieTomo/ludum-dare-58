@@ -38,8 +38,8 @@ func animate_to_colour(object, new_colour, duration):
 	var tween = get_tree().create_tween()
 	await tween.tween_property(object, "modulate", new_colour, duration).finished
 
-func screen_shake(duration: float = 0.1):
-	shake(Camera, 5., duration)
+#func screen_shake(duration: float = 0.1):
+	#shake(Camera, 5., duration)
 
 func shake(object, strength: float, duration: float = 0.2) -> void:
 	if not object:

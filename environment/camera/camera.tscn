@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://4nogs7d3ad2i"]
+
+[ext_resource type="Script" uid="uid://bsv8vxvyi0vp0" path="res://environment/camera/camera_follow.gd" id="1_mc6bt"]
+
+[node name="Camera2D" type="Camera2D" node_paths=PackedStringArray("follow_target")]
+script = ExtResource("1_mc6bt")
+lerp_speed = 1.0
+follow_target = NodePath("")
