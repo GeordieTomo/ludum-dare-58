@@ -96,7 +96,7 @@ func process_y_level(delta):
 
 	if falling or jumping:
 		# apply gravity
-		y_velocity += delta / get_jump_duration() * 200.
+		y_velocity += delta * 200.
 		# move offset
 		y_offset += y_velocity * delta
 
@@ -134,5 +134,5 @@ func update_scores():
 	pass
 
 func can_move() -> bool:
-	move_speed = 1. + WordCloud.evaluate_score(fast_evaluation_words)
+	move_speed = 1. + 0.5 * WordCloud.evaluate_score(fast_evaluation_words)
 	return not falling and WordCloud.evaluate_score(move_evaluation_words)
