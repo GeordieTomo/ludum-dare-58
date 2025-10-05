@@ -1,7 +1,7 @@
 extends Control
 class_name WordToggle
 
-@onready var word_toggle_button : Button= %WordToggleButton
+@onready var word_toggle_button : Button = %WordToggleButton
 
 var text : String : set = set_text
 var word_value : Enums.AllWords

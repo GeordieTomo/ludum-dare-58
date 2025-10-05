@@ -13,8 +13,14 @@ var word_toggle_objects : Array[WordToggle] = []
 
 
 func _ready():
+	Events.entered_portal.connect(deselect_all_words.unbind(1))
 	instantiate_word_ui()
 	WordCloud.available_words_changed.connect(update_word_ui)
+
+func deselect_all_words():
+	for word in word_toggle_objects:
+		if word.word_toggle_button.button_pressed:
+			word.toggle()
 
 func instantiate_word_ui():
 	for word in WordCloud.words_that_can_be_used:

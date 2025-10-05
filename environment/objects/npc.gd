@@ -2,7 +2,7 @@ extends Interactable
 class_name NPC
 
 @export var colour : Color = Color.WHITE
-
+@export var auto_trigger : bool = false
 @export var can_talk_evaluation_words : Array[Enums.AllWords] = []
 
 @export_multiline var dialogue_pre_word : String
@@ -14,6 +14,7 @@ class_name NPC
 @onready var sprite_2d: SpriteGlow = %Sprite2D
 
 @onready var gibberishAudio = %AUD_gibberish
+
 
 var word_discovered : bool = false
 
@@ -30,25 +31,38 @@ func _input(event):
 
 func try_talk():
 	if can_talk():
-		run_speech_bubble()
-		gibberishAudio.play()
-		hide_text_hint()
+		talk()
+
+func talk():
+	run_speech_bubble()
+	hide_text_hint()
 
 func run_speech_bubble():
 	if speech_bubble._is_typing:
+		gibberishAudio.stop()
 		speech_bubble.reveal_all()
 	elif speech_bubble.visible:
+		gibberishAudio.stop()
 		speech_bubble.hide()
 	else:
+		gibberishAudio.play()
 		speech_bubble.show_text(str(dialogue_pre_word, " [b]", Enums.get_string_from_enum(word_to_pickup), "[/b] ", dialogue_post_word))
 
 func talking_complete():
+	gibberishAudio.stop()
 	if not word_discovered:
 		word_discovered = true
 		WordCloud.add_available_word(word_to_pickup)
 
 func can_talk() -> bool:
 	return WordCloud.evaluate_score(can_talk_evaluation_words) > 0.
+
+func player_entered():
+	if auto_trigger:
+		talk()
+		player_in_range = true
+	else:
+		super.player_entered()
 
 func player_exited():
 	super.player_exited()

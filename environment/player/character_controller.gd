@@ -25,6 +25,8 @@ var player_default_collision
 var floating_y_offset : float = 0.
 var time : float = 0.
 
+var start_position
+
 var last_grounded_pos : Array[Vector2]
 
 @onready var player_sprite: Sprite2D = %Player
@@ -38,8 +40,8 @@ func _ready():
 	player_sprite_origin = player_sprite.position
 	player_default_collision = collision_mask
 	WordCloud.player_container = word_container
-
-
+	start_position = position
+	
 func _process(delta):
 	
 	if can_move():
@@ -65,7 +67,8 @@ func _process(delta):
 			
 	process_y_level(delta)
 	
-	check_on_ground()
+	if position != start_position:
+		check_on_ground()
 	
 func check_on_ground():
 	touching_ground = ground_detector.get_overlapping_bodies().size() > 0.
@@ -86,14 +89,13 @@ func can_jump() -> bool:
 				
 func try_jump():
 	if can_jump():
-		print("jump")
 		jumping = true
 		y_velocity = - get_jump_height()
 
 func process_y_level(delta):
 	
 	time += delta
-	floating_y_offset = 2. * sin(time)
+	floating_y_offset = 5. * sin(time)
 	
 	z_index = 3
 	collision_mask = player_default_collision

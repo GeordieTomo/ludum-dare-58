@@ -1,6 +1,6 @@
-[gd_scene load_steps=21 format=4 uid="uid://chub30rsm2ukr"]
+[gd_scene load_steps=20 format=4 uid="uid://chub30rsm2ukr"]
 
-[ext_resource type="Script" uid="uid://cbriremn0tcyr" path="res://environment/levels/level0_sequence.gd" id="1_1ewtd"]
+[ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_wedmw"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_oslid"]
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="3_srk7y"]
 [ext_resource type="PackedScene" uid="uid://3l07hsqs21m1" path="res://environment/objects/rock.tscn" id="4_wedmw"]
@@ -16,9 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://bjnb4yh033w51" path="res://environment/objects/portal.tscn" id="15_xp83r"]
 [ext_resource type="PackedScene" uid="uid://d1njpdc420slk" path="res://environment/levels/test_level.tscn" id="16_dynt3"]
 [ext_resource type="PackedScene" uid="uid://2rkgsm8xl3mp" path="res://environment/levels/level2-platforming.tscn" id="17_k2mic"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_al770"]
-radius = 80.78
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7m88"]
 texture = ExtResource("7_k2mic")
@@ -55,19 +52,9 @@ sources/0 = SubResource("TileSetAtlasSource_h7m88")
 [node name="Level0" type="Node2D"]
 y_sort_enabled = true
 
-[node name="test_level_sequence_manager" type="Node" parent="." node_paths=PackedStringArray("push_stage_collision_trigger")]
-script = ExtResource("1_1ewtd")
-words_to_add = Array[int]([0, 1, 2, 4, 6, 8, 5, 9])
-push_stage_collision_trigger = NodePath("UnlockPush")
-
-[node name="UnlockPush" type="Area2D" parent="test_level_sequence_manager"]
-position = Vector2(-518, -484)
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="test_level_sequence_manager/UnlockPush"]
-position = Vector2(98, -3)
-shape = SubResource("CircleShape2D_al770")
+[node name="hub_level_sequence_manager" type="Node" parent="."]
+script = ExtResource("1_wedmw")
+start_unlocked_words = Array[int]([2, 0])
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_oslid")]
 follow_target = NodePath("../player")
@@ -120,6 +107,7 @@ position = Vector2(359, 73)
 
 [node name="NPC" parent="." instance=ExtResource("13_qb854")]
 position = Vector2(-71, -3)
+auto_trigger = true
 dialogue_pre_word = "You should"
 word_to_pickup = 9
 dialogue_post_word = "to someone, maybe you'll learn something new."
