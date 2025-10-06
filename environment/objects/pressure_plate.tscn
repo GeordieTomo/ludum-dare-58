@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckdm0loa58wph"]
+
+[ext_resource type="Script" uid="uid://i16v6h703dfj" path="res://environment/objects/pressure_plate.gd" id="1_kuy1h"]
+[ext_resource type="Texture2D" uid="uid://bkid3qfe67wh5" path="res://textures/pressure_plate_not_pressed.svg" id="2_u4cxk"]
+[ext_resource type="Script" uid="uid://evwj4x3hy7do" path="res://environment/objects/glow.gd" id="3_24kin"]
+[ext_resource type="Texture2D" uid="uid://dy08s4lqylogg" path="res://textures/pressure_plate_pressed.svg" id="4_24kin"]
+[ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="5_8mky1"]
+[ext_resource type="AudioStream" uid="uid://bbdrc44arulag" path="res://environment/audio/ButtonPress.mp3" id="6_0lmrg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p5x08"]
+radius = 100.0
+
+[node name="Pressure_Plate" type="Area2D"]
+y_sort_enabled = true
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_kuy1h")
+can_push_evaluation_words = Array[int]([1])
+
+[node name="Depressed" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_u4cxk")
+script = ExtResource("3_24kin")
+fade_speed = 5.0
+intensity_max = 5.0
+
+[node name="Pressed" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, 1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_24kin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p5x08")
+
+[node name="InteractionHint" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 10
+offset_left = -45.0
+offset_top = -64.0
+offset_right = 49.0
+offset_bottom = -41.0
+bbcode_enabled = true
+text = "[wave]E to interact"
+fit_content = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 10
+custom_minimum_size = Vector2(150, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = 21.0
+offset_right = 75.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("5_8mky1")
+value = 38.94
+show_percentage = false
+
+[node name="AUD_button" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(721, -90)
+stream = ExtResource("6_0lmrg")
+attenuation = 1e-05
+max_polyphony = 10

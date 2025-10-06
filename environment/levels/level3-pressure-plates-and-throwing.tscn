@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://duqndeak0sjch"]
+[gd_scene load_steps=17 format=4 uid="uid://duqndeak0sjch"]
 
 [ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_kgbnd"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_vpw06"]
@@ -6,11 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://dsh4idvm6281c" path="res://environment/world_environment.tscn" id="4_rnwqd"]
 [ext_resource type="Texture2D" uid="uid://b245a2h4sf4wj" path="res://textures/isometric_tilemap.png" id="5_rg4bk"]
 [ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="6_83cuf"]
-[ext_resource type="Script" path="res://environment/levels/tile_map_collision.gd" id="7_5jb1a"]
+[ext_resource type="Script" uid="uid://begp3o20cmaw6" path="res://environment/levels/tile_map_collision.gd" id="7_5jb1a"]
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="8_jtd2s"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="9_sn1sw"]
 [ext_resource type="PackedScene" uid="uid://bjnb4yh033w51" path="res://environment/objects/portal.tscn" id="10_y62oo"]
 [ext_resource type="PackedScene" uid="uid://crkx1stn5vavc" path="res://environment/levels/level4-maze.tscn" id="11_vpw06"]
+[ext_resource type="PackedScene" uid="uid://d3ddbgh08ksup" path="res://environment/objects/pickable_object.tscn" id="12_cqcg6"]
+[ext_resource type="PackedScene" uid="uid://ckdm0loa58wph" path="res://environment/objects/pressure_plate.tscn" id="13_rnwqd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7m88"]
 texture = ExtResource("5_rg4bk")
@@ -52,7 +54,7 @@ y_sort_enabled = true
 
 [node name="level3Sequence_manager" type="Node" parent="."]
 script = ExtResource("1_kgbnd")
-start_unlocked_words = Array[int]([0, 9, 2, 1])
+start_unlocked_words = Array[int]([0, 9, 2, 1, 8, 5, 4])
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_vpw06")]
 follow_target = NodePath("../player")
@@ -68,18 +70,31 @@ collision_mask = 3
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 modulate = Color(0.5931336, 0.59313357, 0.59313357, 1)
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD7/wUAAAABAAAAAAD7/wYAAAABAAAAAAD6/wcAAAABAAAAAAD6/wgAAAABAAAAAAD5/wkAAAABAAAAAAD9//3/AAABAAAAAAD9//7/AAABAAAAAAD9////AAABAAAAAAD9/wAAAAABAAAAAAD9/wEAAAABAAAAAAD9/wIAAAABAAAAAAD+//3/AAABAAAAAAD+//7/AAABAAAAAAD+////AAABAAAAAAD+/wAAAAABAAAAAAD5/wUAAAABAAAAAAD5/wYAAAABAAAAAAD5/wcAAAABAAAAAAD6/wMAAAABAAAAAAD6/wQAAAABAAAAAAD6/wUAAAABAAAAAAD6/wYAAAABAAAAAAD7/wMAAAABAAAAAAD7/wQAAAABAAAAAAD7/wIAAAABAAAAAAD5/wgAAAABAAAAAAD4/wcAAAABAAAAAAD4/wkAAAABAAAAAAAFAPH/AAABAAAAAAAFAPL/AAABAAAAAAAGAO//AAABAAAAAAAGAPD/AAABAAAAAAAHAO7/AAABAAAAAAD+//v/AAABAAAAAAD+//z/AAABAAAAAAD///f/AAABAAAAAAD///j/AAABAAAAAAD///n/AAABAAAAAAD///r/AAABAAAAAAD///v/AAABAAAAAAD///z/AAABAAAAAAD///3/AAABAAAAAAD///7/AAABAAAAAAAAAPX/AAABAAAAAAAAAPb/AAABAAAAAAAAAPf/AAABAAAAAAAAAPj/AAABAAAAAAAAAPn/AAABAAAAAAAAAPr/AAABAAAAAAAAAPv/AAABAAAAAAAAAPz/AAABAAAAAAABAPH/BQACAAAAAAABAPP/BQABAAAAAAABAPT/AAABAAAAAAABAPX/AAABAAAAAAABAPb/AAABAAAAAAABAPf/AAABAAAAAAABAPj/AAABAAAAAAABAPn/AAABAAAAAAABAPr/AAABAAAAAAABAPv/AAABAAAAAAABAPz/AAABAAAAAAACAO//AAABAAAAAAACAPD/AAABAAAAAAACAPH/AAABAAAAAAACAPL/BQACAAAAAAACAPP/BQACAAAAAAACAPT/BQABAAAAAAACAPX/BQABAAAAAAACAPb/AAABAAAAAAACAPf/AAABAAAAAAACAPj/AAABAAAAAAACAPn/AAABAAAAAAACAPr/AAABAAAAAAADAO3/AAABAAAAAAADAO7/AAABAAAAAAADAO//AAABAAAAAAADAPD/AAABAAAAAAADAPH/AAABAAAAAAADAPL/AAABAAAAAAADAPP/AAABAAAAAAADAPT/BQACAAAAAAADAPX/BQACAAAAAAADAPb/BQABAAAAAAADAPf/BQABAAAAAAADAPj/AAABAAAAAAAEAOv/AAABAAAAAAAEAOz/AAABAAAAAAAEAO3/AAABAAAAAAAEAO7/AAABAAAAAAAEAO//AAABAAAAAAAEAPD/AAABAAAAAAAEAPH/AAABAAAAAAAEAPL/AAABAAAAAAAEAPP/AAABAAAAAAAEAPT/AAABAAAAAAAFAOr/AAABAAAAAAAFAOv/AAABAAAAAAAFAOz/AAABAAAAAAAFAO3/AAABAAAAAAAFAO7/AAABAAAAAAAFAO//AAABAAAAAAAFAPD/AAABAAAAAAAGAOz/AAABAAAAAAAGAO3/AAABAAAAAAAGAO7/AAABAAAAAAD8/wQAAAABAAAAAAD8/wMAAAABAAAAAAD8/wIAAAABAAAAAAD7/wEAAAABAAAAAAD8/wAAAAABAAAAAAD8////AAABAAAAAAD8/wEAAAABAAAAAAD4/wgAAAABAAAAAAD3/wkAAAABAAAAAAD4/woAAAABAAAAAAD3/wsAAAABAAAAAAD3/woAAAABAAAAAAD5/woAAAABAAAAAAD4/wsAAAABAAAAAAD4/wwAAAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAD7/wUAAAABAAAAAAD7/wYAAAABAAAAAAD6/wcAAAABAAAAAAD6/wgAAAABAAAAAAD5/wkAAAABAAAAAAD9//3/AAABAAAAAAD9//7/AAABAAAAAAD9////AAABAAAAAAD9/wAAAAABAAAAAAD9/wEAAAABAAAAAAD9/wIAAAABAAAAAAD+//3/AAABAAAAAAD+//7/AAABAAAAAAD+////AAABAAAAAAD+/wAAAAABAAAAAAD5/wUAAAABAAAAAAD5/wYAAAABAAAAAAD5/wcAAAABAAAAAAD6/wMAAAABAAAAAAD6/wQAAAABAAAAAAD6/wUAAAABAAAAAAD6/wYAAAABAAAAAAD7/wMAAAABAAAAAAD7/wQAAAABAAAAAAD7/wIAAAABAAAAAAD5/wgAAAABAAAAAAD4/wcAAAABAAAAAAD4/wkAAAABAAAAAAAFAPH/AAABAAAAAAAFAPL/AAABAAAAAAAGAO//AAABAAAAAAAGAPD/AAABAAAAAAAHAO7/AAABAAAAAAD+//v/AAABAAAAAAD+//z/AAABAAAAAAD///f/AAABAAAAAAD///j/AAABAAAAAAD///n/AAABAAAAAAD///r/AAABAAAAAAD///v/AAABAAAAAAD///z/AAABAAAAAAD///3/AAABAAAAAAD///7/AAABAAAAAAAAAPX/AAABAAAAAAAAAPb/AAABAAAAAAAAAPf/AAABAAAAAAAAAPj/AAABAAAAAAAAAPn/AAABAAAAAAAAAPr/AAABAAAAAAAAAPv/AAABAAAAAAAAAPz/AAABAAAAAAABAPH/BQACAAAAAAABAPP/BQABAAAAAAABAPT/AAABAAAAAAABAPX/AAABAAAAAAABAPb/AAABAAAAAAABAPf/AAABAAAAAAABAPj/AAABAAAAAAABAPn/AAABAAAAAAABAPr/AAABAAAAAAABAPv/AAABAAAAAAABAPz/AAABAAAAAAACAO//AAABAAAAAAACAPD/AAABAAAAAAACAPH/AAABAAAAAAACAPL/BQACAAAAAAACAPP/BQACAAAAAAACAPT/BQABAAAAAAACAPX/BQABAAAAAAACAPb/AAABAAAAAAACAPf/AAABAAAAAAACAPj/AAABAAAAAAACAPn/AAABAAAAAAACAPr/AAABAAAAAAADAO3/AAABAAAAAAADAO7/AAABAAAAAAADAO//AAABAAAAAAADAPD/AAABAAAAAAADAPH/AAABAAAAAAADAPL/AAABAAAAAAADAPP/AAABAAAAAAADAPT/BQACAAAAAAADAPX/BQACAAAAAAADAPb/BQABAAAAAAADAPf/BQABAAAAAAADAPj/AAABAAAAAAAEAOv/AAABAAAAAAAEAOz/AAABAAAAAAAEAO3/AAABAAAAAAAEAO7/AAABAAAAAAAEAO//AAABAAAAAAAEAPD/AAABAAAAAAAEAPH/AAABAAAAAAAEAPL/AAABAAAAAAAEAPP/AAABAAAAAAAEAPT/AAABAAAAAAAFAOr/AAABAAAAAAAFAOv/AAABAAAAAAAFAOz/AAABAAAAAAAFAO3/AAABAAAAAAAFAO7/AAABAAAAAAAFAO//AAABAAAAAAAFAPD/AAABAAAAAAAGAOz/AAABAAAAAAAGAO3/AAABAAAAAAAGAO7/AAABAAAAAAD8/wQAAAABAAAAAAD8/wMAAAABAAAAAAD8/wIAAAABAAAAAAD7/wEAAAABAAAAAAD8/wAAAAABAAAAAAD8////AAABAAAAAAD8/wEAAAABAAAAAAD4/wgAAAABAAAAAAD3/wkAAAABAAAAAAD4/woAAAABAAAAAAD3/wsAAAABAAAAAAD3/woAAAABAAAAAAD5/woAAAABAAAAAAD4/wsAAAABAAAAAAD4/wwAAAABAAAAAAACAP//AAABAAAAAAAEAPz/AAABAAAAAAD+//T/AAABAAAAAAD///H/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_duop6")
 script = ExtResource("7_5jb1a")
 
 [node name="GradientBackground" parent="." instance=ExtResource("8_jtd2s")]
 
 [node name="NPC" parent="." instance=ExtResource("9_sn1sw")]
-position = Vector2(-24, -144)
-dialogue_pre_word = "Need to make pressure plates to build this level"
-trigger_word_pickup = false
-dialogue_post_word = ""
+position = Vector2(-383, 77)
+colour = Color(0.7147336, 0.54860693, 0, 1)
+dialogue_pre_word = "I can't quite seem to "
+word_to_pickup = 6
+dialogue_post_word = "what I'm supposed to do here..."
+
+[node name="NPC2" parent="." instance=ExtResource("9_sn1sw")]
+position = Vector2(233, -150)
+colour = Color(0.7528039, 0.34045002, 1, 1)
+dialogue_pre_word = "Sometimes I just wanna "
+dialogue_post_word = "it all away"
 
 [node name="Portal" parent="." instance=ExtResource("10_y62oo")]
 position = Vector2(458, -430)
 target_level = ExtResource("11_vpw06")
+
+[node name="PickableObject" parent="." instance=ExtResource("12_cqcg6")]
+position = Vector2(162, -106)
+
+[node name="Pressure_Plate" parent="." instance=ExtResource("13_rnwqd")]
+position = Vector2(241, 0)

@@ -30,6 +30,10 @@ MusicManager="*res://environment/audio/music_manager.tscn"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[dotnet]
+
+project/assembly_name="ludum-dare-58"
+
 [global_group]
 
 player=""
