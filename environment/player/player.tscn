@@ -108,7 +108,7 @@ texture = ExtResource("7_a7c7e")
 texture_scale = 2.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-z_index = 10
+z_index = -10
 position = Vector2(581, 327)
 amount = 100
 lifetime = 10.0
