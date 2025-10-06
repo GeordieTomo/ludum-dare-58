@@ -108,28 +108,18 @@ position = Vector2(-289, 32)
 
 [node name="Pressure_Plate" parent="." instance=ExtResource("13_rnwqd")]
 position = Vector2(201, -22)
-collision_layer = 1
-collision_mask = 1
 
 [node name="Pressure_Plate3" parent="." instance=ExtResource("13_rnwqd")]
 position = Vector2(320, -82)
-collision_layer = 1
-collision_mask = 1
 
 [node name="Pressure_Plate4" parent="." instance=ExtResource("13_rnwqd")]
 position = Vector2(-119, -222)
-collision_layer = 1
-collision_mask = 1
 
 [node name="Pressure_Plate5" parent="." instance=ExtResource("13_rnwqd")]
 position = Vector2(0, -282)
-collision_layer = 1
-collision_mask = 1
 
 [node name="Pressure_Plate2" parent="." instance=ExtResource("13_rnwqd")]
 position = Vector2(-203, 19)
-collision_layer = 1
-collision_mask = 1
 
 [node name="Gate" parent="." node_paths=PackedStringArray("connected_button") instance=ExtResource("13_rg4bk")]
 position = Vector2(-120, -20)

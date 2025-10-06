@@ -81,10 +81,11 @@ func follow_player(delta):
 	position = position.lerp(target, player_holding_lerp)
 
 func follow_arc(delta):
-	throwing_lerp = clamp(throwing_lerp + delta, 0.0, 2.0)
+	throwing_lerp = clamp(throwing_lerp + delta, 0.0, 1.0)
 	global_position = global_position.lerp(target_throw_position, throwing_lerp)
 	rotation = lerpf(rotation, 0, throwing_lerp)
-	if throwing_lerp >= 2.0:
+	if throwing_lerp >= 1.0:
+		print("checking landed")
 		check_landed()
 		throwing = false
 	
