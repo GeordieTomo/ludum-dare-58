@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://b2155armpwl11"]
+[gd_scene load_steps=27 format=4 uid="uid://b2155armpwl11"]
 
 [ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_jmvrv"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_wcub1"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://kli53o0qe4tj" path="res://globals/level_music_layers.tscn" id="19_hbpto"]
 [ext_resource type="PackedScene" uid="uid://3l07hsqs21m1" path="res://environment/objects/rock.tscn" id="20_jmvrv"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="20_tpolv"]
+[ext_resource type="Script" uid="uid://dc5a7eko6wqfl" path="res://environment/levels/play_music.gd" id="21_wcub1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7m88"]
 texture = ExtResource("7_kk1cx")
@@ -210,3 +211,7 @@ level_num = 1
 [node name="Rock" parent="." instance=ExtResource("20_jmvrv")]
 z_index = 3
 position = Vector2(1208, -766)
+
+[node name="PlayMusic" type="Node" parent="."]
+script = ExtResource("21_wcub1")
+track_index = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://2rkgsm8xl3mp"]
+[gd_scene load_steps=17 format=4 uid="uid://2rkgsm8xl3mp"]
 
 [ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_5f5yu"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_lff6n"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="10_p12oo"]
 [ext_resource type="PackedScene" uid="uid://kli53o0qe4tj" path="res://globals/level_music_layers.tscn" id="11_e2u8c"]
 [ext_resource type="PackedScene" uid="uid://duqndeak0sjch" path="res://environment/levels/level3-pressure-plates-and-throwing.tscn" id="11_ypqdj"]
+[ext_resource type="Script" uid="uid://dc5a7eko6wqfl" path="res://environment/levels/play_music.gd" id="13_ov8ws"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="13_sxarl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7m88"]
@@ -106,6 +107,10 @@ target_level = ExtResource("11_ypqdj")
 
 [node name="Music_Layers" parent="." instance=ExtResource("11_e2u8c")]
 level_num = 2
+
+[node name="PlayMusic" type="Node" parent="."]
+script = ExtResource("13_ov8ws")
+track_index = 2
 
 [editable path="NPC2"]
 [editable path="NPC3"]

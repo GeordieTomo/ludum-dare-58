@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://duqndeak0sjch"]
+[gd_scene load_steps=21 format=4 uid="uid://duqndeak0sjch"]
 
 [ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_kgbnd"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_vpw06"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b74b42x7vmwh5" path="res://environment/objects/gate.tscn" id="13_rg4bk"]
 [ext_resource type="PackedScene" uid="uid://ckdm0loa58wph" path="res://environment/objects/pressure_plate.tscn" id="13_rnwqd"]
 [ext_resource type="PackedScene" uid="uid://kli53o0qe4tj" path="res://globals/level_music_layers.tscn" id="14_rg4bk"]
+[ext_resource type="Script" uid="uid://dc5a7eko6wqfl" path="res://environment/levels/play_music.gd" id="17_jtd2s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7m88"]
 texture = ExtResource("5_rg4bk")
@@ -152,6 +153,10 @@ connected_button = NodePath("../Pressure_Plate5")
 
 [node name="Music_Layers" parent="." instance=ExtResource("14_rg4bk")]
 level_num = 3
+
+[node name="PlayMusic" type="Node" parent="."]
+script = ExtResource("17_jtd2s")
+track_index = 3
 
 [editable path="NPC"]
 [editable path="NPC2"]
