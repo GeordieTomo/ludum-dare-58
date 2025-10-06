@@ -25,6 +25,7 @@ func _input(event):
 
 func try_press_button():
 	if (can_push_button() and not progress_bar.visible):
+		has_been_interacted = true
 		toggle()
 		print_debug("button pressed: ", state)
 

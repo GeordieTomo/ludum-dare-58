@@ -25,6 +25,7 @@ var player = null
 @onready var rockthrowAudio = %AUD_rockthrow
 
 var start_position
+var has_been_interacted = false
 
 func _ready():
 	player_exited()
@@ -73,6 +74,7 @@ func try_pickup_or_putdown():
 		if player_is_holding_this():
 			drop()
 		else:
+			has_been_interacted = true
 			pickup()
 			
 func drop():
@@ -157,7 +159,7 @@ func player_exited():
 	update_text_hint()
 
 func update_text_hint():
-	if player_in_range and can_pickup_or_put_down():
+	if player_in_range and can_pickup_or_put_down() and not has_been_interacted:
 		show_text_hint()
 	else:
 		hide_text_hint()

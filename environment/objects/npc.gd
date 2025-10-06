@@ -32,6 +32,7 @@ func _input(event):
 
 func try_talk():
 	if can_talk():
+		has_been_interacted = true
 		talk()
 
 func talk():

@@ -4,6 +4,8 @@ class_name Interactable
 var player_in_range = false
 @onready var interaction_hint = %InteractionHint
 
+var has_been_interacted = false
+
 func _ready() -> void:
 	player_exited()
 	area_entered.connect(_body_entered)
@@ -29,7 +31,7 @@ func player_exited():
 	update_text_hint()
 
 func update_text_hint():
-	if player_in_range:
+	if player_in_range and not has_been_interacted:
 		show_text_hint()
 	else:
 		hide_text_hint()
