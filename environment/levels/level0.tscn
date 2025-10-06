@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=4 uid="uid://chub30rsm2ukr"]
+[gd_scene load_steps=16 format=4 uid="uid://chub30rsm2ukr"]
 
 [ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_wedmw"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_oslid"]
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="3_srk7y"]
 [ext_resource type="Texture2D" uid="uid://b245a2h4sf4wj" path="res://textures/isometric_tilemap.png" id="7_k2mic"]
 [ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="8_x05rj"]
-[ext_resource type="Script" path="res://environment/levels/tile_map_collision.gd" id="9_0p6e0"]
+[ext_resource type="Script" uid="uid://begp3o20cmaw6" path="res://environment/levels/tile_map_collision.gd" id="9_0p6e0"]
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="10_w8xb8"]
+[ext_resource type="Script" uid="uid://dc5a7eko6wqfl" path="res://environment/levels/play_music.gd" id="12_6t072"]
 [ext_resource type="PackedScene" uid="uid://d3ddbgh08ksup" path="res://environment/objects/pickable_object.tscn" id="12_085yw"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="13_qb854"]
 [ext_resource type="PackedScene" uid="uid://b2155armpwl11" path="res://environment/levels/level1-gates-n-buttons.tscn" id="15_wedmw"]
@@ -99,3 +100,6 @@ target_level = ExtResource("15_wedmw")
 [node name="Portal3" parent="." instance=ExtResource("15_xp83r")]
 position = Vector2(656, -141)
 target_level = ExtResource("15_wedmw")
+
+[node name="PlayMusic" type="Node" parent="."]
+script = ExtResource("12_6t072")
