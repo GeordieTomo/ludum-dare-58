@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="3_cqcg6"]
 [ext_resource type="Texture2D" uid="uid://b245a2h4sf4wj" path="res://textures/isometric_tilemap.png" id="5_rg4bk"]
 [ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="6_83cuf"]
-[ext_resource type="Script" path="res://environment/levels/tile_map_collision.gd" id="7_5jb1a"]
+[ext_resource type="Script" uid="uid://begp3o20cmaw6" path="res://environment/levels/tile_map_collision.gd" id="7_5jb1a"]
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="8_jtd2s"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="9_sn1sw"]
 [ext_resource type="PackedScene" uid="uid://bjnb4yh033w51" path="res://environment/objects/portal.tscn" id="10_y62oo"]
@@ -91,18 +91,20 @@ dialogue_post_word = "it all away"
 position = Vector2(458, -430)
 target_level = ExtResource("11_vpw06")
 
-[node name="PickableObject" parent="." instance=ExtResource("12_cqcg6")]
+[node name="PickableObject" parent="." groups=["rock"] instance=ExtResource("12_cqcg6")]
 position = Vector2(162, -106)
 
-[node name="PickableObject2" parent="." instance=ExtResource("12_cqcg6")]
+[node name="PickableObject2" parent="." groups=["rock"] instance=ExtResource("12_cqcg6")]
 position = Vector2(-289, 32)
 
 [node name="Pressure_Plate" parent="." instance=ExtResource("13_rnwqd")]
 position = Vector2(240, -2)
+collision_mask = 0
 
 [node name="Pressure_Plate2" parent="." instance=ExtResource("13_rnwqd")]
 position = Vector2(-203, 19)
+collision_mask = 0
 
 [node name="Gate" parent="." node_paths=PackedStringArray("connected_button") instance=ExtResource("13_rg4bk")]
-position = Vector2(-219, -77)
+position = Vector2(-120, -20)
 connected_button = NodePath("../Pressure_Plate2")
