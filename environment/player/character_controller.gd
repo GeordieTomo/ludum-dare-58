@@ -77,7 +77,7 @@ func _process(delta):
 		
 		move_and_slide()
 	else:
-		if input.length() > 0.:
+		if input.length() > 0. and not WordCloud.scene_transition:
 			show_think_hint()
 	
 	if can_jump():

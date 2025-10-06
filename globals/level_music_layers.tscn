@@ -12,20 +12,16 @@ layer_players = [NodePath("Pad"), NodePath("Strings"), NodePath("Lead"), NodePat
 
 [node name="Pad" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_73mcb")
-autoplay = true
 attenuation = 0.0025771684
 
 [node name="Strings" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_51f20")
-autoplay = true
 attenuation = 0.029157255
 
 [node name="Lead" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_xxiog")
-autoplay = true
 attenuation = 0.032352034
 
 [node name="Bass" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_uwmyo")
-autoplay = true
 attenuation = 0.007812507

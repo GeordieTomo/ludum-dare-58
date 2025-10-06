@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://s0bxfqdb43i1"]
+[gd_scene load_steps=5 format=3 uid="uid://s0bxfqdb43i1"]
 
 [ext_resource type="Script" uid="uid://cof3rsh63ns4" path="res://environment/audio/music_manager.gd" id="1_fuivf"]
 [ext_resource type="AudioStream" uid="uid://dq74wskx5iktv" path="res://environment/audio/IntroMusic.mp3" id="2_u8mak"]
 [ext_resource type="AudioStream" uid="uid://dr8hab4e60rfh" path="res://environment/audio/thoughts song v2.wav" id="3_50vwq"]
+[ext_resource type="AudioStream" uid="uid://nheo06sj1vmq" path="res://environment/audio/levelmusic.mp3" id="3_t2dco"]
 
 [node name="MusicManager" type="Node"]
 script = ExtResource("1_fuivf")
-track_list = Array[AudioStream]([ExtResource("2_u8mak"), ExtResource("3_50vwq")])
-track_durations = Array[float]([29.0, 0.0])
+track_list = Array[AudioStream]([ExtResource("2_u8mak"), ExtResource("3_t2dco"), ExtResource("3_50vwq")])
+track_durations = Array[float]([29.0, 0.0, 0.0])

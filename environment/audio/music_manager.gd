@@ -27,7 +27,9 @@ func _ready():
 	active_player = audio_player_a
 	next_player = audio_player_b
 
-	#play_track(current_index)
+	play_track(current_index)
+	
+	Events.play_track.connect(start_specific_track)
 
 
 func play_track(index: int):
@@ -67,6 +69,24 @@ func get_length_of_stream(stream: AudioStream):
 		return track_durations[index]
 	return stream.get_length()
 
+func start_specific_track(index):
+	next_index = index
+	next_player.stream = track_list[next_index]
+	next_player.volume_db = -80
+	next_player.play()
+
+	var a = active_player
+	var b = next_player
+
+	await fade_tracks(a, b, fade_duration)
+
+	# swap roles
+	active_player.stop()
+	var temp = active_player
+	active_player = next_player
+	next_player = temp
+	current_index = next_index
+	
 func start_next_track():
 	next_index = (current_index + 1) % track_list.size()
 	next_player.stream = track_list[next_index]
