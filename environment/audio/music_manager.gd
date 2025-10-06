@@ -14,9 +14,8 @@ var fade_time := 0.0
 var active_player: AudioStreamPlayer
 var next_player: AudioStreamPlayer
 
-#func _input(event):
-	#if event.is_action_pressed("jump"):
-		#Events.play_track.emit(2)
+
+var music_vol_db = -6
 
 func _ready():
 	if track_list.is_empty():
@@ -57,7 +56,7 @@ func _process(delta):
 	if fading:
 		fade_time += delta
 		var t = fade_time / fade_duration
-		active_player.volume_db = lerp(-80, 0, t)
+		active_player.volume_db = lerp(-80, music_vol_db, t)
 		if t >= 1.0:
 			fading = false
 
@@ -115,6 +114,6 @@ func fade_tracks(out_player: AudioStreamPlayer, in_player: AudioStreamPlayer, du
 	while t < duration:
 		t += get_process_delta_time()
 		var pct = clamp(t / duration, 0, 1)
-		out_player.volume_db = lerp(0, -80, pct)
-		in_player.volume_db = lerp(-80, 0, pct)
+		out_player.volume_db = lerp(music_vol_db, -80, pct)
+		in_player.volume_db = lerp(-80, music_vol_db, pct)
 		await get_tree().process_frame
