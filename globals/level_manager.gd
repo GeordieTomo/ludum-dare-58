@@ -42,7 +42,7 @@ func hide_screen(slow = false):
 	if slow:
 		%AnimationPlayer.speed_scale = 0.01
 	else:
-		%AnimationPlayer.speed_scale = 1.
+		%AnimationPlayer.speed_scale = Events.fade_time_scale
 	await $level_transition_canvas/level_transition_curtain.fade_in()
 
 func show_screen():

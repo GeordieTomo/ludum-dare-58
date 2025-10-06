@@ -4,6 +4,8 @@ extends Node
 
 var selected_words: Array[Enums.AllWords]
 
+var fade_time_scale = 1.
+
 signal entered_portal(new_scene_to_load : PackedScene)
 
 signal new_scene_loaded

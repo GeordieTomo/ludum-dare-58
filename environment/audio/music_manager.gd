@@ -14,11 +14,15 @@ var fade_time := 0.0
 var active_player: AudioStreamPlayer
 var next_player: AudioStreamPlayer
 
+#func _input(event):
+	#if event.is_action_pressed("jump"):
+		#Events.play_track.emit(2)
+
 func _ready():
 	if track_list.is_empty():
 		push_warning("No tracks assigned to track_list.")
 		return
-
+  
 	audio_player_a = AudioStreamPlayer.new()
 	audio_player_b = AudioStreamPlayer.new()
 	add_child(audio_player_a)

@@ -10,4 +10,5 @@ func _ready():
 
 func check_words():
 	if WordCloud.evaluate_score(wake_up_evaluation_words) >= 1.:
+		Events.fade_time_scale = 0.3
 		Events.entered_portal.emit(end_game_scene)
