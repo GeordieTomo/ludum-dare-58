@@ -1,8 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://peqonrwd6amd"]
+[gd_scene load_steps=29 format=3 uid="uid://peqonrwd6amd"]
 
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_admos"]
 [ext_resource type="Texture2D" uid="uid://yu1ntwtg7661" path="res://textures/shadow.png" id="2_jowm2"]
-[ext_resource type="Script" uid="uid://cpha1mqldl436" path="res://environment/levels/floating-player.gd" id="2_s3fri"]
+[ext_resource type="Script" path="res://environment/levels/floating-player.gd" id="2_s3fri"]
 [ext_resource type="Texture2D" uid="uid://c3txes07pbl77" path="res://textures/BrainSprite.png" id="3_admos"]
 [ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="4_s3fri"]
 [ext_resource type="Script" uid="uid://bn6p8vlrptyqq" path="res://environment/player/circle_children.gd" id="5_4qirt"]
@@ -14,7 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="11_wkskl"]
 [ext_resource type="Texture2D" uid="uid://dqekt4w1qypm5" path="res://textures/CloudsMid.png" id="12_bvpp3"]
 [ext_resource type="Texture2D" uid="uid://bgm4vlxpoui2c" path="res://textures/CloudsFore.png" id="13_x50on"]
-[ext_resource type="Script" uid="uid://8xxpl1t1v3e5" path="res://environment/levels/end-of-game-sequence.gd" id="16_8yfrj"]
+[ext_resource type="Script" path="res://environment/levels/end-of-game-sequence.gd" id="16_8yfrj"]
+[ext_resource type="AudioStream" uid="uid://dr8hab4e60rfh" path="res://environment/audio/thoughts song v2.wav" id="16_bvpp3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56k0q"]
 
@@ -228,3 +229,8 @@ timeout = 7.0
 
 [node name="HideScreen" type="Node" parent="."]
 script = ExtResource("16_8yfrj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_bvpp3")
+autoplay = true
+attenuation = 0.015092753

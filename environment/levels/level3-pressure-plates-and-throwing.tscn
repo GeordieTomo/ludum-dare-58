@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://duqndeak0sjch"]
+[gd_scene load_steps=18 format=4 uid="uid://duqndeak0sjch"]
 
 [ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_kgbnd"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_vpw06"]
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="3_cqcg6"]
 [ext_resource type="Texture2D" uid="uid://b245a2h4sf4wj" path="res://textures/isometric_tilemap.png" id="5_rg4bk"]
 [ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="6_83cuf"]
-[ext_resource type="Script" path="res://environment/levels/tile_map_collision.gd" id="7_5jb1a"]
+[ext_resource type="Script" uid="uid://begp3o20cmaw6" path="res://environment/levels/tile_map_collision.gd" id="7_5jb1a"]
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="8_jtd2s"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="9_sn1sw"]
 [ext_resource type="PackedScene" uid="uid://bjnb4yh033w51" path="res://environment/objects/portal.tscn" id="10_y62oo"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d3ddbgh08ksup" path="res://environment/objects/pickable_object.tscn" id="12_cqcg6"]
 [ext_resource type="PackedScene" uid="uid://b74b42x7vmwh5" path="res://environment/objects/gate.tscn" id="13_rg4bk"]
 [ext_resource type="PackedScene" uid="uid://ckdm0loa58wph" path="res://environment/objects/pressure_plate.tscn" id="13_rnwqd"]
+[ext_resource type="PackedScene" uid="uid://kli53o0qe4tj" path="res://globals/level_music_layers.tscn" id="14_rg4bk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7m88"]
 texture = ExtResource("5_rg4bk")
@@ -140,3 +141,6 @@ connected_button = NodePath("../Pressure_Plate3")
 [node name="Gate5" parent="." node_paths=PackedStringArray("connected_button") instance=ExtResource("13_rg4bk")]
 position = Vector2(400, -279)
 connected_button = NodePath("../Pressure_Plate5")
+
+[node name="Music_Layers" parent="." instance=ExtResource("14_rg4bk")]
+level_num = 3

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://kli53o0qe4tj"]
+
+[ext_resource type="Script" uid="uid://bu05s22f537cm" path="res://LevelMusicLayers.gd" id="1_wmi5p"]
+[ext_resource type="AudioStream" uid="uid://dcnlx0tgfnxcr" path="res://environment/audio/LevelMusicPad.mp3" id="2_73mcb"]
+[ext_resource type="AudioStream" uid="uid://dq405pxeor8wm" path="res://environment/audio/LevelMusicStrings.mp3" id="3_51f20"]
+[ext_resource type="AudioStream" uid="uid://3s5y8w5eox1k" path="res://environment/audio/LevelMusicLead.mp3" id="4_xxiog"]
+[ext_resource type="AudioStream" uid="uid://b6gagm2f2h7k8" path="res://environment/audio/LevelMusicBass.mp3" id="5_uwmyo"]
+
+[node name="Music_Layers" type="Node2D" node_paths=PackedStringArray("layer_players")]
+script = ExtResource("1_wmi5p")
+layer_players = [NodePath("Pad"), NodePath("Strings"), NodePath("Lead"), NodePath("Bass")]
+
+[node name="Pad" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_73mcb")
+autoplay = true
+attenuation = 0.0025771684
+
+[node name="Strings" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_51f20")
+autoplay = true
+attenuation = 0.029157255
+
+[node name="Lead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_xxiog")
+autoplay = true
+attenuation = 0.032352034
+
+[node name="Bass" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_uwmyo")
+autoplay = true
+attenuation = 0.007812507

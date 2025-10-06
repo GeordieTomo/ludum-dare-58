@@ -27,7 +27,7 @@ func _ready():
 	active_player = audio_player_a
 	next_player = audio_player_b
 
-	play_track(current_index)
+	#play_track(current_index)
 
 
 func play_track(index: int):
