@@ -16,7 +16,7 @@ var fading_out_volumes : Array[float] = []
 
 var current_index
 
-const max_vol : float = -6
+@export var max_vols : Array[float] = []
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -56,7 +56,7 @@ func play_track(index):
 
 func fade_layer_in(layer_index: int):
 	if layer_index >= 0 and layer_index < target_volumes.size():
-		target_volumes[layer_index] = max_vol  # 0 dB
+		target_volumes[layer_index] = max_vols[current_index]  # 0 dB
 
 
 func fade_layer_out(layer_index: int):

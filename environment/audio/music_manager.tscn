@@ -11,3 +11,4 @@
 [node name="MusicManager" type="Node"]
 script = ExtResource("1_fuivf")
 track_list = Array[Array]([[ExtResource("2_u8mak")], [ExtResource("3_qurjl"), ExtResource("4_qurjl"), ExtResource("5_r5cyf"), ExtResource("6_41682")], [ExtResource("4_50vwq")]])
+max_vols = Array[float]([-6.0, -6.0, 0.0])

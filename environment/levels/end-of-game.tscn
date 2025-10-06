@@ -233,7 +233,6 @@ timeout = 7.0
 script = ExtResource("16_8yfrj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HideScreen"]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="HideScreen/CanvasLayer"]
 unique_name_in_owner = true
