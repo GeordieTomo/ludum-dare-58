@@ -81,7 +81,6 @@ script = ExtResource("8_byinq")
 
 [node name="NPC" parent="." instance=ExtResource("10_glnp2")]
 position = Vector2(-841, 184)
-colour = Color(0.9712543, 0.12727723, 0.99999994, 1)
 dialogue_pre_word = "In the "
 word_to_pickup = 10
 dialogue_post_word = "of recent events, I'm not sure where to go from here."
@@ -91,7 +90,6 @@ stream = ExtResource("10_kigjq")
 
 [node name="NPC2" parent="." instance=ExtResource("10_glnp2")]
 position = Vector2(-530, 466)
-colour = Color(0.9712543, 0.12727723, 0.99999994, 1)
 dialogue_pre_word = "Just gotta keep pushing on. It's only"
 word_to_pickup = 11
 dialogue_post_word = "from here."
