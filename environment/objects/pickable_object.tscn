@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3ddbgh08ksup"]
+[gd_scene load_steps=9 format=3 uid="uid://d3ddbgh08ksup"]
 
 [ext_resource type="Script" uid="uid://c8enh3ydekiyk" path="res://environment/objects/pickable_object.gd" id="1_fytnh"]
 [ext_resource type="Texture2D" uid="uid://d3wda61wrfygr" path="res://textures/rock.svg" id="2_malo4"]
 [ext_resource type="Script" uid="uid://evwj4x3hy7do" path="res://environment/objects/glow.gd" id="3_malo4"]
+[ext_resource type="AudioStream" uid="uid://24cxs3lpnu2q" path="res://environment/audio/Grab.mp3" id="4_jrefh"]
+[ext_resource type="AudioStream" uid="uid://c2mio5q7vnj5v" path="res://environment/audio/Throw.mp3" id="5_fp4ca"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ann7d"]
 radius = 100.0
@@ -63,3 +65,19 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionDetector"]
 shape = SubResource("CircleShape2D_e4fjo")
+
+[node name="AUD_rockgrab" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(721, -90)
+stream = ExtResource("4_jrefh")
+volume_db = 2.0
+attenuation = 1e-05
+max_polyphony = 10
+
+[node name="AUD_rockthrow" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(721, -90)
+stream = ExtResource("5_fp4ca")
+volume_db = 2.0
+attenuation = 1e-05
+max_polyphony = 10

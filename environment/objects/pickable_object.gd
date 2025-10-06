@@ -21,6 +21,9 @@ var player = null
 @onready var sprite_glow : SpriteGlow = %Sprite2D
 @onready var ground_detector: Area2D = %GroundDetector
 
+@onready var rockgrabAudio = %AUD_rockgrab
+@onready var rockthrowAudio = %AUD_rockthrow
+
 var start_position
 
 func _ready():
@@ -55,6 +58,7 @@ func try_pickup_or_putdown():
 		player_holding = not player_holding
 		player_holding_lerp = 0.
 		throwing_lerp = 0.
+		rockgrabAudio.play()
 		if player_holding:
 			z_index = 4
 		else:
@@ -67,6 +71,7 @@ func try_throw():
 		player_holding = not player_holding
 		target_throw_position = global_position + get_throw_distance() * global_position.direction_to(get_global_mouse_position())
 		throwing = true
+		rockthrowAudio.play()
 
 func _process(delta):
 	if player_holding:
