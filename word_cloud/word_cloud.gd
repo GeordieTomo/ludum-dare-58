@@ -27,12 +27,15 @@ var scene_transition : bool = false
 
 var player_has_jumped : bool = false
 
+var player_has_opened: bool = false
+
 func _ready():
 	add_words_to_selection_dictionary()
 	Events.new_scene_loaded.connect(reload_selected_words)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("cloud"):
+		player_has_opened = true
 		toggle_cloud()
 
 func reload_selected_words():
@@ -158,7 +161,8 @@ func set_tutorial_complete():
 	tutorial_complete = true
 
 func show_cloud():
-	thought_cloud.show_cloud()
+	if player_has_opened:
+		thought_cloud.show_cloud()
 
 func lock_word_cloud():
 	hide()

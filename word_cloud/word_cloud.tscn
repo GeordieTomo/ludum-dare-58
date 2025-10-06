@@ -63,6 +63,7 @@ script = ExtResource("3_e8b8q")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/ThoughtCloud"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -81,6 +82,7 @@ stretch_mode = 5
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer/ThoughtCloud"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -100,6 +102,7 @@ stretch_mode = 5
 
 [node name="TextureRect3" type="TextureRect" parent="MarginContainer/ThoughtCloud"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -119,6 +122,7 @@ stretch_mode = 5
 
 [node name="TextureRect4" type="TextureRect" parent="MarginContainer/ThoughtCloud"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -138,6 +142,7 @@ stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ThoughtCloud"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(280, 150)
 layout_mode = 0
 offset_right = 280.0

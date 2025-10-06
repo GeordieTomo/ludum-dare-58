@@ -147,7 +147,6 @@ max_polyphony = 10
 [node name="PointLight2D" type="PointLight2D" parent="."]
 unique_name_in_owner = true
 texture = ExtResource("7_a7c7e")
-texture_scale = 2.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = -10

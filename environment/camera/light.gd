@@ -2,7 +2,8 @@ extends WorldEnvironment
 
 @export var light_evaluation_words : Array[Enums.AllWords] = []
 
-var tonemap_target : float = 0.05
+var tonemap_target : float = 1.
+@onready var color_rect = %ColorRect
 
 func _ready():
 	words_updated()
@@ -10,13 +11,13 @@ func _ready():
 	set_tonemap(tonemap_target)
 
 func _process(delta):
-	if environment.tonemap_exposure < tonemap_target:
-		environment.tonemap_exposure += delta * 0.2
-	elif environment.tonemap_exposure > tonemap_target:
-		environment.tonemap_exposure -= delta * 0.2
+	if color_rect.color.a < tonemap_target:
+		color_rect.color.a += delta * 0.5
+	elif color_rect.color.a > tonemap_target:
+		color_rect.color.a -= delta * 0.5
 	
-	if abs(environment.tonemap_exposure - tonemap_target) < 0.05:
-		environment.tonemap_exposure = tonemap_target
+	if abs(color_rect.color.a - tonemap_target) < 0.05:
+		color_rect.color.a = tonemap_target
 
 		
 func words_updated():
@@ -24,7 +25,9 @@ func words_updated():
 
 func set_light(pct : float):
 	# map between 0.05 -> 1.0
-	tonemap_target = clamp(pct * 0.95 + 0.05, 0.05, 1.)
+	tonemap_target = clamp(1. - pct * 0.95 - 0.05, 0.0, 1.)
 	
 func set_tonemap(pct: float):
-	environment.tonemap_exposure = pct
+	#print(color_rect.modulate.a)
+	#color_rect.color.a = 1.
+	pass
