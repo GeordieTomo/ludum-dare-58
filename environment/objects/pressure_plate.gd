@@ -41,6 +41,8 @@ func update_state():
 	if(num_bodies > 0):
 		set_state(true)
 		buttonAudio.play()
+		toggled.emit(true)
 	else:
 		set_state(false)
 		buttonAudio.play()
+		toggled.emit(false)
