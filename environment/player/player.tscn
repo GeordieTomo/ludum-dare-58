@@ -45,7 +45,7 @@ alpha_curve = SubResource("CurveTexture_r3nbb")
 turbulence_enabled = true
 turbulence_noise_scale = 4.629
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_4flbx")

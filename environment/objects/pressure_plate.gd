@@ -27,6 +27,7 @@ func set_state(new_state):
 	depressed_sprite.visible = not state
 
 func _body_entered(body: Node2D):
+	print(body.name)
 	if body.is_in_group("player") or body.is_in_group("rock"):
 		print(body.name)
 		num_bodies += 1
@@ -37,6 +38,7 @@ func _body_exited(body: Node2D):
 		print(body.name)
 		num_bodies -= 1
 		update_state()
+		
 func update_state():
 	if(num_bodies > 0):
 		set_state(true)
