@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bnpwree7r2j2x"]
+[gd_scene load_steps=18 format=4 uid="uid://bnpwree7r2j2x"]
 
 [ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_6suk6"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_vcibj"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://b74b42x7vmwh5" path="res://environment/objects/gate.tscn" id="5_wgknd"]
 [ext_resource type="Texture2D" uid="uid://b245a2h4sf4wj" path="res://textures/isometric_tilemap.png" id="6_d18yx"]
 [ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="7_0req3"]
-[ext_resource type="Script" path="res://environment/levels/tile_map_collision.gd" id="8_byinq"]
+[ext_resource type="Script" uid="uid://begp3o20cmaw6" path="res://environment/levels/tile_map_collision.gd" id="8_byinq"]
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="9_snd7g"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="10_glnp2"]
+[ext_resource type="AudioStream" uid="uid://cw133mk0kb2h6" path="res://environment/audio/VoiceAudio/VoiceHigh3.mp3" id="10_kigjq"]
 [ext_resource type="Script" uid="uid://f2yuo01m7yte" path="res://environment/levels/wake_up.gd" id="12_6suk6"]
 [ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="12_g2hbv"]
 [ext_resource type="PackedScene" uid="uid://kli53o0qe4tj" path="res://globals/level_music_layers.tscn" id="13_kigjq"]
@@ -85,12 +86,18 @@ dialogue_pre_word = "In the "
 word_to_pickup = 10
 dialogue_post_word = "of recent events, I'm not sure where to go from here."
 
+[node name="AUD_gibberish" parent="NPC" index="0"]
+stream = ExtResource("10_kigjq")
+
 [node name="NPC2" parent="." instance=ExtResource("10_glnp2")]
 position = Vector2(-530, 466)
 colour = Color(0.9712543, 0.12727723, 0.99999994, 1)
 dialogue_pre_word = "Just gotta keep pushing on. It's only"
 word_to_pickup = 11
 dialogue_post_word = "from here."
+
+[node name="AUD_gibberish" parent="NPC2" index="0"]
+stream = ExtResource("10_kigjq")
 
 [node name="Button" parent="." instance=ExtResource("12_g2hbv")]
 position = Vector2(444, -418)
@@ -103,3 +110,6 @@ end_game_scene = ExtResource("13_vcibj")
 
 [node name="Music_Layers" parent="." instance=ExtResource("13_kigjq")]
 level_num = 4
+
+[editable path="NPC"]
+[editable path="NPC2"]
