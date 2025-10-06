@@ -6,7 +6,8 @@ extends CanvasLayer
 
 @export var words_that_dont_deselect : Array[Enums.AllWords] =[]
 
-var word_ui_toggles : Array[Node2D]
+#var word_ui_toggles : Array[Node2D]
+var selected_word_toggles : Array[WordToggle]
 
 signal selected_words_changed
 
@@ -21,12 +22,30 @@ var player_container : Control
 
 var tutorial_complete : bool = false
 
+var scene_transition : bool = false
+
 func _ready():
 	add_words_to_selection_dictionary()
+	Events.new_scene_loaded.connect(reload_selected_words)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("cloud"):
 		toggle_cloud()
+
+func reload_selected_words():
+	print(selected_word_toggles)
+	for toggle : WordToggle in selected_word_toggles:
+		if not toggle.word_toggle_button.button_pressed:
+			toggle.toggle()
+
+func add_word_toggle(toggle: WordToggle):
+	if not selected_word_toggles.has(toggle):
+		selected_word_toggles.append(toggle)
+	print(selected_word_toggles)
+
+func remove_word_toggle(toggle: WordToggle):
+	if selected_word_toggles.has(toggle) and not scene_transition:
+		selected_word_toggles.erase(toggle)
 
 func _set_end_game(new_val):
 	if new_val:
@@ -117,8 +136,9 @@ func show_WASD_hint():
 
 func hide_WASD_hint():
 	wasd_hint.visible = false
-	tutorial_complete = true
 
+func set_tutorial_complete():
+	tutorial_complete = true
 
 func show_cloud():
 	thought_cloud.show_cloud()

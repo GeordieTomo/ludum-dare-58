@@ -59,6 +59,7 @@ func _process(delta):
 		if velocity.length() > 60.:
 			WordCloud.hide_cloud()
 			brainmoveAudio.volume_linear = velocity.length() / 30
+			WordCloud.set_tutorial_complete()
 		else:
 			brainmoveAudio.volume_linear = 0
 		
