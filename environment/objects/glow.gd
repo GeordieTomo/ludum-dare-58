@@ -6,7 +6,7 @@ class_name SpriteGlow
 @export var intensity_max: float = 3.0   # Maximum HDR brightness
 @export var base_color: Color = Color(1, 1, 1, 1)  # Base color
 
-var _fade_enabled: bool = false
+@export var _fade_enabled: bool = false
 var _time: float = 0.0
 
 func _process(delta: float) -> void:

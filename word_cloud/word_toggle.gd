@@ -7,14 +7,19 @@ var text : String : set = set_text
 var word_value : Enums.AllWords
 
 signal toggled(new_state : bool)
+@onready var mouse_hint = %MouseHint
 
 func _ready():
 	word_toggle_button.toggled.connect(_pressed)
 	word_toggle_button.global_position = global_position
 	word_toggle_button.visible = true
 	
+	if not WordCloud.tutorial_complete:
+		mouse_hint.visible = true
+	
 func _pressed(new_val : bool):
 	toggled.emit(new_val)
+	mouse_hint.visible = false
 
 func toggle():
 	word_toggle_button.button_pressed = !word_toggle_button.button_pressed

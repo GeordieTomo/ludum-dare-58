@@ -6,4 +6,5 @@ func _ready():
 	WordCloud.available_word_added.connect(new_word)
 	
 func new_word(word: Enums.AllWords):
-	message_display.display_message(Enums.get_string_from_enum(word) + " added to collection", 3.)
+	if WordCloud.tutorial_complete:
+		message_display.display_message(Enums.get_string_from_enum(word) + " added to collection", 3.)

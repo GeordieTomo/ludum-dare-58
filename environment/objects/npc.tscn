@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://yu1ntwtg7661" path="res://textures/shadow.png" id="5_u42vb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wkhfg"]
-radius = 100.0
+radius = 150.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkhfg"]
 bg_color = Color(0.18431373, 0.18431373, 0.18431373, 0.8352941)

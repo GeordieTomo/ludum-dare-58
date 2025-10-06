@@ -18,6 +18,8 @@ var end_game = false : set = _set_end_game
 
 var player_container : Control
 
+var tutorial_complete : bool = false
+
 func _ready():
 	add_words_to_selection_dictionary()
 
@@ -58,7 +60,8 @@ func add_available_word(word: Enums.AllWords):
 		words_that_can_be_used.append(word)
 	available_word_added.emit(word)
 	update_words_available()
-	show_cloud()
+	if (tutorial_complete):
+		show_cloud()
 
 func add_available_words(words: Array[Enums.AllWords]):
 	for word in words:
