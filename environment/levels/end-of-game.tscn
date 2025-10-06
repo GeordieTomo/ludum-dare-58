@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://peqonrwd6amd"]
+[gd_scene load_steps=29 format=3 uid="uid://peqonrwd6amd"]
 
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_admos"]
 [ext_resource type="Texture2D" uid="uid://yu1ntwtg7661" path="res://textures/shadow.png" id="2_jowm2"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="11_wkskl"]
 [ext_resource type="Texture2D" uid="uid://dqekt4w1qypm5" path="res://textures/CloudsMid.png" id="12_bvpp3"]
 [ext_resource type="Texture2D" uid="uid://bgm4vlxpoui2c" path="res://textures/CloudsFore.png" id="13_x50on"]
+[ext_resource type="AudioStream" uid="uid://cw133mk0kb2h6" path="res://environment/audio/VoiceAudio/VoiceHigh3.mp3" id="14_8yfrj"]
 [ext_resource type="Script" uid="uid://8xxpl1t1v3e5" path="res://environment/levels/end-of-game-sequence.gd" id="16_8yfrj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56k0q"]
@@ -214,9 +215,11 @@ dialogue_pre_word = "Wow, you did it, you made it out alive!"
 trigger_word_pickup = false
 dialogue_post_word = ""
 
+[node name="AUD_gibberish" parent="NPC" index="0"]
+stream = ExtResource("14_8yfrj")
+
 [node name="NPC2" parent="." instance=ExtResource("10_gy4bf")]
 position = Vector2(-712, 456)
-colour = Color(0.9712543, 0.12727723, 0.99999994, 1)
 auto_trigger = true
 dialogue_pre_word = "Thanks for playing!"
 trigger_word_pickup = false
@@ -271,3 +274,5 @@ text = "[wave]WAKE UP"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[editable path="NPC"]
