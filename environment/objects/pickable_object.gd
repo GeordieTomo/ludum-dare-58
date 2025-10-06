@@ -34,7 +34,24 @@ func _ready():
 	start_position = position
 
 func can_pickup_or_put_down() -> bool:
-	return WordCloud.evaluate_score(can_pickup_evaluation_words) > 0.
+
+	return  WordCloud.evaluate_score(can_pickup_evaluation_words) > 0.
+
+func player_holding_something_else():
+	var held = true
+	if player != null:
+		if player.held_object != self and player.held_object != null:
+			held = true
+		else:
+			held = false
+	
+	return held
+
+func player_is_holding_this() -> bool:
+	var held = true
+	if player != null:
+		held = player.held_object == self
+	return held
 
 func can_throw() -> bool:
 	return player_holding and WordCloud.evaluate_score(can_throw_evaluation_words) > 0.
@@ -52,21 +69,45 @@ func _input(event):
 				try_pickup_or_putdown()
 		
 func try_pickup_or_putdown():
-	if can_pickup_or_put_down():
-		rotation = 0
-		throwing = false
-		player_holding = not player_holding
-		player_holding_lerp = 0.
-		throwing_lerp = 0.
-		rockgrabAudio.play()
-		if player_holding:
-			z_index = 4
+	if can_pickup_or_put_down() and not player_holding_something_else():
+		if player_is_holding_this():
+			drop()
 		else:
-			z_index = 3
-		hide_text_hint()
+			pickup()
+			
+func drop():
+	print("drop")
+	player.held_object = null
+	rotation = 0
+	throwing = false
+	player_holding = false
+	player_holding_lerp = 0.
+	throwing_lerp = 0.
+	rockgrabAudio.play()
+	if player_holding:
+		z_index = 4
+	else:
+		z_index = 3
+	hide_text_hint()
+	
+func pickup():
+	print("pickup")
+	player.held_object = self
+	rotation = 0
+	throwing = false
+	player_holding = true
+	player_holding_lerp = 0.
+	throwing_lerp = 0.
+	rockgrabAudio.play()
+	if player_holding:
+		z_index = 4
+	else:
+		z_index = 3
+	hide_text_hint()
 
 func try_throw():
 	if can_throw():
+		player.held_object = null
 		throwing_lerp = 0.
 		player_holding = not player_holding
 		target_throw_position = global_position + get_throw_distance() * global_position.direction_to(get_global_mouse_position())

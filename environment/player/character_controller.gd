@@ -32,6 +32,8 @@ var start_position
 
 var last_grounded_pos : Array[Vector2]
 
+var held_object: Node2D
+
 @onready var player_sprite: Sprite2D = %Player
 
 @onready var ground_detector: Area2D = %GroundDetector
@@ -67,6 +69,7 @@ func _process(delta):
 		
 		if velocity.length() > 60.:
 			WordCloud.hide_cloud()
+			hide_think_hint()
 			brainmoveAudio.volume_linear = velocity.length() / 30
 			WordCloud.set_tutorial_complete()
 		else:
