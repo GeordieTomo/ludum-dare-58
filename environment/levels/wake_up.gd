@@ -6,7 +6,8 @@ extends Node
 
 func _ready():
 	WordCloud.selected_words_changed.connect(check_words)
-	Events.play_track.emit(5)
+	Events.play_track.emit(2)
+	Events.fade_layer_in.emit(0)
 
 func check_words():
 	if WordCloud.evaluate_score(wake_up_evaluation_words) >= 1.:

@@ -70,7 +70,7 @@ shape = SubResource("CircleShape2D_e4fjo")
 unique_name_in_owner = true
 position = Vector2(721, -90)
 stream = ExtResource("4_jrefh")
-volume_db = 2.0
+volume_db = 24.0
 attenuation = 1e-05
 max_polyphony = 10
 
@@ -78,6 +78,6 @@ max_polyphony = 10
 unique_name_in_owner = true
 position = Vector2(721, -90)
 stream = ExtResource("5_fp4ca")
-volume_db = 2.0
+volume_db = 14.957
 attenuation = 1e-05
 max_polyphony = 10

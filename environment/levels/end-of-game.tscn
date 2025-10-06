@@ -54,12 +54,12 @@ alpha_curve = SubResource("CurveTexture_r3nbb")
 turbulence_enabled = true
 turbulence_noise_scale = 4.629
 
-[sub_resource type="Gradient" id="Gradient_duop6"]
+[sub_resource type="Gradient" id="Gradient_8yfrj"]
 offsets = PackedFloat32Array(0, 0.7459893, 1)
-colors = PackedColorArray(0.14754698, 0.0716682, 0.2362208, 1, 0.12333051, 0.029379053, 0.18752009, 1, 0.17591879, 0.05329238, 0.25899532, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.030248072, 0.022170218, 0.09761172, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lh7i5"]
-gradient = SubResource("Gradient_duop6")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bvpp3"]
+gradient = SubResource("Gradient_8yfrj")
 fill_to = Vector2(0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mmuyk"]
@@ -155,7 +155,7 @@ texture_scale = 4.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="player"]
 z_index = 10
-position = Vector2(581, 327)
+position = Vector2(6, -31)
 amount = 100
 lifetime = 10.0
 preprocess = 10.0
@@ -175,7 +175,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = SubResource("GradientTexture2D_lh7i5")
+texture = SubResource("GradientTexture2D_bvpp3")
 
 [node name="TextureBackground2" type="TextureRect" parent="GradientBackground/MarginContainer"]
 visible = false
@@ -233,6 +233,7 @@ timeout = 7.0
 script = ExtResource("16_8yfrj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HideScreen"]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="HideScreen/CanvasLayer"]
 unique_name_in_owner = true

@@ -4,11 +4,10 @@
 [ext_resource type="AudioStream" uid="uid://dq74wskx5iktv" path="res://environment/audio/IntroMusic.mp3" id="2_u8mak"]
 [ext_resource type="AudioStream" uid="uid://dcnlx0tgfnxcr" path="res://environment/audio/LevelMusicPad.mp3" id="3_qurjl"]
 [ext_resource type="AudioStream" uid="uid://cf713h0iw03u3" path="res://environment/audio/thoughts_song.mp3" id="4_50vwq"]
-[ext_resource type="AudioStream" uid="uid://l81s8inkwvv6" path="res://environment/audio/LevelMusic2.mp3" id="4_r5cyf"]
-[ext_resource type="AudioStream" uid="uid://dfwj32nleexau" path="res://environment/audio/LevelMusic3.mp3" id="5_41682"]
-[ext_resource type="AudioStream" uid="uid://hy85knfo70t2" path="res://environment/audio/LevelMusic4.mp3" id="6_metoa"]
+[ext_resource type="AudioStream" uid="uid://dq405pxeor8wm" path="res://environment/audio/LevelMusicStrings.mp3" id="4_qurjl"]
+[ext_resource type="AudioStream" uid="uid://3s5y8w5eox1k" path="res://environment/audio/LevelMusicLead.mp3" id="5_r5cyf"]
+[ext_resource type="AudioStream" uid="uid://b6gagm2f2h7k8" path="res://environment/audio/LevelMusicBass.mp3" id="6_41682"]
 
 [node name="MusicManager" type="Node"]
 script = ExtResource("1_fuivf")
-track_list = Array[AudioStream]([ExtResource("2_u8mak"), ExtResource("3_qurjl"), ExtResource("4_r5cyf"), ExtResource("5_41682"), ExtResource("6_metoa"), ExtResource("4_50vwq")])
-track_durations = Array[float]([29.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+track_list = Array[Array]([[ExtResource("2_u8mak")], [ExtResource("3_qurjl"), ExtResource("4_qurjl"), ExtResource("5_r5cyf"), ExtResource("6_41682")], [ExtResource("4_50vwq")]])

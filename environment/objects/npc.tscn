@@ -37,6 +37,7 @@ dialogue_post_word = "a rock at the target over there, but I couldn't get it far
 [node name="AUD_gibberish" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2_mq8f1")
+volume_db = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -32)

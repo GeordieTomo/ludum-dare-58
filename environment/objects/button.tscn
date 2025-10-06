@@ -72,5 +72,6 @@ show_percentage = false
 unique_name_in_owner = true
 position = Vector2(721, -90)
 stream = ExtResource("6_et7hk")
+volume_db = 8.0
 attenuation = 1e-05
 max_polyphony = 10

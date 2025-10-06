@@ -1,120 +1,81 @@
+
 extends Node
 
-@export var track_list: Array[AudioStream]
-@export var track_durations: Array[float]
-@export var fade_duration: float = 2.0  # seconds for fade in/out
-@export var crossfade: bool = true      # if true, next track fades in while previous fades out
+@export var track_list : Array[Array]
 
-var current_index := 0
-var next_index := 0
-var audio_player_a: AudioStreamPlayer
-var audio_player_b: AudioStreamPlayer
-var fading := false
-var fade_time := 0.0
-var active_player: AudioStreamPlayer
-var next_player: AudioStreamPlayer
+@export var fade_speed : float = 1.5  # seconds per fade
+@export var crossfade_speed : float = 0.1  # crossfade speed between tracks
 
+var current_track_name : String = ""
+var current_layers : Array[AudioStreamPlayer] = []
+var target_volumes : Array[float] = []
 
-var music_vol_db = -12
+# For crossfading
+var fading_out_layers : Array[AudioStreamPlayer] = []
+var fading_out_volumes : Array[float] = []
+
+var current_index
+
+const max_vol : float = -6
 
 func _ready():
-	if track_list.is_empty():
-		push_warning("No tracks assigned to track_list.")
-		return
-  
-	audio_player_a = AudioStreamPlayer.new()
-	audio_player_b = AudioStreamPlayer.new()
-	add_child(audio_player_a)
-	add_child(audio_player_b)
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	set_process(true)
+	Events.play_track.connect(play_track)
+	Events.fade_layer_in.connect(fade_layer_in)
 
-	active_player = audio_player_a
-	next_player = audio_player_b
 
-	play_track(current_index)
+func play_track(index):
+	if index == current_index:
+		return  # Already playing
+
+	# Move current layers into fading out group
+	for player in current_layers:
+		fading_out_layers.append(player)
+		fading_out_volumes.append(player.volume_db)
+
+	current_layers.clear()
+	target_volumes.clear()
 	
-	Events.play_track.connect(start_specific_track)
+	current_index = index
+	var layers = track_list[index]
+
+	for i in layers.size():
+		var player = AudioStreamPlayer.new()
+		player.stream = layers[i]
+		player.volume_db = -80.0  # start silent
+		player.autoplay = false
+		add_child(player)
+		player.play()
+		current_layers.append(player)
+		target_volumes.append(-80.0)
+
+	print("Crossfading to track:", name)
 
 
-func play_track(index: int):
-	active_player.stream = track_list[index]
-	active_player.volume_db = -80  # start silent
-	active_player.play()
-	fade_in(active_player)
+
+func fade_layer_in(layer_index: int):
+	if layer_index >= 0 and layer_index < target_volumes.size():
+		target_volumes[layer_index] = max_vol  # 0 dB
 
 
-func fade_in(player: AudioStreamPlayer):
-	fading = true
-	fade_time = 0.0
-	player.volume_db = -80
+func fade_layer_out(layer_index: int):
+	if layer_index >= 0 and layer_index < target_volumes.size():
+		target_volumes[layer_index] = -80.0
 
 
 func _process(delta):
-	if not active_player.playing:
-		start_next_track()
-		return
-
-	if fading:
-		fade_time += delta
-		var t = fade_time / fade_duration
-		active_player.volume_db = lerp(-80, music_vol_db, t)
-		if t >= 1.0:
-			fading = false
-
-	get_length_of_stream(active_player.stream)
-
-	# When near the end of the current song, start fading to next
-	if active_player.get_playback_position() >= get_length_of_stream(active_player.stream) - fade_duration and not next_player.playing:
-		if current_index != 0 and current_index != 5:
-			start_specific_track(current_index)
-
-func get_length_of_stream(stream: AudioStream):
-	var index = track_list.find(stream)
-	if track_durations[index] != 0:
-		return track_durations[index]
-	return stream.get_length()
-
-func start_specific_track(index):
-	next_index = index
-	next_player.stream = track_list[next_index]
-	next_player.volume_db = -80
-	next_player.play()
-
-	var a = active_player
-	var b = next_player
-
-	await fade_tracks(a, b, fade_duration)
-
-	# swap roles
-	active_player.stop()
-	var temp = active_player
-	active_player = next_player
-	next_player = temp
-	current_index = next_index
+	# Fade in/out current track layers
+	for i in range(current_layers.size()):
+		var player = current_layers[i]
+		var target = target_volumes[i]
+		player.volume_db = lerp(player.volume_db, target, delta * fade_speed)
 	
-func start_next_track():
-	next_index = (current_index + 1) % track_list.size()
-	next_player.stream = track_list[next_index]
-	next_player.volume_db = -80
-	next_player.play()
-
-	var a = active_player
-	var b = next_player
-
-	await fade_tracks(a, b, fade_duration)
-
-	# swap roles
-	active_player.stop()
-	var temp = active_player
-	active_player = next_player
-	next_player = temp
-	current_index = next_index
-
-
-func fade_tracks(out_player: AudioStreamPlayer, in_player: AudioStreamPlayer, duration: float) -> void:
-	var t := 0.0
-	while t < duration:
-		t += get_process_delta_time()
-		var pct = clamp(t / duration, 0, 1)
-		out_player.volume_db = lerp(music_vol_db, -80, pct)
-		in_player.volume_db = lerp(-80, music_vol_db, pct)
-		await get_tree().process_frame
+	# Crossfade old track out
+	for i in range(fading_out_layers.size() - 1, -1, -1):
+		var player = fading_out_layers[i]
+		player.volume_db = lerp(player.volume_db, -80.0, delta * crossfade_speed)
+		if player.volume_db < -75.0:
+			player.queue_free()
+			fading_out_layers.remove_at(i)
+			fading_out_volumes.remove_at(i)

@@ -113,7 +113,7 @@ func check_on_ground():
 		fall()
 	if touching_ground:
 		last_grounded_pos.append(position)
-		if last_grounded_pos.size() > 40:
+		if last_grounded_pos.size() > 100:
 			last_grounded_pos.pop_front()
 	return touching_ground
 	
@@ -164,6 +164,7 @@ func process_y_level(delta):
 			falling = false
 			player_sprite.position = player_sprite_origin + Vector2(0, floating_y_offset)
 			position = last_grounded_pos[0]
+			last_grounded_pos.pop_front()
 			y_offset = 0.
 			
 	else:

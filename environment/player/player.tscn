@@ -134,6 +134,7 @@ max_polyphony = 10
 unique_name_in_owner = true
 position = Vector2(721, -90)
 stream = ExtResource("7_lj8ye")
+volume_db = 21.531
 attenuation = 1e-05
 max_polyphony = 10
 
@@ -141,6 +142,7 @@ max_polyphony = 10
 unique_name_in_owner = true
 position = Vector2(721, -90)
 stream = ExtResource("8_yrlv3")
+volume_db = 16.077
 attenuation = 1e-05
 max_polyphony = 10
 

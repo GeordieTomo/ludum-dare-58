@@ -13,3 +13,4 @@ signal new_scene_loaded
 signal hide_screen(slow: bool)
 
 signal play_track(index: int)
+signal fade_layer_in(index: int)
