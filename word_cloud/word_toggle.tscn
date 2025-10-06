@@ -1,30 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://cep348itqkp7x"]
+[gd_scene load_steps=6 format=3 uid="uid://cep348itqkp7x"]
 
+[ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="1_4nwfa"]
 [ext_resource type="Script" uid="uid://bq08i0m887r88" path="res://word_cloud/word_toggle.gd" id="1_e55ru"]
 [ext_resource type="Script" uid="uid://bma8tmfgbr2dg" path="res://word_cloud/follow_parent.gd" id="2_ve3n2"]
 [ext_resource type="Texture2D" uid="uid://dirwd8lw3tumj" path="res://textures/mouse_hint.svg" id="3_56iuh"]
 [ext_resource type="Script" uid="uid://evwj4x3hy7do" path="res://environment/objects/glow.gd" id="4_4nwfa"]
 
-[node name="WordToggle" type="MarginContainer"]
+[node name="WordToggle" type="HBoxContainer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 87.0
-offset_bottom = 31.0
+offset_left = -43.5
+offset_top = -15.5
+offset_right = 43.5
+offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_4nwfa")
 script = ExtResource("1_e55ru")
 
-[node name="WordToggleButton" type="Button" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="WordToggleButton" type="Button" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
 text = "Test Word"
 script = ExtResource("2_ve3n2")
 
-[node name="MouseHint" type="Control" parent="WordToggleButton"]
+[node name="MouseHint" type="Control" parent="MarginContainer/WordToggleButton"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
@@ -38,7 +49,7 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="TextureRect" type="Sprite2D" parent="WordToggleButton/MouseHint"]
+[node name="TextureRect" type="Sprite2D" parent="MarginContainer/WordToggleButton/MouseHint"]
 position = Vector2(88, 42)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_56iuh")
