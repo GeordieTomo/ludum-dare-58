@@ -11,6 +11,8 @@ var move_speed : float = 1.
 @export var jump_speed_evaluation_words : Array[Enums.AllWords] = []
 @export var light_evaluation_words : Array[Enums.AllWords] = []
 @onready var brainmoveAudio = %AUD_brainmove
+@onready var brainjumpAudio = %AUD_brainjump
+@onready var brainlandAudio = %AUD_brainland
 
 var jumping : bool = false
 var falling : bool = false
@@ -105,6 +107,7 @@ func can_jump() -> bool:
 func try_jump():
 	if can_jump():
 		jumping = true
+		brainjumpAudio.play()
 		y_velocity = - get_jump_height()
 
 func process_y_level(delta):
@@ -129,6 +132,7 @@ func process_y_level(delta):
 		player_sprite.position = player_sprite_origin + Vector2(0, floating_y_offset+ y_offset)
 		if y_offset >= 0.0 and y_velocity > 0.:
 			jumping = false
+			brainlandAudio.play()
 			player_sprite.position = player_sprite_origin + Vector2(0, floating_y_offset)
 
 	elif falling:
