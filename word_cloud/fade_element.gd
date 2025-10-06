@@ -28,7 +28,7 @@ func toggle_cloud():
 func hide_cloud():
 	fading = true # fade out
 	fade_speed = -abs(fade_speed)
-
+	
 
 func show_cloud():
 	fading = true

@@ -52,6 +52,7 @@ y_sort_enabled = true
 script = ExtResource("1_wedmw")
 start_unlocked_words = Array[int]([2, 0])
 start_cloud_hidden = true
+tutorial_complete = false
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_oslid")]
 follow_target = NodePath("../player")
