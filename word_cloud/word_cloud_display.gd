@@ -67,7 +67,8 @@ func word_toggled(toggled_on: bool, word_toggle : WordToggle):
 	if toggled_on:
 
 		word_toggle.get_parent().remove_child(word_toggle)
-		WordCloud.player_container.add_child(word_toggle)
+		if WordCloud.player_container != null:
+			WordCloud.player_container.add_child(word_toggle)
 		selectwordAudio.play()
 		
 		WordCloud.add_word_toggle(word_toggle)

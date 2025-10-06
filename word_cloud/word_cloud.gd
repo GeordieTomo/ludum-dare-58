@@ -35,8 +35,9 @@ func _input(event: InputEvent) -> void:
 func reload_selected_words():
 	print(selected_word_toggles)
 	for toggle : WordToggle in selected_word_toggles:
-		if not toggle.word_toggle_button.button_pressed:
-			toggle.toggle()
+		if toggle != null:
+			if not toggle.word_toggle_button.button_pressed:
+				toggle.toggle()
 
 func add_word_toggle(toggle: WordToggle):
 	if not selected_word_toggles.has(toggle):

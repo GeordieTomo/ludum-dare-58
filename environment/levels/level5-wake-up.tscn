@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://b74b42x7vmwh5" path="res://environment/objects/gate.tscn" id="5_wgknd"]
 [ext_resource type="Texture2D" uid="uid://b245a2h4sf4wj" path="res://textures/isometric_tilemap.png" id="6_d18yx"]
 [ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="7_0req3"]
-[ext_resource type="Script" uid="uid://begp3o20cmaw6" path="res://environment/levels/tile_map_collision.gd" id="8_byinq"]
+[ext_resource type="Script" path="res://environment/levels/tile_map_collision.gd" id="8_byinq"]
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="9_snd7g"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="10_glnp2"]
-[ext_resource type="Script" path="res://environment/levels/wake_up.gd" id="12_6suk6"]
+[ext_resource type="Script" uid="uid://f2yuo01m7yte" path="res://environment/levels/wake_up.gd" id="12_6suk6"]
 [ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="12_g2hbv"]
 [ext_resource type="PackedScene" uid="uid://kli53o0qe4tj" path="res://globals/level_music_layers.tscn" id="13_kigjq"]
 [ext_resource type="PackedScene" uid="uid://peqonrwd6amd" path="res://environment/levels/end-of-game.tscn" id="13_vcibj"]
@@ -54,7 +54,7 @@ y_sort_enabled = true
 
 [node name="level5Sequence_manager" type="Node" parent="."]
 script = ExtResource("1_6suk6")
-start_unlocked_words = Array[int]([0, 9, 2, 1])
+start_unlocked_words = Array[int]([0, 9, 2, 1, 8])
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_vcibj")]
 follow_target = NodePath("../player")

@@ -3,6 +3,8 @@ extends Node
 @export var starting_level : PackedScene
 var current_level  # TODO: make this dynamic
 
+var transitioning : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -21,12 +23,16 @@ func _ready():
 		add_scene(starting_level)
 	
 func handle_portal_entry(target_level: PackedScene):
+	if transitioning:
+		return
+	transitioning = true
 	await hide_screen()
 	current_level.queue_free()
 	add_scene(target_level)
 	Events.new_scene_loaded.emit()
 	await get_tree().create_timer(0.2).timeout
 	show_screen()
+	transitioning = false
 	
 func add_scene(target_level: PackedScene):
 	current_level = target_level.instantiate()
