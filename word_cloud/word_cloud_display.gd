@@ -62,6 +62,7 @@ func word_toggled(toggled_on: bool, word_toggle : WordToggle):
 		oldest_word_toggle.toggle()
 	
 	if toggled_on:
+
 		word_toggle.get_parent().remove_child(word_toggle)
 		WordCloud.player_container.add_child(word_toggle)
 		selectwordAudio.play()

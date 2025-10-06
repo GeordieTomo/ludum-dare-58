@@ -1,0 +1,101 @@
+[gd_scene load_steps=16 format=4 uid="uid://bnpwree7r2j2x"]
+
+[ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_6suk6"]
+[ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_vcibj"]
+[ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="3_kigjq"]
+[ext_resource type="PackedScene" uid="uid://b74b42x7vmwh5" path="res://environment/objects/gate.tscn" id="5_wgknd"]
+[ext_resource type="Texture2D" uid="uid://b245a2h4sf4wj" path="res://textures/isometric_tilemap.png" id="6_d18yx"]
+[ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="7_0req3"]
+[ext_resource type="Script" path="res://environment/levels/tile_map_collision.gd" id="8_byinq"]
+[ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="9_snd7g"]
+[ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="10_glnp2"]
+[ext_resource type="Script" uid="uid://f2yuo01m7yte" path="res://environment/levels/wake_up.gd" id="12_6suk6"]
+[ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="12_g2hbv"]
+[ext_resource type="PackedScene" uid="uid://peqonrwd6amd" path="res://environment/levels/end-of-game.tscn" id="13_vcibj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7m88"]
+texture = ExtResource("6_d18yx")
+texture_region_size = Vector2i(80, 80)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -20)
+1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, -20, -40, 0, 0, 20, 40, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_duop6"]
+texture = ExtResource("7_0req3")
+texture_region_size = Vector2i(80, 80)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -20)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -20, -40, 0, 0, 20, 40, 0)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -20)
+1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, -20, -40, 0, 0, 20, 40, 0)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -20)
+2:0/0/z_index = 1
+2:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(40, 0, 0, -20, -40, 40, 0, 60)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -20)
+3:0/0/z_index = 1
+3:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, -20, -40, 0, 0, 60, 40, 40)
+
+[sub_resource type="TileSet" id="TileSet_duop6"]
+tile_shape = 1
+tile_size = Vector2i(80, 40)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 7
+physics_layer_1/collision_layer = 8
+physics_layer_1/collision_mask = 8
+sources/5 = SubResource("TileSetAtlasSource_duop6")
+sources/0 = SubResource("TileSetAtlasSource_h7m88")
+
+[node name="Level5" type="Node2D"]
+y_sort_enabled = true
+
+[node name="level5Sequence_manager" type="Node" parent="."]
+script = ExtResource("1_6suk6")
+start_unlocked_words = Array[int]([0, 9, 2, 1])
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_vcibj")]
+follow_target = NodePath("../player")
+
+[node name="player" parent="." groups=["player"] instance=ExtResource("3_kigjq")]
+z_index = 3
+position = Vector2(-1402, 626)
+collision_layer = 2
+collision_mask = 3
+
+[node name="Gate" parent="." node_paths=PackedStringArray("connected_button") instance=ExtResource("5_wgknd")]
+position = Vector2(1119, -680)
+connected_button = NodePath("../Button")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+modulate = Color(0.5931336, 0.59313357, 0.59313357, 1)
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD4/wcAAAABAAAAAAD3/wkAAAABAAAAAAD5/woAAAABAAAAAAD4/wsAAAABAAAAAAD4/wwAAAABAAAAAADt/x4AAAABAAAAAADu/xwAAAABAAAAAADt/x0AAAABAAAAAADu/x4AAAABAAAAAADt/x8AAAABAAAAAADu/yAAAAABAAAAAADv/xYAAAABAAAAAADu/xcAAAABAAAAAADv/xgAAAABAAAAAADv/xwAAAABAAAAAADu/x0AAAABAAAAAADv/x4AAAABAAAAAADu/x8AAAABAAAAAADv/xUAAAABAAAAAADw/xYAAAABAAAAAADv/xkAAAABAAAAAADw/xoAAAABAAAAAADv/xsAAAABAAAAAADw/xMAAAABAAAAAADx/xQAAAABAAAAAADw/xcAAAABAAAAAADx/xgAAAABAAAAAADw/xsAAAABAAAAAADx/xwAAAABAAAAAADy/xAAAAABAAAAAADx/xEAAAABAAAAAADx/xUAAAABAAAAAADy/xYAAAABAAAAAADy/xoAAAABAAAAAADx/x0AAAABAAAAAADy/x4AAAABAAAAAADz/w4AAAABAAAAAADy/w8AAAABAAAAAADz/xAAAAABAAAAAADy/xMAAAABAAAAAADz/xQAAAABAAAAAADy/xUAAAABAAAAAADy/xsAAAABAAAAAADz/xwAAAABAAAAAADz/x4AAAABAAAAAADy/x8AAAABAAAAAADz/w0AAAABAAAAAAD0/w4AAAABAAAAAAD0/xIAAAABAAAAAAD0/xYAAAABAAAAAAD0/xoAAAABAAAAAADz/x0AAAABAAAAAAD1/xAAAAABAAAAAAD0/xEAAAABAAAAAAD1/xQAAAABAAAAAAD0/xcAAAABAAAAAAD1/xgAAAABAAAAAAD2/w4AAAABAAAAAAD1/w8AAAABAAAAAAD2/xIAAAABAAAAAAD1/xUAAAABAAAAAAD2/xYAAAABAAAAAAD2/xgAAAABAAAAAAD1/xkAAAABAAAAAAD2/xMAAAABAAAAAAD3/xQAAAABAAAAAAD3/xYAAAABAAAAAAD3/xUAAAABAAAAAADz/xUAAAABAAAAAADy/xIAAAABAAAAAAD1/xEAAAABAAAAAAD1/xwAAAABAAAAAAD1/x0AAAABAAAAAAD2/xwAAAABAAAAAAD2/xsAAAABAAAAAAD3/xoAAAABAAAAAAD3/xkAAAABAAAAAAD4/xgAAAABAAAAAAD4/xcAAAABAAAAAAD0/x8AAAABAAAAAAD0/yAAAAABAAAAAADz/yEAAAABAAAAAADz/yAAAAABAAAAAADz/wwAAAABAAAAAADy/wsAAAABAAAAAADy/wwAAAABAAAAAADx/w0AAAABAAAAAADx/w4AAAABAAAAAADw/w8AAAABAAAAAADv/xEAAAABAAAAAADu/xMAAAABAAAAAADu/xQAAAABAAAAAADt/xUAAAABAAAAAADu/xYAAAABAAAAAADw/xIAAAABAAAAAAD3/xAAAAABAAAAAAD3/w8AAAABAAAAAAD0/w0AAAABAAAAAAD1/wwAAAABAAAAAAD1/wsAAAABAAAAAAD4/xAAAAABAAAAAAD4/xEAAAABAAAAAAD5/xAAAAABAAAAAAD6/w4AAAABAAAAAAD7/wwAAAABAAAAAAD0/wkAAAABAAAAAAD1/woAAAABAAAAAAD1/wgAAAABAAAAAAD2/wUAAAABAAAAAAD3/wMAAAABAAAAAAD7/wsAAAABAAAAAAD8/woAAAABAAAAAADz/xsAAAABAAAAAAD1/x4AAAABAAAAAAD5/xYAAAABAAAAAAD0/xkAAAABAAAAAAD5/x4AAAABAAAAAAD7/xcAAAABAAAAAAD8/xEAAAABAAAAAADy/wQAAAABAAAAAADv/wMAAAABAAAAAADu/woAAAABAAAAAADx/ykAAAABAAAAAAD1/yUAAAABAAAAAADv/ykAAAABAAAAAADv/yMAAAABAAAAAADs/yMAAAABAAAAAADr/xUAAAABAAAAAADs/wsAAAABAAAAAADs/w8AAAABAAAAAADx/woAAAABAAAAAADx/yIAAAABAAAAAADs/xwAAAABAAAAAADs/xgAAAABAAAAAADr/yEAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_duop6")
+script = ExtResource("8_byinq")
+
+[node name="GradientBackground" parent="." instance=ExtResource("9_snd7g")]
+
+[node name="NPC" parent="." instance=ExtResource("10_glnp2")]
+position = Vector2(-841, 184)
+colour = Color(0.9712543, 0.12727723, 0.99999994, 1)
+dialogue_pre_word = "In the "
+word_to_pickup = 10
+dialogue_post_word = "of recent events, I'm not sure where to go from here."
+
+[node name="NPC2" parent="." instance=ExtResource("10_glnp2")]
+position = Vector2(-530, 466)
+colour = Color(0.9712543, 0.12727723, 0.99999994, 1)
+dialogue_pre_word = "Just gotta keep pushing on. It's only"
+word_to_pickup = 11
+dialogue_post_word = "from here."
+
+[node name="Button" parent="." instance=ExtResource("12_g2hbv")]
+position = Vector2(444, -418)
+timeout = 7.0
+
+[node name="WakeUp" type="Node" parent="."]
+script = ExtResource("12_6suk6")
+wake_up_evaluation_words = Array[int]([10, 11])
+end_game_scene = ExtResource("13_vcibj")

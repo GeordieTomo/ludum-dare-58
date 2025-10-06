@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 
 @export var words_that_can_be_used : Array[Enums.AllWords] = []
 @export var words_that_are_selected : Dictionary = {}
@@ -13,8 +13,13 @@ signal selected_words_changed
 signal available_words_changed
 signal available_word_added(new_word: Enums.AllWords)
 @onready var thought_cloud: Control = %ThoughtCloud
+@onready var wasd_hint = %WASDHint
+
+var end_game = false : set = _set_end_game
 
 var player_container : Control
+
+var tutorial_complete : bool = false
 
 func _ready():
 	add_words_to_selection_dictionary()
@@ -22,6 +27,19 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("cloud"):
 		toggle_cloud()
+
+func _set_end_game(new_val):
+	if new_val:
+		end_game = true
+		lock_word_cloud()
+	else:
+		end_game = false
+
+func is_end_game():
+	if end_game:
+		return 1.
+	else:
+		return 0.
 
 func add_words_to_selection_dictionary():
 	for word in Enums.AllWords.values():
@@ -34,6 +52,13 @@ func set_word_selected_state(word: Enums.AllWords, new_state: bool):
 	words_that_are_selected[word] = new_state
 	print_debug(Enums.get_string_from_enum(word), ": ", new_state)
 	update_words_selected()
+
+	if not tutorial_complete:
+		print("tutorial not complete")
+		if word == Enums.AllWords.Move:
+			print("Showing WASD")
+			show_WASD_hint()
+	
 	
 func update_words_selected():
 	selected_words_changed.emit()
@@ -43,7 +68,8 @@ func add_available_word(word: Enums.AllWords):
 		words_that_can_be_used.append(word)
 	available_word_added.emit(word)
 	update_words_available()
-	show_cloud()
+	if (tutorial_complete):
+		show_cloud()
 
 func add_available_words(words: Array[Enums.AllWords]):
 	for word in words:
@@ -84,6 +110,20 @@ func toggle_cloud():
 
 func hide_cloud():
 	thought_cloud.hide_cloud()
-	
+	hide_WASD_hint()
+
+func show_WASD_hint():
+	wasd_hint.visible = true
+
+func hide_WASD_hint():
+	wasd_hint.visible = false
+
+
 func show_cloud():
 	thought_cloud.show_cloud()
+
+func lock_word_cloud():
+	hide()
+	
+func unlock_word_cloud():
+	show()

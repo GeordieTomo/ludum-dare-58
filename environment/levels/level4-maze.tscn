@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_tp48l"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_0ig38"]
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="3_eonpd"]
-[ext_resource type="PackedScene" uid="uid://dsh4idvm6281c" path="res://environment/world_environment.tscn" id="4_4g22u"]
 [ext_resource type="PackedScene" uid="uid://b74b42x7vmwh5" path="res://environment/objects/gate.tscn" id="5_eonpd"]
 [ext_resource type="Texture2D" uid="uid://b245a2h4sf4wj" path="res://textures/isometric_tilemap.png" id="5_xk8qk"]
 [ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="6_3ieqk"]
@@ -12,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="9_fetmr"]
 [ext_resource type="PackedScene" uid="uid://bjnb4yh033w51" path="res://environment/objects/portal.tscn" id="10_m0sgv"]
 [ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="11_0ig38"]
+[ext_resource type="PackedScene" uid="uid://bnpwree7r2j2x" path="res://environment/levels/level5-wake-up.tscn" id="12_4g22u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7m88"]
 texture = ExtResource("5_xk8qk")
@@ -64,8 +64,6 @@ position = Vector2(-1402, 626)
 collision_layer = 2
 collision_mask = 3
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("4_4g22u")]
-
 [node name="Gate" parent="." node_paths=PackedStringArray("connected_button") instance=ExtResource("5_eonpd")]
 position = Vector2(1119, -680)
 connected_button = NodePath("../Button")
@@ -87,6 +85,7 @@ dialogue_post_word = ""
 
 [node name="Portal" parent="." instance=ExtResource("10_m0sgv")]
 position = Vector2(1700, -1163)
+target_level = ExtResource("12_4g22u")
 
 [node name="Button" parent="." instance=ExtResource("11_0ig38")]
 position = Vector2(444, -418)

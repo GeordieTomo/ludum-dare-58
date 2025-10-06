@@ -1,0 +1,230 @@
+[gd_scene load_steps=28 format=3 uid="uid://peqonrwd6amd"]
+
+[ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_admos"]
+[ext_resource type="Texture2D" uid="uid://yu1ntwtg7661" path="res://textures/shadow.png" id="2_jowm2"]
+[ext_resource type="Script" uid="uid://cpha1mqldl436" path="res://environment/levels/floating-player.gd" id="2_s3fri"]
+[ext_resource type="Texture2D" uid="uid://c3txes07pbl77" path="res://textures/BrainSprite.png" id="3_admos"]
+[ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="4_s3fri"]
+[ext_resource type="Script" uid="uid://bn6p8vlrptyqq" path="res://environment/player/circle_children.gd" id="5_4qirt"]
+[ext_resource type="AudioStream" uid="uid://cr2nyoeepdnd2" path="res://environment/audio/BrainMove.mp3" id="6_8yfrj"]
+[ext_resource type="Texture2D" uid="uid://ber04kw2wjdub" path="res://textures/light.svg" id="7_bvpp3"]
+[ext_resource type="Shader" uid="uid://c8q8p3jituvbh" path="res://environment/background/swirl_shader.gdshader" id="10_4qirt"]
+[ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="10_gy4bf"]
+[ext_resource type="Texture2D" uid="uid://dsyb5ik4vhml1" path="res://textures/CloudsBack.png" id="11_8yfrj"]
+[ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="11_wkskl"]
+[ext_resource type="Texture2D" uid="uid://dqekt4w1qypm5" path="res://textures/CloudsMid.png" id="12_bvpp3"]
+[ext_resource type="Texture2D" uid="uid://bgm4vlxpoui2c" path="res://textures/CloudsFore.png" id="13_x50on"]
+[ext_resource type="Script" uid="uid://8xxpl1t1v3e5" path="res://environment/levels/end-of-game-sequence.gd" id="16_8yfrj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56k0q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p2tcf"]
+radius = 1.0
+
+[sub_resource type="Curve" id="Curve_admos"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_r3nbb"]
+curve = SubResource("Curve_admos")
+
+[sub_resource type="Curve" id="Curve_s3fri"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.502809, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ann7d"]
+curve = SubResource("Curve_s3fri")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4qirt"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(600, 350, 1)
+angle_min = 1.0728835e-05
+angle_max = 720.0
+initial_velocity_max = 58.379997
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 27.909998
+tangential_accel_min = -5.0800023
+tangential_accel_max = 25.879997
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_ann7d")
+alpha_curve = SubResource("CurveTexture_r3nbb")
+turbulence_enabled = true
+turbulence_noise_scale = 4.629
+
+[sub_resource type="Gradient" id="Gradient_duop6"]
+offsets = PackedFloat32Array(0, 0.7459893, 1)
+colors = PackedColorArray(0.14754698, 0.0716682, 0.2362208, 1, 0.12333051, 0.029379053, 0.18752009, 1, 0.17591879, 0.05329238, 0.25899532, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lh7i5"]
+gradient = SubResource("Gradient_duop6")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmuyk"]
+shader = ExtResource("10_4qirt")
+shader_parameter/time_speed = 1.0
+shader_parameter/scale = 3.0
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(1, 1, 1, 1)
+shader_parameter/freq = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qc8ta"]
+shader = ExtResource("10_4qirt")
+shader_parameter/time_speed = 1.0
+shader_parameter/scale = 3.0
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(1, 1, 1, 1)
+shader_parameter/freq = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6oic"]
+shader = ExtResource("10_4qirt")
+shader_parameter/time_speed = 1.0
+shader_parameter/scale = 3.25700015144762
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(1, 1, 1, 1)
+shader_parameter/freq = 1.0
+
+[node name="EndOfGame" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_admos")]
+follow_target = NodePath("../player")
+
+[node name="player" type="CharacterBody2D" parent="." groups=["player"]]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(-1348, 395)
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("2_s3fri")
+
+[node name="Shadow" type="Sprite2D" parent="player"]
+modulate = Color(1, 1, 1, 0.11372549)
+z_index = -1
+y_sort_enabled = true
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_jowm2")
+
+[node name="Player" type="Sprite2D" parent="player"]
+unique_name_in_owner = true
+y_sort_enabled = true
+position = Vector2(0, -35)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_admos")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource("CircleShape2D_56k0q")
+
+[node name="GroundDetector" type="Area2D" parent="player"]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/GroundDetector"]
+shape = SubResource("CircleShape2D_p2tcf")
+
+[node name="WordContainer" type="Control" parent="player"]
+unique_name_in_owner = true
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_top = -36.0
+offset_bottom = -36.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_s3fri")
+script = ExtResource("5_4qirt")
+radius = 60.0
+
+[node name="AUD_brainmove" type="AudioStreamPlayer2D" parent="player"]
+unique_name_in_owner = true
+position = Vector2(721, -90)
+stream = ExtResource("6_8yfrj")
+volume_db = -80.0
+autoplay = true
+attenuation = 1e-05
+max_polyphony = 10
+
+[node name="PointLight2D" type="PointLight2D" parent="player"]
+unique_name_in_owner = true
+texture = ExtResource("7_bvpp3")
+texture_scale = 4.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="player"]
+z_index = 10
+position = Vector2(581, 327)
+amount = 100
+lifetime = 10.0
+preprocess = 10.0
+process_material = SubResource("ParticleProcessMaterial_4qirt")
+
+[node name="GradientBackground" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="MarginContainer" type="MarginContainer" parent="GradientBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureBackground" type="TextureRect" parent="GradientBackground/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("GradientTexture2D_lh7i5")
+
+[node name="TextureBackground2" type="TextureRect" parent="GradientBackground/MarginContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.49411765)
+material = SubResource("ShaderMaterial_mmuyk")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("11_8yfrj")
+expand_mode = 1
+
+[node name="TextureBackground3" type="TextureRect" parent="GradientBackground/MarginContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.49411765)
+material = SubResource("ShaderMaterial_qc8ta")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("12_bvpp3")
+expand_mode = 1
+
+[node name="TextureBackground4" type="TextureRect" parent="GradientBackground/MarginContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.49411765)
+material = SubResource("ShaderMaterial_k6oic")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("13_x50on")
+expand_mode = 1
+
+[node name="NPC" parent="." instance=ExtResource("10_gy4bf")]
+position = Vector2(-1062, 342)
+colour = Color(0.9712543, 0.12727723, 0.99999994, 1)
+auto_trigger = true
+dialogue_pre_word = "Wow, you did it, you made it out alive!"
+trigger_word_pickup = false
+dialogue_post_word = ""
+
+[node name="NPC2" parent="." instance=ExtResource("10_gy4bf")]
+position = Vector2(-712, 456)
+colour = Color(0.9712543, 0.12727723, 0.99999994, 1)
+auto_trigger = true
+dialogue_pre_word = "Thanks for playing!"
+trigger_word_pickup = false
+dialogue_post_word = ""
+
+[node name="Button" parent="." instance=ExtResource("11_wkskl")]
+position = Vector2(444, -418)
+timeout = 7.0
+
+[node name="HideScreen" type="Node" parent="."]
+script = ExtResource("16_8yfrj")

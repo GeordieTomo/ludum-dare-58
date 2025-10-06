@@ -3,3 +3,5 @@
 extends Node
 
 signal entered_portal(new_scene_to_load : PackedScene)
+
+signal hide_screen(slow: bool)

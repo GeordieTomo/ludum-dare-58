@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://itbv58flc0wq"]
 
 [ext_resource type="Script" uid="uid://cggc0p4jty8g4" path="res://globals/level_manager.gd" id="1_2mqgi"]
-[ext_resource type="Script" uid="uid://b83oktrtsudot" path="res://globals/level_transition_curtain.gd" id="2_ogmsl"]
+[ext_resource type="Script" path="res://globals/level_transition_curtain.gd" id="2_ogmsl"]
 [ext_resource type="PackedScene" uid="uid://chub30rsm2ukr" path="res://environment/levels/level0.tscn" id="3_ogmsl"]
 
 [sub_resource type="Animation" id="Animation_2mqgi"]
@@ -60,6 +60,7 @@ _data = {
 
 [node name="level_manager" type="Node"]
 script = ExtResource("1_2mqgi")
+starting_level = ExtResource("3_ogmsl")
 
 [node name="level_transition_canvas" type="CanvasLayer" parent="."]
 layer = 100
@@ -76,9 +77,8 @@ color = Color(0, 0, 0, 0)
 script = ExtResource("2_ogmsl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="level_transition_canvas/level_transition_curtain"]
+unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_tpf72")
 }
-
-[node name="Level0" parent="." instance=ExtResource("3_ogmsl")]

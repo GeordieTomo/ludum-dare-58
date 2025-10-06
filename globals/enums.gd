@@ -10,7 +10,9 @@ enum AllWords {
 	Grab,
 	Throw,
 	Jump,
-	Talk
+	Talk,
+	Wake,
+	Up
 }
 
 func get_string_from_enum(word : AllWords) -> String:

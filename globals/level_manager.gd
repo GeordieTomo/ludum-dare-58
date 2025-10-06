@@ -7,6 +7,7 @@ var current_level  # TODO: make this dynamic
 func _ready():
 	
 	Events.entered_portal.connect(handle_portal_entry)
+	Events.hide_screen.connect(hide_screen)
 	
 	var children = get_children()
 	var scene_exists = false
@@ -20,12 +21,22 @@ func _ready():
 		add_scene(starting_level)
 	
 func handle_portal_entry(target_level: PackedScene):
-	await $level_transition_canvas/level_transition_curtain.fade_in()
+	await hide_screen()
 	current_level.queue_free()
 	add_scene(target_level)
 	await get_tree().create_timer(0.2).timeout
-	$level_transition_canvas/level_transition_curtain.fade_out()
-
+	show_screen()
+	
 func add_scene(target_level: PackedScene):
 	current_level = target_level.instantiate()
 	add_child(current_level)
+
+func hide_screen(slow = false):
+	if slow:
+		%AnimationPlayer.speed_scale = 0.01
+	else:
+		%AnimationPlayer.speed_scale = 1.
+	await $level_transition_canvas/level_transition_curtain.fade_in()
+
+func show_screen():
+	await $level_transition_canvas/level_transition_curtain.fade_out()
