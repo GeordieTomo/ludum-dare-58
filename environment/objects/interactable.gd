@@ -6,6 +6,8 @@ var player_in_range = false
 
 func _ready() -> void:
 	player_exited()
+	area_entered.connect(_body_entered)
+	area_exited.connect(_body_exited)
 	body_entered.connect(_body_entered)
 	body_exited.connect(_body_exited)
 	WordCloud.selected_words_changed.connect(update_text_hint)
