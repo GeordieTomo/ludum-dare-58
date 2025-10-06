@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8qtmupowsosw"]
+[gd_scene load_steps=16 format=3 uid="uid://c8qtmupowsosw"]
 
 [ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="1_lfg12"]
 [ext_resource type="Script" uid="uid://bwo8g75o1b1aw" path="res://word_cloud/word_cloud.gd" id="1_y24nb"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://clx3v0d7w6snj" path="res://word_cloud/unlock_display.gd" id="5_bod8x"]
 [ext_resource type="Texture2D" uid="uid://vp1uveiujsld" path="res://textures/Cloud2.png" id="5_e8b8q"]
 [ext_resource type="Texture2D" uid="uid://brlkc7aea6jt7" path="res://textures/Cloud3.png" id="6_uofxs"]
+[ext_resource type="Script" uid="uid://bn6p8vlrptyqq" path="res://environment/player/circle_children.gd" id="8_3nbf1"]
 [ext_resource type="AudioStream" uid="uid://4v6yqsfnkhbf" path="res://environment/audio/SelectThought.mp3" id="12_6wwf1"]
 [ext_resource type="AudioStream" uid="uid://447v8mg0tjoj" path="res://environment/audio/DeselectThought.mp3" id="13_3nbf1"]
 
@@ -143,11 +144,13 @@ offset_right = 280.0
 offset_bottom = 150.0
 mouse_filter = 2
 
-[node name="AvailableWordContainer" type="HBoxContainer" parent="MarginContainer/ThoughtCloud/MarginContainer"]
+[node name="AvailableWordContainer" type="Control" parent="MarginContainer/ThoughtCloud/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("8_3nbf1")
+x_scale = 2.0
 
 [node name="WordDisplay" type="VBoxContainer" parent="MarginContainer" node_paths=PackedStringArray("selectwordAudio", "deselectAudio")]
 layout_mode = 2
@@ -159,7 +162,7 @@ word_ui_template = ExtResource("3_widb8")
 selectwordAudio = NodePath("../../AUD_selectword")
 deselectAudio = NodePath("../../AUD_deselectword")
 
-[node name="SelectedWordContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="SelectedWordContainer" type="Control" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4

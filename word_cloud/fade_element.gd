@@ -11,6 +11,7 @@ var fade_speed := 2.0
 
 func _process(delta):
 	if fading:
+		show()
 		margin_container.modulate.a = clamp(margin_container.modulate.a + fade_speed * delta, 0.0, 1.0)
 		texture_rect.modulate.a = clamp(texture_rect.modulate.a + fade_speed * delta, 0.0, 1.0)
 		texture_rect_2.modulate.a = clamp(texture_rect_2.modulate.a + (fade_speed+0.5) * delta, 0.0, 1.0)
@@ -18,7 +19,10 @@ func _process(delta):
 		texture_rect_4.modulate.a = clamp(texture_rect_4.modulate.a + (fade_speed+1.5) * delta, 0.0, 1.0)
 		if texture_rect.modulate.a == 1.0 or texture_rect_4.modulate.a == 0.0:
 			fading = false
-
+			if texture_rect.modulate.a == 0.0:
+				# stop buttons being pressed
+				hide()
+				
 func toggle_cloud():
 	if texture_rect_4.modulate.a > 0.8:
 		hide_cloud()
