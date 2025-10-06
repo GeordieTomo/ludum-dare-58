@@ -58,6 +58,7 @@ shape = SubResource("CircleShape2D_malo4")
 
 [node name="CollisionDetector" type="CharacterBody2D" parent="." groups=["rock"]]
 unique_name_in_owner = true
+collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionDetector"]
