@@ -24,6 +24,7 @@ func handle_portal_entry(target_level: PackedScene):
 	await hide_screen()
 	current_level.queue_free()
 	add_scene(target_level)
+	Events.new_scene_loaded.emit()
 	await get_tree().create_timer(0.2).timeout
 	show_screen()
 	

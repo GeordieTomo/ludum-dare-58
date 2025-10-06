@@ -18,9 +18,11 @@ func _ready():
 	WordCloud.available_words_changed.connect(update_word_ui)
 
 func deselect_all_words():
+	WordCloud.scene_transition = true
 	for word in word_toggle_objects:
 		if word.word_toggle_button.button_pressed:
 			word.toggle()
+	WordCloud.scene_transition = false
 
 func instantiate_word_ui():
 	for word in WordCloud.words_that_can_be_used:
@@ -60,6 +62,7 @@ func word_toggled(toggled_on: bool, word_toggle : WordToggle):
 		if oldest_word_toggle.word_value == Enums.AllWords.See:
 			oldest_word_toggle = WordCloud.player_container.get_child(1)
 		oldest_word_toggle.toggle()
+		WordCloud.remove_word_toggle(oldest_word_toggle)
 	
 	if toggled_on:
 
@@ -67,7 +70,11 @@ func word_toggled(toggled_on: bool, word_toggle : WordToggle):
 		WordCloud.player_container.add_child(word_toggle)
 		selectwordAudio.play()
 		
+		WordCloud.add_word_toggle(word_toggle)
+		
 	else:
 		word_toggle.get_parent().remove_child(word_toggle)
 		available_word_container.add_child(word_toggle)
 		deselectAudio.play()
+		
+		WordCloud.remove_word_toggle(word_toggle)
