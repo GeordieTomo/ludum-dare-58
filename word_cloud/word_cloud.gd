@@ -15,6 +15,7 @@ signal available_words_changed
 signal available_word_added(new_word: Enums.AllWords)
 @onready var thought_cloud: Control = %ThoughtCloud
 @onready var wasd_hint = %WASDHint
+@onready var spaceto_jump_hint = %SpacetoJumpHint
 
 var end_game = false : set = _set_end_game
 
@@ -23,6 +24,8 @@ var player_container : Control
 var tutorial_complete : bool = false
 
 var scene_transition : bool = false
+
+var player_has_jumped : bool = false
 
 func _ready():
 	add_words_to_selection_dictionary()
@@ -78,6 +81,13 @@ func set_word_selected_state(word: Enums.AllWords, new_state: bool):
 		if word == Enums.AllWords.Move:
 			print("Showing WASD")
 			show_WASD_hint()
+	
+	if not player_has_jumped:
+		if word == Enums.AllWords.Jump:
+			if new_state:
+				show_jump_hint()
+			else:
+				hide_jump_hint()
 	
 	
 func update_words_selected():
@@ -137,6 +147,12 @@ func show_WASD_hint():
 
 func hide_WASD_hint():
 	wasd_hint.visible = false
+	
+func show_jump_hint():
+	spaceto_jump_hint.visible = true
+
+func hide_jump_hint():
+	spaceto_jump_hint.visible = false
 
 func set_tutorial_complete():
 	tutorial_complete = true

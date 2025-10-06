@@ -225,6 +225,21 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SpacetoJumpHint" type="RichTextLabel" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[wave]Space[/wave] to jump"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AUD_selectword" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(721, -90)
 stream = ExtResource("13_3nbf1")

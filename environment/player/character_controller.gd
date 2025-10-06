@@ -122,6 +122,8 @@ func can_jump() -> bool:
 				
 func try_jump():
 	if can_jump():
+		WordCloud.player_has_jumped = true
+		WordCloud.hide_jump_hint()
 		jumping = true
 		brainjumpAudio.play()
 		y_velocity = - get_jump_height()
