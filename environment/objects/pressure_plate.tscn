@@ -7,10 +7,11 @@
 [ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="5_8mky1"]
 [ext_resource type="AudioStream" uid="uid://bbdrc44arulag" path="res://environment/audio/ButtonPress.mp3" id="6_0lmrg"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p5x08"]
-radius = 100.0
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_kuy1h"]
+points = PackedVector2Array(-32, -3, 0, 13, 32, -3, 0, -19)
 
 [node name="Pressure_Plate" type="Area2D"]
+z_index = 1
 y_sort_enabled = true
 collision_layer = 3
 collision_mask = 3
@@ -33,7 +34,7 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_24kin")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_p5x08")
+shape = SubResource("ConvexPolygonShape2D_kuy1h")
 
 [node name="InteractionHint" type="RichTextLabel" parent="."]
 unique_name_in_owner = true

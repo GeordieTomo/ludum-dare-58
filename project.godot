@@ -38,6 +38,7 @@ project/assembly_name="ludum-dare-58"
 [global_group]
 
 player=""
+rock=""
 
 [input]
 

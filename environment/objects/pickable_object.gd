@@ -19,13 +19,16 @@ var player = null
 
 @onready var interaction_hint = %InteractionHint
 @onready var sprite_glow : SpriteGlow = %Sprite2D
+@onready var ground_detector: Area2D = %GroundDetector
 
+var start_position
 
 func _ready():
 	player_exited()
 	body_entered.connect(_body_entered)
 	body_exited.connect(_body_exited)
 	WordCloud.selected_words_changed.connect(update_text_hint)
+	start_position = position
 
 func can_pickup_or_put_down() -> bool:
 	return WordCloud.evaluate_score(can_pickup_evaluation_words) > 0.
@@ -81,6 +84,10 @@ func follow_arc(delta):
 	throwing_lerp = clamp(throwing_lerp + delta, 0.0, 2.0)
 	global_position = global_position.lerp(target_throw_position, throwing_lerp)
 	rotation = lerpf(rotation, 0, throwing_lerp)
+	if throwing_lerp >= 2.0:
+		check_landed()
+		throwing = false
+	
 
 
 func _body_entered(body: Node2D):
@@ -113,3 +120,7 @@ func show_text_hint():
 func hide_text_hint():
 	interaction_hint.visible = false
 	sprite_glow.enable_glow(false)
+	
+func check_landed():
+	if ground_detector.get_overlapping_bodies().size() == 0:
+		position = start_position
