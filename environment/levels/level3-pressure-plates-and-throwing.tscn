@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="3_cqcg6"]
 [ext_resource type="Texture2D" uid="uid://b245a2h4sf4wj" path="res://textures/isometric_tilemap.png" id="5_rg4bk"]
 [ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="6_83cuf"]
-[ext_resource type="Script" path="res://environment/levels/tile_map_collision.gd" id="7_5jb1a"]
+[ext_resource type="Script" uid="uid://begp3o20cmaw6" path="res://environment/levels/tile_map_collision.gd" id="7_5jb1a"]
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="8_jtd2s"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="9_sn1sw"]
 [ext_resource type="PackedScene" uid="uid://bjnb4yh033w51" path="res://environment/objects/portal.tscn" id="10_y62oo"]
@@ -68,7 +68,7 @@ collision_mask = 3
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 modulate = Color(0.5931336, 0.59313357, 0.59313357, 1)
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD7/wUAAAABAAAAAAD7/wYAAAABAAAAAAD6/wcAAAABAAAAAAD6/wgAAAABAAAAAAD5/wkAAAABAAAAAAD9/wAAAAABAAAAAAD9/wEAAAABAAAAAAD9/wIAAAABAAAAAAD5/wUAAAABAAAAAAD5/wYAAAABAAAAAAD5/wcAAAABAAAAAAD6/wMAAAABAAAAAAD6/wQAAAABAAAAAAD6/wUAAAABAAAAAAD6/wYAAAABAAAAAAD7/wMAAAABAAAAAAD7/wQAAAABAAAAAAD7/wIAAAABAAAAAAD5/wgAAAABAAAAAAD4/wcAAAABAAAAAAD4/wkAAAABAAAAAAAFAPH/AAABAAAAAAAFAPL/AAABAAAAAAAGAO//AAABAAAAAAAGAPD/AAABAAAAAAAHAO7/AAABAAAAAAD+//v/AAABAAAAAAD///f/AAABAAAAAAD///j/AAABAAAAAAD///n/AAABAAAAAAD///r/AAABAAAAAAD///v/AAABAAAAAAD///z/AAABAAAAAAD///3/AAABAAAAAAAAAPX/AAABAAAAAAAAAPb/AAABAAAAAAAAAPf/AAABAAAAAAAAAPj/AAABAAAAAAAAAPn/AAABAAAAAAAAAPr/AAABAAAAAAAAAPv/AAABAAAAAAAAAPz/AAABAAAAAAABAPH/BQACAAAAAAABAPP/BQABAAAAAAABAPT/AAABAAAAAAABAPX/AAABAAAAAAABAPb/AAABAAAAAAABAPf/AAABAAAAAAABAPj/AAABAAAAAAABAPn/AAABAAAAAAABAPr/AAABAAAAAAABAPv/AAABAAAAAAABAPz/AAABAAAAAAACAO//AAABAAAAAAACAPD/AAABAAAAAAACAPH/AAABAAAAAAACAPL/BQACAAAAAAACAPP/BQACAAAAAAACAPT/BQABAAAAAAACAPX/BQABAAAAAAACAPb/AAABAAAAAAACAPf/AAABAAAAAAACAPj/AAABAAAAAAACAPn/AAABAAAAAAACAPr/AAABAAAAAAADAO3/AAABAAAAAAADAO7/AAABAAAAAAADAO//AAABAAAAAAADAPD/AAABAAAAAAADAPH/AAABAAAAAAADAPL/AAABAAAAAAADAPP/AAABAAAAAAADAPT/BQACAAAAAAADAPX/BQACAAAAAAADAPb/BQABAAAAAAADAPf/BQABAAAAAAADAPj/AAABAAAAAAAEAOv/AAABAAAAAAAEAOz/AAABAAAAAAAEAO3/AAABAAAAAAAEAO7/AAABAAAAAAAEAO//AAABAAAAAAAEAPD/AAABAAAAAAAEAPH/AAABAAAAAAAEAPL/AAABAAAAAAAEAPP/AAABAAAAAAAEAPT/AAABAAAAAAAFAOr/AAABAAAAAAAFAOv/AAABAAAAAAAFAOz/AAABAAAAAAAFAO3/AAABAAAAAAAFAO7/AAABAAAAAAAFAO//AAABAAAAAAAFAPD/AAABAAAAAAAGAOz/AAABAAAAAAAGAO3/AAABAAAAAAAGAO7/AAABAAAAAAD8/wQAAAABAAAAAAD8/wMAAAABAAAAAAD8/wIAAAABAAAAAAD7/wEAAAABAAAAAAD8/wAAAAABAAAAAAD8////AAABAAAAAAD8/wEAAAABAAAAAAD4/wgAAAABAAAAAAD3/wkAAAABAAAAAAD4/woAAAABAAAAAAD3/wsAAAABAAAAAAD3/woAAAABAAAAAAD5/woAAAABAAAAAAD4/wsAAAABAAAAAAD4/wwAAAABAAAAAAD+//T/AAABAAAAAAD///H/AAABAAAAAAD+//3/AAABAAAAAAD+//7/AAABAAAAAAD9////AAABAAAAAAACAP7/AAABAAAAAAADAPv/AAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAD7/wUAAAABAAAAAAD7/wYAAAABAAAAAAD6/wcAAAABAAAAAAD6/wgAAAABAAAAAAD5/wkAAAABAAAAAAD9/wAAAAABAAAAAAD9/wEAAAABAAAAAAD9/wIAAAABAAAAAAD5/wUAAAABAAAAAAD5/wYAAAABAAAAAAD5/wcAAAABAAAAAAD6/wMAAAABAAAAAAD6/wQAAAABAAAAAAD6/wUAAAABAAAAAAD6/wYAAAABAAAAAAD7/wMAAAABAAAAAAD7/wQAAAABAAAAAAD7/wIAAAABAAAAAAD5/wgAAAABAAAAAAD4/wcAAAABAAAAAAD4/wkAAAABAAAAAAAGAO//AAABAAAAAAAGAPD/AAABAAAAAAAHAO7/AAABAAAAAAD+//v/AAABAAAAAAD///f/AAABAAAAAAD///j/AAABAAAAAAD///n/AAABAAAAAAD///r/AAABAAAAAAD///v/AAABAAAAAAD///z/AAABAAAAAAD///3/AAABAAAAAAAAAPX/AAABAAAAAAAAAPb/AAABAAAAAAAAAPf/AAABAAAAAAAAAPj/AAABAAAAAAAAAPn/AAABAAAAAAAAAPr/AAABAAAAAAAAAPv/AAABAAAAAAAAAPz/AAABAAAAAAABAPT/AAABAAAAAAABAPX/AAABAAAAAAABAPb/AAABAAAAAAABAPf/AAABAAAAAAABAPj/AAABAAAAAAABAPn/AAABAAAAAAABAPr/AAABAAAAAAABAPv/AAABAAAAAAABAPz/AAABAAAAAAACAPb/AAABAAAAAAACAPf/AAABAAAAAAACAPj/AAABAAAAAAACAPn/AAABAAAAAAACAPr/AAABAAAAAAADAPj/AAABAAAAAAAFAOv/AAABAAAAAAAFAOz/AAABAAAAAAAFAO3/AAABAAAAAAAFAO7/AAABAAAAAAAFAO//AAABAAAAAAAGAOz/AAABAAAAAAAGAO3/AAABAAAAAAAGAO7/AAABAAAAAAD8/wQAAAABAAAAAAD8/wMAAAABAAAAAAD8/wIAAAABAAAAAAD7/wEAAAABAAAAAAD8/wAAAAABAAAAAAD8////AAABAAAAAAD8/wEAAAABAAAAAAD4/wgAAAABAAAAAAD3/wkAAAABAAAAAAD4/woAAAABAAAAAAD3/wsAAAABAAAAAAD3/woAAAABAAAAAAD5/woAAAABAAAAAAD4/wsAAAABAAAAAAD4/wwAAAABAAAAAAD+//T/AAABAAAAAAD///H/AAABAAAAAAD+//3/AAABAAAAAAD+//7/AAABAAAAAAD9////AAABAAAAAAACAP7/AAABAAAAAAADAPv/AAABAAAAAAAHAO3/AAABAAAAAAAIAOz/AAABAAAAAAAIAOv/AAABAAAAAAAJAOr/AAABAAAAAAAJAOn/AAABAAAAAAAKAOj/AAABAAAAAAAJAOf/AAABAAAAAAAJAOb/AAABAAAAAAAGAOn/AAABAAAAAAAGAOr/AAABAAAAAAAHAOj/AAABAAAAAAAHAOf/AAABAAAAAAAIAOb/AAABAAAAAAAIAOf/AAABAAAAAAAIAOj/AAABAAAAAAAHAOn/AAABAAAAAAAHAOr/AAABAAAAAAAIAOr/AAABAAAAAAAIAOn/AAABAAAAAAAJAOj/AAABAAAAAAAHAOv/AAABAAAAAAAHAOz/AAABAAAAAAAGAOv/AAABAAAAAAACAPX/AAABAAAAAAADAPT/AAABAAAAAAAEAPL/AAABAAAAAAAEAPH/AAABAAAAAAAFAPD/AAABAAAAAAADAPP/AAABAAAAAAAHAPD/AAABAAAAAAAHAO//AAABAAAAAAAIAO7/AAABAAAAAAAIAO3/AAABAAAAAAAJAOz/AAABAAAAAAAJAOv/AAABAAAAAAAKAOr/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_duop6")
 script = ExtResource("7_5jb1a")
 
@@ -88,21 +88,65 @@ dialogue_pre_word = "Sometimes I just wanna "
 dialogue_post_word = "it all away"
 
 [node name="Portal" parent="." instance=ExtResource("10_y62oo")]
-position = Vector2(458, -430)
+position = Vector2(708, -517)
 target_level = ExtResource("11_vpw06")
 
 [node name="PickableObject" parent="." instance=ExtResource("12_cqcg6")]
-position = Vector2(162, -106)
+position = Vector2(131, -90)
+
+[node name="PickableObject3" parent="." instance=ExtResource("12_cqcg6")]
+position = Vector2(182, -151)
+
+[node name="PickableObject4" parent="." instance=ExtResource("12_cqcg6")]
+position = Vector2(121, -207)
+
+[node name="PickableObject5" parent="." instance=ExtResource("12_cqcg6")]
+position = Vector2(12, -149)
 
 [node name="PickableObject2" parent="." instance=ExtResource("12_cqcg6")]
 position = Vector2(-289, 32)
 
 [node name="Pressure_Plate" parent="." instance=ExtResource("13_rnwqd")]
-position = Vector2(240, -2)
+position = Vector2(201, -22)
+collision_layer = 1
+collision_mask = 1
+
+[node name="Pressure_Plate3" parent="." instance=ExtResource("13_rnwqd")]
+position = Vector2(320, -82)
+collision_layer = 1
+collision_mask = 1
+
+[node name="Pressure_Plate4" parent="." instance=ExtResource("13_rnwqd")]
+position = Vector2(-119, -222)
+collision_layer = 1
+collision_mask = 1
+
+[node name="Pressure_Plate5" parent="." instance=ExtResource("13_rnwqd")]
+position = Vector2(0, -282)
+collision_layer = 1
+collision_mask = 1
 
 [node name="Pressure_Plate2" parent="." instance=ExtResource("13_rnwqd")]
 position = Vector2(-203, 19)
+collision_layer = 1
+collision_mask = 1
 
 [node name="Gate" parent="." node_paths=PackedStringArray("connected_button") instance=ExtResource("13_rg4bk")]
 position = Vector2(-120, -20)
 connected_button = NodePath("../Pressure_Plate2")
+
+[node name="Gate2" parent="." node_paths=PackedStringArray("connected_button") instance=ExtResource("13_rg4bk")]
+position = Vector2(281, -220)
+connected_button = NodePath("../Pressure_Plate")
+
+[node name="Gate3" parent="." node_paths=PackedStringArray("connected_button") instance=ExtResource("13_rg4bk")]
+position = Vector2(320, -239)
+connected_button = NodePath("../Pressure_Plate4")
+
+[node name="Gate4" parent="." node_paths=PackedStringArray("connected_button") instance=ExtResource("13_rg4bk")]
+position = Vector2(360, -259)
+connected_button = NodePath("../Pressure_Plate3")
+
+[node name="Gate5" parent="." node_paths=PackedStringArray("connected_button") instance=ExtResource("13_rg4bk")]
+position = Vector2(400, -279)
+connected_button = NodePath("../Pressure_Plate5")
