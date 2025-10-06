@@ -16,6 +16,7 @@ signal available_word_added(new_word: Enums.AllWords)
 @onready var thought_cloud: Control = %ThoughtCloud
 @onready var wasd_hint = %WASDHint
 @onready var spaceto_jump_hint = %SpacetoJumpHint
+@onready var throw_hint = %ThrowHint
 
 var end_game = false : set = _set_end_game
 
@@ -26,6 +27,8 @@ var tutorial_complete : bool = false
 var scene_transition : bool = false
 
 var player_has_jumped : bool = false
+
+var player_has_thrown : bool = false
 
 var player_has_opened: bool = false
 
@@ -91,6 +94,13 @@ func set_word_selected_state(word: Enums.AllWords, new_state: bool):
 				show_jump_hint()
 			else:
 				hide_jump_hint()
+				
+	if not player_has_thrown:
+		if word == Enums.AllWords.Throw:
+			if new_state:
+				show_throw_hint()
+			else:
+				hide_throw_hint()
 	
 	
 func update_words_selected():
@@ -156,6 +166,12 @@ func show_jump_hint():
 
 func hide_jump_hint():
 	spaceto_jump_hint.visible = false
+	
+func show_throw_hint():
+	throw_hint.visible = true
+
+func hide_throw_hint():
+	throw_hint.visible = false
 
 func set_tutorial_complete():
 	tutorial_complete = true

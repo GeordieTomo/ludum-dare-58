@@ -107,6 +107,8 @@ func pickup():
 
 func try_throw():
 	if can_throw():
+		WordCloud.player_has_thrown = true
+		WordCloud.hide_throw_hint()
 		player.held_object = null
 		throwing_lerp = 0.
 		player_holding = not player_holding
