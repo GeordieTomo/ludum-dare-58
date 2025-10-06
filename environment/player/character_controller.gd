@@ -39,6 +39,7 @@ var last_grounded_pos : Array[Vector2]
 
 var light_target = 0.5
 @onready var point_light_2d = %PointLight2D
+@onready var think_harder = %think_harder
 
 func _ready():
 	WordCloud.selected_words_changed.connect(update_scores)
@@ -49,8 +50,14 @@ func _ready():
 	
 func _process(delta):
 	
+	
+	var input = Input.get_vector("left", "right", "up", "down")
+	
+	if Input.is_action_just_pressed("cloud"):
+		hide_think_hint()
+	
 	if can_move():
-		var input = Input.get_vector("left", "right", "up", "down")
+
 		# Target velocity based on input
 		var target_velocity = input * move_speed * BASE_MOVE_SPEED * Vector2(1., 0.5)
 		
@@ -66,6 +73,9 @@ func _process(delta):
 			brainmoveAudio.volume_linear = 0
 		
 		move_and_slide()
+	else:
+		if input.length() > 0.:
+			show_think_hint()
 	
 	if can_jump():
 		if Input.is_action_just_pressed("jump"):
@@ -77,6 +87,12 @@ func _process(delta):
 		check_on_ground()
 	
 	update_light(delta)
+
+func show_think_hint():
+	think_harder.show()
+
+func hide_think_hint():
+	think_harder.hide()
 
 func update_light(delta):
 	if point_light_2d.texture_scale < light_target:

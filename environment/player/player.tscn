@@ -161,3 +161,13 @@ process_material = SubResource("ParticleProcessMaterial_lj8ye")
 amount = 20
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_a7c7e")
+
+[node name="think_harder" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -102.0
+offset_top = -103.0
+offset_right = 123.0
+offset_bottom = -80.0
+bbcode_enabled = true
+text = "[wave]try thinking a bit harder first"
