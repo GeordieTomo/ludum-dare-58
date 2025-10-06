@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://vp1uveiujsld" path="res://textures/Cloud2.png" id="5_e8b8q"]
 [ext_resource type="Texture2D" uid="uid://brlkc7aea6jt7" path="res://textures/Cloud3.png" id="6_uofxs"]
 [ext_resource type="Script" uid="uid://bn6p8vlrptyqq" path="res://environment/player/circle_children.gd" id="8_3nbf1"]
-[ext_resource type="AudioStream" uid="uid://4v6yqsfnkhbf" path="res://environment/audio/SelectThought.mp3" id="12_6wwf1"]
-[ext_resource type="AudioStream" uid="uid://447v8mg0tjoj" path="res://environment/audio/DeselectThought.mp3" id="13_3nbf1"]
+[ext_resource type="AudioStream" uid="uid://dssa4rsc2c8an" path="res://environment/audio/SelectRetimed.mp3" id="13_3nbf1"]
+[ext_resource type="AudioStream" uid="uid://ffaiv7iah42a" path="res://environment/audio/DeselectRetimed.mp3" id="14_aqlet"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bod8x"]
 content_margin_left = 4.0
@@ -227,12 +227,12 @@ vertical_alignment = 1
 
 [node name="AUD_selectword" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(721, -90)
-stream = ExtResource("12_6wwf1")
+stream = ExtResource("13_3nbf1")
 attenuation = 1e-05
 max_polyphony = 10
 
 [node name="AUD_deselectword" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(721, -90)
-stream = ExtResource("13_3nbf1")
+stream = ExtResource("14_aqlet")
 attenuation = 1e-05
 max_polyphony = 10
