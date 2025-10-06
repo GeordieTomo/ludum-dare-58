@@ -15,7 +15,7 @@ var active_player: AudioStreamPlayer
 var next_player: AudioStreamPlayer
 
 
-var music_vol_db = -6
+var music_vol_db = -12
 
 func _ready():
 	if track_list.is_empty():
@@ -64,7 +64,8 @@ func _process(delta):
 
 	# When near the end of the current song, start fading to next
 	if active_player.get_playback_position() >= get_length_of_stream(active_player.stream) - fade_duration and not next_player.playing:
-		start_specific_track(current_index)
+		if current_index != 0 and current_index != 5:
+			start_specific_track(current_index)
 
 func get_length_of_stream(stream: AudioStream):
 	var index = track_list.find(stream)

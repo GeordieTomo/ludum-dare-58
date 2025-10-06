@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://crkx1stn5vavc"]
+[gd_scene load_steps=18 format=4 uid="uid://crkx1stn5vavc"]
 
 [ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_tp48l"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_0ig38"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="11_0ig38"]
 [ext_resource type="PackedScene" uid="uid://bnpwree7r2j2x" path="res://environment/levels/level5-wake-up.tscn" id="12_4g22u"]
 [ext_resource type="PackedScene" uid="uid://kli53o0qe4tj" path="res://globals/level_music_layers.tscn" id="13_4g22u"]
+[ext_resource type="Script" uid="uid://dc5a7eko6wqfl" path="res://environment/levels/play_music.gd" id="14_xk8qk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7m88"]
 texture = ExtResource("5_xk8qk")
@@ -94,3 +95,7 @@ timeout = 7.0
 
 [node name="Music_Layers" parent="." instance=ExtResource("13_4g22u")]
 level_num = 4
+
+[node name="PlayMusic" type="Node" parent="."]
+script = ExtResource("14_xk8qk")
+track_index = 4
