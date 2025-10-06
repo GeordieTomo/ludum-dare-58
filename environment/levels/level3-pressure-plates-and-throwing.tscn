@@ -1,13 +1,15 @@
-[gd_scene load_steps=18 format=4 uid="uid://duqndeak0sjch"]
+[gd_scene load_steps=20 format=4 uid="uid://duqndeak0sjch"]
 
 [ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_kgbnd"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_vpw06"]
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="3_cqcg6"]
 [ext_resource type="Texture2D" uid="uid://b245a2h4sf4wj" path="res://textures/isometric_tilemap.png" id="5_rg4bk"]
 [ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="6_83cuf"]
-[ext_resource type="Script" path="res://environment/levels/tile_map_collision.gd" id="7_5jb1a"]
+[ext_resource type="Script" uid="uid://begp3o20cmaw6" path="res://environment/levels/tile_map_collision.gd" id="7_5jb1a"]
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="8_jtd2s"]
+[ext_resource type="AudioStream" uid="uid://ypu7qbwvgecf" path="res://environment/audio/VoiceAudio/VoiceLow2.mp3" id="9_5jb1a"]
 [ext_resource type="PackedScene" uid="uid://c5vdch45dms44" path="res://environment/objects/npc.tscn" id="9_sn1sw"]
+[ext_resource type="AudioStream" uid="uid://cw133mk0kb2h6" path="res://environment/audio/VoiceAudio/VoiceHigh3.mp3" id="10_jtd2s"]
 [ext_resource type="PackedScene" uid="uid://bjnb4yh033w51" path="res://environment/objects/portal.tscn" id="10_y62oo"]
 [ext_resource type="PackedScene" uid="uid://crkx1stn5vavc" path="res://environment/levels/level4-maze.tscn" id="11_vpw06"]
 [ext_resource type="PackedScene" uid="uid://d3ddbgh08ksup" path="res://environment/objects/pickable_object.tscn" id="12_cqcg6"]
@@ -82,11 +84,17 @@ dialogue_pre_word = "I can't quite seem to "
 word_to_pickup = 6
 dialogue_post_word = "what I'm supposed to do here..."
 
+[node name="AUD_gibberish" parent="NPC" index="0"]
+stream = ExtResource("9_5jb1a")
+
 [node name="NPC2" parent="." instance=ExtResource("9_sn1sw")]
 position = Vector2(233, -150)
 colour = Color(0.7528039, 0.34045002, 1, 1)
 dialogue_pre_word = "Sometimes I just wanna "
 dialogue_post_word = "it all away"
+
+[node name="AUD_gibberish" parent="NPC2" index="0"]
+stream = ExtResource("10_jtd2s")
 
 [node name="Portal" parent="." instance=ExtResource("10_y62oo")]
 position = Vector2(708, -517)
@@ -144,3 +152,6 @@ connected_button = NodePath("../Pressure_Plate5")
 
 [node name="Music_Layers" parent="." instance=ExtResource("14_rg4bk")]
 level_num = 3
+
+[editable path="NPC"]
+[editable path="NPC2"]

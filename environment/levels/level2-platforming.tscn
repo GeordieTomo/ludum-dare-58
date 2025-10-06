@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=4 uid="uid://2rkgsm8xl3mp"]
+[gd_scene load_steps=16 format=4 uid="uid://2rkgsm8xl3mp"]
 
 [ext_resource type="Script" uid="uid://c2evowaesqju2" path="res://environment/levels/level_sequence_manager.gd" id="1_5f5yu"]
 [ext_resource type="PackedScene" uid="uid://4nogs7d3ad2i" path="res://environment/camera/camera.tscn" id="2_lff6n"]
 [ext_resource type="PackedScene" uid="uid://c4vun81r65hwg" path="res://environment/player/player.tscn" id="3_odv2w"]
 [ext_resource type="Texture2D" uid="uid://b245a2h4sf4wj" path="res://textures/isometric_tilemap.png" id="7_cr6q1"]
 [ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="8_qo74a"]
-[ext_resource type="Script" path="res://environment/levels/tile_map_collision.gd" id="9_620i3"]
+[ext_resource type="Script" uid="uid://begp3o20cmaw6" path="res://environment/levels/tile_map_collision.gd" id="9_620i3"]
+[ext_resource type="AudioStream" uid="uid://ccoeh11ee1pa1" path="res://environment/audio/VoiceAudio/VoiceHigh1.mp3" id="9_e2u8c"]
 [ext_resource type="PackedScene" uid="uid://bjnb4yh033w51" path="res://environment/objects/portal.tscn" id="10_kae3k"]
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="10_p12oo"]
 [ext_resource type="PackedScene" uid="uid://kli53o0qe4tj" path="res://globals/level_music_layers.tscn" id="11_e2u8c"]
@@ -86,6 +87,9 @@ dialogue_pre_word = "I hear you've gotta go"
 word_to_pickup = 5
 dialogue_post_word = "to get through here."
 
+[node name="AUD_gibberish" parent="NPC2" index="0"]
+stream = ExtResource("9_e2u8c")
+
 [node name="NPC3" parent="." instance=ExtResource("13_sxarl")]
 position = Vector2(2488, -1379)
 colour = Color(0, 0.6970662, 0.13185126, 1)
@@ -93,9 +97,15 @@ dialogue_pre_word = "I don't think you're"
 word_to_pickup = 4
 dialogue_post_word = "enough for this."
 
+[node name="AUD_gibberish" parent="NPC3" index="0"]
+stream = ExtResource("9_e2u8c")
+
 [node name="Portal" parent="." instance=ExtResource("10_kae3k")]
 position = Vector2(3854, -2048)
 target_level = ExtResource("11_ypqdj")
 
 [node name="Music_Layers" parent="." instance=ExtResource("11_e2u8c")]
 level_num = 2
+
+[editable path="NPC2"]
+[editable path="NPC3"]

@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://073jjdq44xb5" path="res://environment/objects/button.tscn" id="5_c840c"]
 [ext_resource type="Texture2D" uid="uid://b245a2h4sf4wj" path="res://textures/isometric_tilemap.png" id="7_kk1cx"]
 [ext_resource type="Texture2D" uid="uid://cgw1v7f8wrfe8" path="res://textures/isometric_tilemap.svg" id="8_hwm3k"]
-[ext_resource type="Script" path="res://environment/levels/tile_map_collision.gd" id="9_gpeeo"]
+[ext_resource type="Script" uid="uid://begp3o20cmaw6" path="res://environment/levels/tile_map_collision.gd" id="9_gpeeo"]
 [ext_resource type="PackedScene" uid="uid://bnrwjwnchl3lt" path="res://environment/camera/gradient_background.tscn" id="10_nyo6m"]
 [ext_resource type="PackedScene" uid="uid://b74b42x7vmwh5" path="res://environment/objects/gate.tscn" id="11_gnk7a"]
 [ext_resource type="PackedScene" uid="uid://2rkgsm8xl3mp" path="res://environment/levels/level2-platforming.tscn" id="12_hbpto"]
 [ext_resource type="PackedScene" uid="uid://bjnb4yh033w51" path="res://environment/objects/portal.tscn" id="13_5toe3"]
+[ext_resource type="AudioStream" uid="uid://bje5mji6ym518" path="res://environment/audio/VoiceAudio/VoiceMed1.mp3" id="13_jmvrv"]
 [ext_resource type="Script" uid="uid://eyck6gjkyrwn" path="res://environment/objects/npc.gd" id="14_vufcf"]
-[ext_resource type="AudioStream" uid="uid://b3k8iiwovxvwa" path="res://environment/audio/VoiceAudio/VoiceLow4.mp3" id="15_7xms2"]
 [ext_resource type="Texture2D" uid="uid://d4bq5bf7gu5ff" path="res://textures/ouij3d.png" id="16_bnfr3"]
 [ext_resource type="Script" uid="uid://evwj4x3hy7do" path="res://environment/objects/glow.gd" id="17_waa5n"]
 [ext_resource type="Theme" uid="uid://cj3y7my0xsrcs" path="res://main_theme.tres" id="18_y8wxg"]
@@ -135,7 +135,7 @@ word_to_pickup = 5
 
 [node name="AUD_gibberish" type="AudioStreamPlayer2D" parent="NPC2"]
 unique_name_in_owner = true
-stream = ExtResource("15_7xms2")
+stream = ExtResource("13_jmvrv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC2"]
 position = Vector2(0, 98)
