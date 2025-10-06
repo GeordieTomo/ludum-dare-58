@@ -117,6 +117,7 @@ func show_WASD_hint():
 
 func hide_WASD_hint():
 	wasd_hint.visible = false
+	tutorial_complete = true
 
 
 func show_cloud():
